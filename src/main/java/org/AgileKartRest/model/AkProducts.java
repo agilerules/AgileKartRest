@@ -54,7 +54,6 @@ public class AkProducts implements java.io.Serializable
    private Float productDiscountPercentage;
    private Integer productHitCount;
    private Integer productSoldCount;
-   private int productGender;
    private Set<AkOrderDetails> akOrderDetailses = new HashSet<AkOrderDetails>(0);
    private Set<AkProductOptions> akProductOptionses = new HashSet<AkProductOptions>(0);
 
@@ -62,7 +61,7 @@ public class AkProducts implements java.io.Serializable
    {
    }
 
-   public AkProducts(AkProductCategories akProductCategories, String productSku, String productName, float productPrice, float productWeight, String productCartDesc, String productShortDesc, String productLongDesc, String productThumb, String productImage, Date productUpdateDate, int productGender)
+   public AkProducts(AkProductCategories akProductCategories, String productSku, String productName, float productPrice, float productWeight, String productCartDesc, String productShortDesc, String productLongDesc, String productThumb, String productImage, Date productUpdateDate)
    {
       this.akProductCategories = akProductCategories;
       this.productSku = productSku;
@@ -75,10 +74,9 @@ public class AkProducts implements java.io.Serializable
       this.productThumb = productThumb;
       this.productImage = productImage;
       this.productUpdateDate = productUpdateDate;
-      this.productGender = productGender;
    }
 
-   public AkProducts(AkProductCategories akProductCategories, String productSku, String productName, float productPrice, float productWeight, String productCartDesc, String productShortDesc, String productLongDesc, String productThumb, String productImage, Date productUpdateDate, Float productStock, Boolean productOnlineOnly, Boolean productUnlimited, String productLocation, Float productDiscountPercentage, Integer productHitCount, Integer productSoldCount, int productGender, Set<AkOrderDetails> akOrderDetailses, Set<AkProductOptions> akProductOptionses)
+   public AkProducts(AkProductCategories akProductCategories, String productSku, String productName, float productPrice, float productWeight, String productCartDesc, String productShortDesc, String productLongDesc, String productThumb, String productImage, Date productUpdateDate, Float productStock, Boolean productOnlineOnly, Boolean productUnlimited, String productLocation, Float productDiscountPercentage, Integer productHitCount, Integer productSoldCount, Set<AkOrderDetails> akOrderDetailses, Set<AkProductOptions> akProductOptionses)
    {
       this.akProductCategories = akProductCategories;
       this.productSku = productSku;
@@ -98,7 +96,6 @@ public class AkProducts implements java.io.Serializable
       this.productDiscountPercentage = productDiscountPercentage;
       this.productHitCount = productHitCount;
       this.productSoldCount = productSoldCount;
-      this.productGender = productGender;
       this.akOrderDetailses = akOrderDetailses;
       this.akProductOptionses = akProductOptionses;
    }
@@ -250,7 +247,7 @@ public class AkProducts implements java.io.Serializable
       this.productStock = productStock;
    }
 
-   @Column(name = "product_online_only", columnDefinition = "BIT" )
+   @Column(name = "product_online_only", columnDefinition = "BIT")
    public Boolean getProductOnlineOnly()
    {
       return this.productOnlineOnly;
@@ -261,7 +258,7 @@ public class AkProducts implements java.io.Serializable
       this.productOnlineOnly = productOnlineOnly;
    }
 
-   @Column(name = "product_unlimited", columnDefinition = "BIT" )
+   @Column(name = "product_unlimited", columnDefinition = "BIT")
    public Boolean getProductUnlimited()
    {
       return this.productUnlimited;
@@ -314,17 +311,6 @@ public class AkProducts implements java.io.Serializable
    public void setProductSoldCount(Integer productSoldCount)
    {
       this.productSoldCount = productSoldCount;
-   }
-
-   @Column(name = "product_gender", nullable = false)
-   public int getProductGender()
-   {
-      return this.productGender;
-   }
-
-   public void setProductGender(int productGender)
-   {
-      this.productGender = productGender;
    }
 
    @OneToMany(fetch = FetchType.EAGER, mappedBy = "akProducts")
