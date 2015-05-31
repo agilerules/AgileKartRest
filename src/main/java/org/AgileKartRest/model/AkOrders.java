@@ -53,13 +53,14 @@ public class AkOrders implements java.io.Serializable
    private Date orderDate;
    private boolean orderShipped;
    private String orderTrackingNo;
+   private String orderStatus;
    private Set<AkOrderDetails> akOrderDetailses = new HashSet<AkOrderDetails>(0);
 
    public AkOrders()
    {
    }
 
-   public AkOrders(AkUsers akUsers, float orderAmount, String orderShipName, String orderShipAddress, String orderShipAddress2, String orderCity, String orderState, String orderZip, String orderCountry, String orderPhone, String orderFax, float orderShipping, float orderTax, String orderEmail, Date orderDate, boolean orderShipped)
+   public AkOrders(AkUsers akUsers, float orderAmount, String orderShipName, String orderShipAddress, String orderShipAddress2, String orderCity, String orderState, String orderZip, String orderCountry, String orderPhone, String orderFax, float orderShipping, float orderTax, String orderEmail, Date orderDate, boolean orderShipped, String orderStatus)
    {
       this.akUsers = akUsers;
       this.orderAmount = orderAmount;
@@ -77,9 +78,10 @@ public class AkOrders implements java.io.Serializable
       this.orderEmail = orderEmail;
       this.orderDate = orderDate;
       this.orderShipped = orderShipped;
+      this.orderStatus = orderStatus;
    }
 
-   public AkOrders(AkUsers akUsers, float orderAmount, String orderShipName, String orderShipAddress, String orderShipAddress2, String orderCity, String orderState, String orderZip, String orderCountry, String orderPhone, String orderFax, float orderShipping, float orderTax, String orderEmail, Date orderDate, boolean orderShipped, String orderTrackingNo, Set<AkOrderDetails> akOrderDetailses)
+   public AkOrders(AkUsers akUsers, float orderAmount, String orderShipName, String orderShipAddress, String orderShipAddress2, String orderCity, String orderState, String orderZip, String orderCountry, String orderPhone, String orderFax, float orderShipping, float orderTax, String orderEmail, Date orderDate, boolean orderShipped, String orderTrackingNo,String orderStatus, Set<AkOrderDetails> akOrderDetailses)
    {
       this.akUsers = akUsers;
       this.orderAmount = orderAmount;
@@ -98,6 +100,7 @@ public class AkOrders implements java.io.Serializable
       this.orderDate = orderDate;
       this.orderShipped = orderShipped;
       this.orderTrackingNo = orderTrackingNo;
+      this.orderStatus = orderStatus;
       this.akOrderDetailses = akOrderDetailses;
    }
 
@@ -301,6 +304,17 @@ public class AkOrders implements java.io.Serializable
    public void setOrderTrackingNo(String orderTrackingNo)
    {
       this.orderTrackingNo = orderTrackingNo;
+   }
+   
+   @Column(name = "order_status", nullable = false, length = 20)
+   public String getOrderStatus()
+   {
+      return this.orderStatus;
+   }
+
+   public void setOrderStatus(String orderStatus)
+   {
+      this.orderStatus = orderStatus;
    }
 
    @OneToMany(fetch = FetchType.EAGER, mappedBy = "akOrders")
