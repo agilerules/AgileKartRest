@@ -20,7 +20,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriBuilder;
-import org.AgileKartRest.model.AkUsers;
+import org.AgileKartRest.entity.AkUsers;
 
 /**
  * 
@@ -58,8 +58,31 @@ public class AkUsersEndpoint
    @Produces("application/json")
    public Response findById(@PathParam("id") Integer id)
    {
-      TypedQuery<AkUsers> findByIdQuery = em.createQuery("SELECT DISTINCT a FROM AkUsers a LEFT JOIN FETCH a.akOrderses WHERE a.userId = :entityId ORDER BY a.userId", AkUsers.class);
+      TypedQuery<AkUsers> findByIdQuery = em.createQuery("SELECT DISTINCT a FROM AkUsers a LEFT JOIN FETCH a.akOrderses LEFT JOIN FETCH a.akUserAddresses WHERE a.userId = :entityId ORDER BY a.userId", AkUsers.class);
       findByIdQuery.setParameter("entityId", id);
+      AkUsers entity;
+      try
+      {
+         entity = findByIdQuery.getSingleResult();
+      }
+      catch (NoResultException nre)
+      {
+         entity = null;
+      }
+      if (entity == null)
+      {
+         return Response.status(Status.NOT_FOUND).build();
+      }
+      return Response.ok(entity).build();
+   }
+   
+   @GET
+   @Path("/mail")
+   @Produces("application/json")
+   public Response findByEmail(@QueryParam("email") String email)
+   {
+      TypedQuery<AkUsers> findByIdQuery = em.createQuery("SELECT DISTINCT a FROM AkUsers a WHERE a.userEmail = :entityId", AkUsers.class);
+      findByIdQuery.setParameter("entityId", email);
       AkUsers entity;
       try
       {
@@ -80,7 +103,7 @@ public class AkUsersEndpoint
    @Produces("application/json")
    public List<AkUsers> listAll(@QueryParam("start") Integer startPosition, @QueryParam("max") Integer maxResult)
    {
-      TypedQuery<AkUsers> findAllQuery = em.createQuery("SELECT DISTINCT a FROM AkUsers a LEFT JOIN FETCH a.akOrderses ORDER BY a.userId", AkUsers.class);
+      TypedQuery<AkUsers> findAllQuery = em.createQuery("SELECT DISTINCT a FROM AkUsers a LEFT JOIN FETCH a.akOrderses LEFT JOIN FETCH a.akUserAddresses ORDER BY a.userId", AkUsers.class);
       if (startPosition != null)
       {
          findAllQuery.setFirstResult(startPosition);
@@ -94,7 +117,7 @@ public class AkUsersEndpoint
    }
 
    @PUT
-   @Path("/{id:[0-9][0-9]*}")
+   @Path("/{id}")
    @Consumes("application/json")
    public Response update(@PathParam("id") Integer id, AkUsers entity)
    {

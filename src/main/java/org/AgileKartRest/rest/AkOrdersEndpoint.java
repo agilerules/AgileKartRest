@@ -1,5 +1,4 @@
 package org.AgileKartRest.rest;
-
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -20,7 +19,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriBuilder;
-import org.AgileKartRest.model.AkOrders;
+import org.AgileKartRest.entity.AkOrders;
 
 /**
  * 
@@ -121,4 +120,28 @@ public class AkOrdersEndpoint
 
       return Response.noContent().build();
    }
+   @GET
+   @Path("{id:[0-9][0-9]*}/{status}")
+   @Produces("application/json")
+   public Response updateStatus(@PathParam("id") Integer id,@PathParam("status") String status)
+   {
+      TypedQuery<AkOrders> findOrderQuery = em.createQuery("SELECT DISTINCT a FROM AkOrders a LEFT JOIN FETCH a.akUsers LEFT JOIN FETCH a.akOrderDetailses WHERE a.orderId = :entityId ORDER BY a.orderId", AkOrders.class);
+      findOrderQuery.setParameter("entityId", id);
+      AkOrders entity;
+      try
+      {
+         entity = findOrderQuery.getSingleResult();
+         entity.setOrderStatus(status);
+      }
+      catch (NoResultException nre)
+      {
+         entity = null;
+      }
+      if (entity == null)
+      {
+         return Response.status(Status.NOT_FOUND).build();
+      }
+      return Response.ok(entity).build();
+   }
+
 }

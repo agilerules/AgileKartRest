@@ -1,4 +1,4 @@
-package org.AgileKartRest.model;
+package org.AgileKartRest.entity;
 
 // Generated May 23, 2015 8:30:37 PM by Hibernate Tools 4.3.1
 
