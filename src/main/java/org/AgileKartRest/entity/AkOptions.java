@@ -34,7 +34,11 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 public class AkOptions implements java.io.Serializable
 {
 
-   private Integer optionId;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -7963868387389368516L;
+private Integer optionId;
    private AkOptionGroups akOptionGroups;
    private String optionName;
    private Set<AkProductOptions> akProductOptionses = new HashSet<AkProductOptions>(0);

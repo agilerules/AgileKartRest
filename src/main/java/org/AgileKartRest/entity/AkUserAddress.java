@@ -70,7 +70,7 @@ public class AkUserAddress  implements java.io.Serializable {
         this.addressId = addressId;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
+@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="user_id", nullable=false)
     public AkUsers getAkUsers() {
         return this.akUsers;

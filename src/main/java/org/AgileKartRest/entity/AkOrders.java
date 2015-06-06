@@ -1,6 +1,6 @@
 package org.AgileKartRest.entity;
 
-// Generated May 23, 2015 8:30:37 PM by Hibernate Tools 4.3.1
+// Generated 6 Jun, 2015 10:46:57 AM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -13,7 +13,6 @@ import javax.persistence.GeneratedValue;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -50,6 +49,17 @@ public class AkOrders implements java.io.Serializable
    private String orderFax;
    private float orderShipping;
    private float orderTax;
+   private String orderBillName;
+   private String orderBillAddress;
+   private String orderBillAddress2;
+   private String orderBillCity;
+   private String orderBillState;
+   private String orderBillZip;
+   private String orderBillCountry;
+   private String orderBillPhone;
+   private String orderBillFax;
+   private String orderPaymentMode;
+   private String orderPaymentDesc;
    private String orderEmail;
    private Date orderDate;
    private boolean orderShipped;
@@ -61,7 +71,7 @@ public class AkOrders implements java.io.Serializable
    {
    }
 
-   public AkOrders(AkUsers akUsers, float orderAmount, String orderShipName, String orderShipAddress, String orderShipAddress2, String orderCity, String orderState, String orderZip, String orderCountry, String orderPhone, String orderFax, float orderShipping, float orderTax, String orderEmail, Date orderDate, boolean orderShipped, String orderStatus)
+   public AkOrders(AkUsers akUsers, float orderAmount, String orderShipName, String orderShipAddress, String orderShipAddress2, String orderCity, String orderState, String orderZip, String orderCountry, String orderPhone, String orderFax, float orderShipping, float orderTax, String orderBillName, String orderBillAddress, String orderBillAddress2, String orderBillCity, String orderBillState, String orderBillZip, String orderBillCountry, String orderBillPhone, String orderBillFax, float orderBillTax, String orderPaymentMode, String orderEmail, Date orderDate, boolean orderShipped)
    {
       this.akUsers = akUsers;
       this.orderAmount = orderAmount;
@@ -76,13 +86,22 @@ public class AkOrders implements java.io.Serializable
       this.orderFax = orderFax;
       this.orderShipping = orderShipping;
       this.orderTax = orderTax;
+      this.orderBillName = orderBillName;
+      this.orderBillAddress = orderBillAddress;
+      this.orderBillAddress2 = orderBillAddress2;
+      this.orderBillCity = orderBillCity;
+      this.orderBillState = orderBillState;
+      this.orderBillZip = orderBillZip;
+      this.orderBillCountry = orderBillCountry;
+      this.orderBillPhone = orderBillPhone;
+      this.orderBillFax = orderBillFax;
+      this.orderPaymentMode = orderPaymentMode;
       this.orderEmail = orderEmail;
       this.orderDate = orderDate;
       this.orderShipped = orderShipped;
-      this.orderStatus = orderStatus;
    }
 
-   public AkOrders(AkUsers akUsers, float orderAmount, String orderShipName, String orderShipAddress, String orderShipAddress2, String orderCity, String orderState, String orderZip, String orderCountry, String orderPhone, String orderFax, float orderShipping, float orderTax, String orderEmail, Date orderDate, boolean orderShipped, String orderTrackingNo,String orderStatus, Set<AkOrderDetails> akOrderDetailses)
+   public AkOrders(AkUsers akUsers, float orderAmount, String orderShipName, String orderShipAddress, String orderShipAddress2, String orderCity, String orderState, String orderZip, String orderCountry, String orderPhone, String orderFax, float orderShipping, float orderTax, String orderBillName, String orderBillAddress, String orderBillAddress2, String orderBillCity, String orderBillState, String orderBillZip, String orderBillCountry, String orderBillPhone, String orderBillFax, float orderBillTax, String orderPaymentMode, String orderPaymentDesc, String orderEmail, Date orderDate, boolean orderShipped, String orderTrackingNo, String orderStatus, Set<AkOrderDetails> akOrderDetailses)
    {
       this.akUsers = akUsers;
       this.orderAmount = orderAmount;
@@ -97,6 +116,17 @@ public class AkOrders implements java.io.Serializable
       this.orderFax = orderFax;
       this.orderShipping = orderShipping;
       this.orderTax = orderTax;
+      this.orderBillName = orderBillName;
+      this.orderBillAddress = orderBillAddress;
+      this.orderBillAddress2 = orderBillAddress2;
+      this.orderBillCity = orderBillCity;
+      this.orderBillState = orderBillState;
+      this.orderBillZip = orderBillZip;
+      this.orderBillCountry = orderBillCountry;
+      this.orderBillPhone = orderBillPhone;
+      this.orderBillFax = orderBillFax;
+      this.orderPaymentMode = orderPaymentMode;
+      this.orderPaymentDesc = orderPaymentDesc;
       this.orderEmail = orderEmail;
       this.orderDate = orderDate;
       this.orderShipped = orderShipped;
@@ -262,6 +292,127 @@ public class AkOrders implements java.io.Serializable
       this.orderTax = orderTax;
    }
 
+   @Column(name = "order_bill_name", nullable = false, length = 100)
+   public String getOrderBillName()
+   {
+      return this.orderBillName;
+   }
+
+   public void setOrderBillName(String orderBillName)
+   {
+      this.orderBillName = orderBillName;
+   }
+
+   @Column(name = "order_bill_address", nullable = false, length = 100)
+   public String getOrderBillAddress()
+   {
+      return this.orderBillAddress;
+   }
+
+   public void setOrderBillAddress(String orderBillAddress)
+   {
+      this.orderBillAddress = orderBillAddress;
+   }
+
+   @Column(name = "order_bill_address2", nullable = false, length = 100)
+   public String getOrderBillAddress2()
+   {
+      return this.orderBillAddress2;
+   }
+
+   public void setOrderBillAddress2(String orderBillAddress2)
+   {
+      this.orderBillAddress2 = orderBillAddress2;
+   }
+
+   @Column(name = "order_bill_city", nullable = false, length = 50)
+   public String getOrderBillCity()
+   {
+      return this.orderBillCity;
+   }
+
+   public void setOrderBillCity(String orderBillCity)
+   {
+      this.orderBillCity = orderBillCity;
+   }
+
+   @Column(name = "order_bill_state", nullable = false, length = 50)
+   public String getOrderBillState()
+   {
+      return this.orderBillState;
+   }
+
+   public void setOrderBillState(String orderBillState)
+   {
+      this.orderBillState = orderBillState;
+   }
+
+   @Column(name = "order_bill_zip", nullable = false, length = 20)
+   public String getOrderBillZip()
+   {
+      return this.orderBillZip;
+   }
+
+   public void setOrderBillZip(String orderBillZip)
+   {
+      this.orderBillZip = orderBillZip;
+   }
+
+   @Column(name = "order_bill_country", nullable = false, length = 50)
+   public String getOrderBillCountry()
+   {
+      return this.orderBillCountry;
+   }
+
+   public void setOrderBillCountry(String orderBillCountry)
+   {
+      this.orderBillCountry = orderBillCountry;
+   }
+
+   @Column(name = "order_bill_phone", nullable = false, length = 20)
+   public String getOrderBillPhone()
+   {
+      return this.orderBillPhone;
+   }
+
+   public void setOrderBillPhone(String orderBillPhone)
+   {
+      this.orderBillPhone = orderBillPhone;
+   }
+
+   @Column(name = "order_bill_fax", nullable = false, length = 20)
+   public String getOrderBillFax()
+   {
+      return this.orderBillFax;
+   }
+
+   public void setOrderBillFax(String orderBillFax)
+   {
+      this.orderBillFax = orderBillFax;
+   }
+
+   @Column(name = "order_payment_mode", nullable = false, length = 50)
+   public String getOrderPaymentMode()
+   {
+      return this.orderPaymentMode;
+   }
+
+   public void setOrderPaymentMode(String orderPaymentMode)
+   {
+      this.orderPaymentMode = orderPaymentMode;
+   }
+
+   @Column(name = "order_payment_desc", length = 50)
+   public String getOrderPaymentDesc()
+   {
+      return this.orderPaymentDesc;
+   }
+
+   public void setOrderPaymentDesc(String orderPaymentDesc)
+   {
+      this.orderPaymentDesc = orderPaymentDesc;
+   }
+
    @Column(name = "order_email", nullable = false, length = 100)
    public String getOrderEmail()
    {
@@ -306,8 +457,8 @@ public class AkOrders implements java.io.Serializable
    {
       this.orderTrackingNo = orderTrackingNo;
    }
-   
-   @Column(name = "order_status", nullable = false, length = 20)
+
+   @Column(name = "order_status", length = 20)
    public String getOrderStatus()
    {
       return this.orderStatus;
@@ -318,7 +469,7 @@ public class AkOrders implements java.io.Serializable
       this.orderStatus = orderStatus;
    }
 
-   @OneToMany(fetch = FetchType.EAGER, mappedBy = "akOrders", cascade=CascadeType.ALL)
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "akOrders")
    public Set<AkOrderDetails> getAkOrderDetailses()
    {
       return this.akOrderDetailses;

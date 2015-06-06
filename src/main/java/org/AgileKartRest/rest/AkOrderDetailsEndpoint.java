@@ -93,7 +93,7 @@ public class AkOrderDetailsEndpoint
       final List<AkOrderDetails> results = findAllQuery.getResultList();
       return results;
    }
-
+   
    @PUT
    @Path("/{id:[0-9][0-9]*}")
    @Consumes("application/json")

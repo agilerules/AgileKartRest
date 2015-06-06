@@ -154,6 +154,17 @@ CREATE TABLE `ak_orders` (
   `order_fax` varchar(20) COLLATE latin1_german2_ci NOT NULL,
   `order_shipping` float NOT NULL,
   `order_tax` float NOT NULL,
+ `order_bill_name` varchar(100) COLLATE latin1_german2_ci NOT NULL,
+  `order_bill_address` varchar(100) COLLATE latin1_german2_ci NOT NULL,
+  `order_bill_address2` varchar(100) COLLATE latin1_german2_ci NOT NULL,
+  `order_bill_city` varchar(50) COLLATE latin1_german2_ci NOT NULL,
+  `order_bill_state` varchar(50) COLLATE latin1_german2_ci NOT NULL,
+  `order_bill_zip` varchar(20) COLLATE latin1_german2_ci NOT NULL,
+  `order_bill_country` varchar(50) COLLATE latin1_german2_ci NOT NULL,
+  `order_bill_phone` varchar(20) COLLATE latin1_german2_ci NOT NULL,
+  `order_bill_fax` varchar(20) COLLATE latin1_german2_ci NOT NULL,
+  `order_payment_mode` varchar(50) COLLATE latin1_german2_ci NOT NULL,
+  `order_payment_desc` varchar(50) COLLATE latin1_german2_ci,
   `order_email` varchar(100) COLLATE latin1_german2_ci NOT NULL,
   `order_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `order_shipped` tinyint(1) NOT NULL DEFAULT '0',
@@ -164,16 +175,6 @@ CREATE TABLE `ak_orders` (
   CONSTRAINT `fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `ak_users` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci COMMENT='This table holds the order information AgileKart application.';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `ak_orders`
---
-
-LOCK TABLES `ak_orders` WRITE;
-/*!40000 ALTER TABLE `ak_orders` DISABLE KEYS */;
-INSERT INTO `ak_orders` VALUES (1,123,23,'Mr. X','No 10','Morgan St','Stamford','CT','06905','US','2035547896','878999912',0,3,'abc@gmail.com','2014-06-18 18:30:00',0,'123456','Started');
-/*!40000 ALTER TABLE `ak_orders` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `ak_product_categories`
@@ -266,6 +267,8 @@ CREATE TABLE `ak_products` (
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci COMMENT='This table holds the product information of AgileKart application.';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+
+
 --
 -- Dumping data for table `ak_products`
 --
@@ -289,32 +292,37 @@ CREATE TABLE `ak_users` (
   `user_password` varchar(500) COLLATE latin1_german2_ci DEFAULT NULL,
   `user_first_name` varchar(50) COLLATE latin1_german2_ci DEFAULT NULL,
   `user_last_name` varchar(50) COLLATE latin1_german2_ci DEFAULT NULL,
-  `user_city` varchar(90) COLLATE latin1_german2_ci DEFAULT NULL,
-  `user_state` varchar(20) COLLATE latin1_german2_ci DEFAULT NULL,
-  `user_zip` varchar(12) COLLATE latin1_german2_ci DEFAULT NULL,
   `user_email_verified` tinyint(1) DEFAULT '0',
   `user_registration_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `user_verification_code` varchar(20) COLLATE latin1_german2_ci DEFAULT NULL,
   `user_ip` varchar(50) COLLATE latin1_german2_ci DEFAULT NULL,
-  `user_phone` varchar(20) COLLATE latin1_german2_ci DEFAULT NULL,
-  `user_fax` varchar(20) COLLATE latin1_german2_ci DEFAULT NULL,
-  `user_country` varchar(20) COLLATE latin1_german2_ci DEFAULT NULL,
-  `user_address` varchar(100) COLLATE latin1_german2_ci DEFAULT NULL,
-  `user_address2` varchar(50) COLLATE latin1_german2_ci DEFAULT NULL,
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=124 DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci COMMENT='This table holds the user information of AgileKart application.';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `ak_users`
---
 
-LOCK TABLES `ak_users` WRITE;
-/*!40000 ALTER TABLE `ak_users` DISABLE KEYS */;
-INSERT INTO `ak_users` VALUES (123,'abc@gmail.com','pwd','Mr.X','Y','Stamford','CT','06905',0,'2014-05-31 18:30:00','123','10.193.23.45','2035546788',NULL,'US','No.10','Morgan St');
-/*!40000 ALTER TABLE `ak_users` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+DROP TABLE IF EXISTS `ak_user_address`;
+
+CREATE TABLE `ak_user_address` (
+  `address_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_address` varchar(100) DEFAULT NULL,
+  `user_address2` varchar(50) DEFAULT NULL,
+  `user_city` varchar(90) DEFAULT NULL,
+  `user_country` varchar(20) DEFAULT NULL,
+  `user_fax` varchar(20) DEFAULT NULL,
+  `user_first_name` varchar(50) DEFAULT NULL,
+  `user_last_name` varchar(50) DEFAULT NULL,
+  `user_phone` varchar(20) DEFAULT NULL,
+  `user_state` varchar(20) DEFAULT NULL,
+  `user_type_name` varchar(50) DEFAULT NULL,
+  `user_zip` varchar(12) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`address_id`),
+  KEY `USER_ID_IDX` (`user_id`),
+  CONSTRAINT `FK_ADR_USER_ID` FOREIGN KEY (`user_id`) REFERENCES `ak_users` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='This table store the address added by the user to make the order';
+
+
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
