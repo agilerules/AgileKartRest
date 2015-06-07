@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -469,7 +470,7 @@ public class AkOrders implements java.io.Serializable
       this.orderStatus = orderStatus;
    }
 
-   @OneToMany(fetch = FetchType.EAGER, mappedBy = "akOrders")
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "akOrders", cascade={CascadeType.ALL} )
    public Set<AkOrderDetails> getAkOrderDetailses()
    {
       return this.akOrderDetailses;

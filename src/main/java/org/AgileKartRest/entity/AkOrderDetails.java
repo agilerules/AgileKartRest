@@ -68,7 +68,7 @@ private Integer detailId;
    }
 
    @ManyToOne(fetch = FetchType.EAGER)
-   @JoinColumn(name = "order_id", nullable = false)
+   @JoinColumn(name = "order_id")
    public AkOrders getAkOrders()
    {
       return this.akOrders;
@@ -80,7 +80,7 @@ private Integer detailId;
    }
 
    @ManyToOne(fetch = FetchType.EAGER)
-   @JoinColumn(name = "product_id", nullable = false)
+   @JoinColumn(name = "product_id")
    public AkProducts getAkProducts()
    {
       return this.akProducts;

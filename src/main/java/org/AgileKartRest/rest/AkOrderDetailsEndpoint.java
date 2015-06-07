@@ -22,6 +22,7 @@ import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriBuilder;
 
 import org.AgileKartRest.entity.AkOrderDetails;
+import org.AgileKartRest.entity.AkUsers;
 
 /**
  * 
@@ -94,6 +95,17 @@ public class AkOrderDetailsEndpoint
       return results;
    }
    
+   @GET
+   @Path("/order/{id:[0-9][0-9]*}")
+   @Produces("application/json")
+   public List<AkOrderDetails> findbyOrderId(@PathParam("id") Integer id)
+   {
+	   TypedQuery<AkOrderDetails> findByIdQuery = em.createQuery("SELECT DISTINCT a FROM AkOrderDetails a LEFT JOIN FETCH a.akOrders LEFT JOIN FETCH a.akProducts where a.akOrders.orderId = :entityId ORDER BY a.detailId", AkOrderDetails.class);
+      findByIdQuery.setParameter("entityId", id);
+      final List<AkOrderDetails> results = findByIdQuery.getResultList();
+      return results;
+   }
+    
    @PUT
    @Path("/{id:[0-9][0-9]*}")
    @Consumes("application/json")
