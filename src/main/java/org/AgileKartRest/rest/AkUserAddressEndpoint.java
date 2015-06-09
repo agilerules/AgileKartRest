@@ -79,18 +79,10 @@ public class AkUserAddressEndpoint
    @GET
    @Path("/{id:[0-9][0-9]*}")
    @Produces("application/json")
-   public List<AkUserAddress> listAll(@PathParam("id") Integer id,@QueryParam("start") Integer startPosition, @QueryParam("max") Integer maxResult)
+   public List<AkUserAddress> listAll(@PathParam("id") Integer id)
    {
       TypedQuery<AkUserAddress> findAllQuery = em.createQuery("SELECT DISTINCT a FROM AkUserAddress a LEFT JOIN FETCH a.akUsers where a.akUsers.userId= :entityId ORDER BY a.addressId", AkUserAddress.class);
       findAllQuery.setParameter("entityId", id);
-      if (startPosition != null)
-      {
-         findAllQuery.setFirstResult(startPosition);
-      }
-      if (maxResult != null)
-      {
-         findAllQuery.setMaxResults(maxResult);
-      }
       final List<AkUserAddress> results = findAllQuery.getResultList();
       return results;
    }
