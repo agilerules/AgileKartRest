@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.OptimisticLockException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -20,6 +21,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriBuilder;
+
 import org.AgileKartRest.entity.AkUserAddress;
 
 /**
@@ -81,7 +83,7 @@ public class AkUserAddressEndpoint
    @Produces("application/json")
    public List<AkUserAddress> listAll(@PathParam("id") Integer id)
    {
-      TypedQuery<AkUserAddress> findAllQuery = em.createQuery("SELECT DISTINCT a FROM AkUserAddress a LEFT JOIN FETCH a.akUsers where a.akUsers.userId= :entityId ORDER BY a.addressId", AkUserAddress.class);
+	   Query  findAllQuery = em.createQuery("SELECT DISTINCT a FROM AkUserAddress a LEFT JOIN FETCH a.akUsers where a.akUsers.userId= :entityId ORDER BY a.addressId");
       findAllQuery.setParameter("entityId", id);
       final List<AkUserAddress> results = findAllQuery.getResultList();
       return results;

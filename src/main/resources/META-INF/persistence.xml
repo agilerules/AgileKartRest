@@ -7,22 +7,9 @@
 		<description>Forge Persistence Unit</description>
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<jta-data-source>java:jboss/datasources/agilekart</jta-data-source>
-
-		<class>org.AgileKartRest.security.model.entity.MyUserTypeEntity</class>
-		<class>org.picketlink.idm.jpa.model.sample.simple.AttributedTypeEntity</class>
-		<class>org.picketlink.idm.jpa.model.sample.simple.RoleTypeEntity</class>
-		<class>org.picketlink.idm.jpa.model.sample.simple.GroupTypeEntity</class>
-		<class>org.picketlink.idm.jpa.model.sample.simple.IdentityTypeEntity</class>
-		<class>org.picketlink.idm.jpa.model.sample.simple.RelationshipTypeEntity</class>
-		<class>org.picketlink.idm.jpa.model.sample.simple.RelationshipIdentityTypeEntity</class>
-		<class>org.picketlink.idm.jpa.model.sample.simple.PartitionTypeEntity</class>
-		<class>org.picketlink.idm.jpa.model.sample.simple.AttributeTypeEntity</class>
-		<class>org.picketlink.idm.jpa.model.sample.simple.PasswordCredentialTypeEntity</class>
-		<class>org.picketlink.idm.jpa.model.sample.simple.TokenCredentialTypeEntity</class>
 		<exclude-unlisted-classes>false</exclude-unlisted-classes>
 		<properties>
-
-			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.hbm2ddl.auto" value="validate" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 			<property name="hibernate.transaction.flush_before_completion"
