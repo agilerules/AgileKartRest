@@ -79,7 +79,7 @@ public class AkUserAddressEndpoint
    }
 
    @GET
-   @Path("/{id:[0-9][0-9]*}")
+   @Path("/user/{id:[0-9][0-9]*}")
    @Produces("application/json")
    public List<AkUserAddress> listAll(@PathParam("id") Integer id)
    {
