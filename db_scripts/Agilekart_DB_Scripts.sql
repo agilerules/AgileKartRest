@@ -42,7 +42,7 @@ CREATE TABLE `ak_category_options` (
 
 LOCK TABLES `ak_category_options` WRITE;
 /*!40000 ALTER TABLE `ak_category_options` DISABLE KEYS */;
-INSERT INTO `ak_category_options` VALUES (0,2,1),(1,1,1),(3,1,3),(4,2,3),(5,2,4),(6,3,3),(7,3,5);
+INSERT INTO `ak_category_options` VALUES (1,1,1),(3,1,3),(4,2,3),(5,2,4),(6,3,3),(7,3,5);
 /*!40000 ALTER TABLE `ak_category_options` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -301,6 +301,17 @@ CREATE TABLE `ak_users` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 
+--
+-- Dumping data for table `ak_products`
+--
+
+LOCK TABLES `ak_users` WRITE;
+/*!40000 ALTER TABLE `ak_users` DISABLE KEYS */;
+INSERT INTO `ak_users` VALUES (1,'admin@agilerulesconsultants.com','password','Admin','Admin',1,'2015-04-22 13:34:12','TEST','TEST');
+/*!40000 ALTER TABLE `ak_users` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
 DROP TABLE IF EXISTS `ak_user_address`;
 
 CREATE TABLE `ak_user_address` (
@@ -321,6 +332,11 @@ CREATE TABLE `ak_user_address` (
   KEY `USER_ID_IDX` (`user_id`),
   CONSTRAINT `FK_ADR_USER_ID` FOREIGN KEY (`user_id`) REFERENCES `ak_users` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='This table store the address added by the user to make the order';
+
+
+INSERT INTO `ak_user_address` (`address_id`,`user_address`,`user_address2`,`user_city`,`user_country`,`user_fax`,`user_first_name`,`user_last_name`,`user_phone`,`user_state`,`user_type_name`,`user_zip`,`user_id`) VALUES (1,'Address 1','Address 2','City','Country','932514098','Admin','Home','4962514098','State','Home','11111',1);
+INSERT INTO `ak_user_address` (`address_id`,`user_address`,`user_address2`,`user_city`,`user_country`,`user_fax`,`user_first_name`,`user_last_name`,`user_phone`,`user_state`,`user_type_name`,`user_zip`,`user_id`) VALUES (2,'Address 1','Address 2','City','Country','932514098','Admin','Work','4962514098','State','Work','11111',1);
+
 
 
 
