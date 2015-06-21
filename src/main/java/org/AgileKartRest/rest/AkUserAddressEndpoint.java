@@ -7,8 +7,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.OptimisticLockException;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import javax.persistence.Query;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -21,7 +21,6 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriBuilder;
-
 import org.AgileKartRest.entity.AkUserAddress;
 
 /**
@@ -81,10 +80,28 @@ public class AkUserAddressEndpoint
    @GET
    @Path("/user/{id:[0-9][0-9]*}")
    @Produces("application/json")
-   public List<AkUserAddress> listAll(@PathParam("id") Integer id)
+   public List<AkUserAddress> getAll(@PathParam("id") Integer id)
    {
 	   Query  findAllQuery = em.createQuery("SELECT DISTINCT a FROM AkUserAddress a LEFT JOIN FETCH a.akUsers where a.akUsers.userId= :entityId ORDER BY a.addressId");
       findAllQuery.setParameter("entityId", id);
+      final List<AkUserAddress> results = findAllQuery.getResultList();
+      return results;
+   }
+   
+   
+   @GET
+   @Produces("application/json")
+   public List<AkUserAddress> listAll(@QueryParam("start") Integer startPosition, @QueryParam("max") Integer maxResult)
+   {
+      TypedQuery<AkUserAddress> findAllQuery = em.createQuery("SELECT DISTINCT a FROM AkUserAddress a LEFT JOIN FETCH a.akUsers ORDER BY a.addressId", AkUserAddress.class);
+      if (startPosition != null)
+      {
+         findAllQuery.setFirstResult(startPosition);
+      }
+      if (maxResult != null)
+      {
+         findAllQuery.setMaxResults(maxResult);
+      }
       final List<AkUserAddress> results = findAllQuery.getResultList();
       return results;
    }

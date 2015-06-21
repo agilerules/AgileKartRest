@@ -1,6 +1,6 @@
 package org.AgileKartRest.entity;
 
-// Generated May 23, 2015 8:30:37 PM by Hibernate Tools 4.3.1
+// Generated 21 Jun, 2015 11:28:57 AM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -27,14 +27,16 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 @Table(name = "ak_product_categories"
       , catalog = "agilekart"
       , uniqueConstraints = @UniqueConstraint(columnNames = "category_name"))
-@JsonIgnoreProperties({ "akProductses"})
+@JsonIgnoreProperties({ "akProductses","akCategoryOptionses"})
 @XmlRootElement
 public class AkProductCategories implements java.io.Serializable
 {
 
-   private Integer categoryId;
+	private static final long serialVersionUID = -5536037119023206877L;
+	private Integer categoryId;
    private String categoryName;
    private Set<AkProducts> akProductses = new HashSet<AkProducts>(0);
+   private Set<AkCategoryOptions> akCategoryOptionses = new HashSet<AkCategoryOptions>(0);
 
    public AkProductCategories()
    {
@@ -45,10 +47,11 @@ public class AkProductCategories implements java.io.Serializable
       this.categoryName = categoryName;
    }
 
-   public AkProductCategories(String categoryName, Set<AkProducts> akProductses)
+   public AkProductCategories(String categoryName, Set<AkProducts> akProductses, Set<AkCategoryOptions> akCategoryOptionses)
    {
       this.categoryName = categoryName;
       this.akProductses = akProductses;
+      this.akCategoryOptionses = akCategoryOptionses;
    }
 
    @Id
@@ -84,6 +87,17 @@ public class AkProductCategories implements java.io.Serializable
    public void setAkProductses(Set<AkProducts> akProductses)
    {
       this.akProductses = akProductses;
+   }
+
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "akProductCategories")
+   public Set<AkCategoryOptions> getAkCategoryOptionses()
+   {
+      return this.akCategoryOptionses;
+   }
+
+   public void setAkCategoryOptionses(Set<AkCategoryOptions> akCategoryOptionses)
+   {
+      this.akCategoryOptionses = akCategoryOptionses;
    }
 
 }

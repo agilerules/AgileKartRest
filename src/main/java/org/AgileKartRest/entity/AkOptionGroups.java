@@ -1,6 +1,6 @@
 package org.AgileKartRest.entity;
 
-// Generated May 23, 2015 8:30:37 PM by Hibernate Tools 4.3.1
+// Generated 21 Jun, 2015 11:28:57 AM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -26,31 +26,36 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 @Entity
 @Table(name = "ak_option_groups"
       , catalog = "agilekart"
-      , uniqueConstraints = @UniqueConstraint(columnNames = "option_group_name"))
-@JsonIgnoreProperties({ "akProductOptionses","akOptionses"})
+      , uniqueConstraints = @UniqueConstraint(columnNames = "option_group_desc"))
+@JsonIgnoreProperties({ "akProductOptionses","akOptionses","akCategoryOptionses"})
 @XmlRootElement
 public class AkOptionGroups implements java.io.Serializable
 {
 
    private Integer optionGroupId;
    private String optionGroupName;
-   private Set<AkProductOptions> akProductOptionses = new HashSet<AkProductOptions>(0);
+   private String optionGroupDesc;
    private Set<AkOptions> akOptionses = new HashSet<AkOptions>(0);
+   private Set<AkCategoryOptions> akCategoryOptionses = new HashSet<AkCategoryOptions>(0);
+   private Set<AkProductOptions> akProductOptionses = new HashSet<AkProductOptions>(0);
 
    public AkOptionGroups()
    {
    }
 
-   public AkOptionGroups(String optionGroupName)
+   public AkOptionGroups(String optionGroupName, String optionGroupDesc)
    {
       this.optionGroupName = optionGroupName;
+      this.optionGroupDesc = optionGroupDesc;
    }
 
-   public AkOptionGroups(String optionGroupName, Set<AkProductOptions> akProductOptionses, Set<AkOptions> akOptionses)
+   public AkOptionGroups(String optionGroupName, String optionGroupDesc, Set<AkOptions> akOptionses, Set<AkCategoryOptions> akCategoryOptionses, Set<AkProductOptions> akProductOptionses)
    {
       this.optionGroupName = optionGroupName;
-      this.akProductOptionses = akProductOptionses;
+      this.optionGroupDesc = optionGroupDesc;
       this.akOptionses = akOptionses;
+      this.akCategoryOptionses = akCategoryOptionses;
+      this.akProductOptionses = akProductOptionses;
    }
 
    @Id
@@ -66,7 +71,7 @@ public class AkOptionGroups implements java.io.Serializable
       this.optionGroupId = optionGroupId;
    }
 
-   @Column(name = "option_group_name", unique = true, nullable = false, length = 50)
+   @Column(name = "option_group_name", nullable = false, length = 50)
    public String getOptionGroupName()
    {
       return this.optionGroupName;
@@ -77,15 +82,15 @@ public class AkOptionGroups implements java.io.Serializable
       this.optionGroupName = optionGroupName;
    }
 
-   @OneToMany(fetch = FetchType.EAGER, mappedBy = "akOptionGroups")
-   public Set<AkProductOptions> getAkProductOptionses()
+   @Column(name = "option_group_desc", unique = true, nullable = false, length = 45)
+   public String getOptionGroupDesc()
    {
-      return this.akProductOptionses;
+      return this.optionGroupDesc;
    }
 
-   public void setAkProductOptionses(Set<AkProductOptions> akProductOptionses)
+   public void setOptionGroupDesc(String optionGroupDesc)
    {
-      this.akProductOptionses = akProductOptionses;
+      this.optionGroupDesc = optionGroupDesc;
    }
 
    @OneToMany(fetch = FetchType.EAGER, mappedBy = "akOptionGroups")
@@ -97,6 +102,28 @@ public class AkOptionGroups implements java.io.Serializable
    public void setAkOptionses(Set<AkOptions> akOptionses)
    {
       this.akOptionses = akOptionses;
+   }
+
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "akOptionGroups")
+   public Set<AkCategoryOptions> getAkCategoryOptionses()
+   {
+      return this.akCategoryOptionses;
+   }
+
+   public void setAkCategoryOptionses(Set<AkCategoryOptions> akCategoryOptionses)
+   {
+      this.akCategoryOptionses = akCategoryOptionses;
+   }
+
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "akOptionGroups")
+   public Set<AkProductOptions> getAkProductOptionses()
+   {
+      return this.akProductOptionses;
+   }
+
+   public void setAkProductOptionses(Set<AkProductOptions> akProductOptionses)
+   {
+      this.akProductOptionses = akProductOptionses;
    }
 
 }

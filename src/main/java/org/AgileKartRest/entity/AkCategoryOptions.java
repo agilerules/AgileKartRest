@@ -48,7 +48,7 @@ public class AkCategoryOptions implements java.io.Serializable
       this.categoryOptionId = categoryOptionId;
    }
 
-   @ManyToOne(fetch = FetchType.LAZY)
+   @ManyToOne(fetch = FetchType.EAGER)
    @JoinColumn(name = "option_group_id", nullable = false)
    public AkOptionGroups getAkOptionGroups()
    {
@@ -60,7 +60,7 @@ public class AkCategoryOptions implements java.io.Serializable
       this.akOptionGroups = akOptionGroups;
    }
 
-   @ManyToOne(fetch = FetchType.LAZY)
+   @ManyToOne(fetch = FetchType.EAGER)
    @JoinColumn(name = "category_id", nullable = false)
    public AkProductCategories getAkProductCategories()
    {
