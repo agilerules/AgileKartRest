@@ -1,0 +1,53 @@
+<header ng-switch on="$location.path().indexOf('/MerchantCategories/new') > -1">
+    <h3 ng-switch-when="true">Create a new MerchantCategory</h3>
+    <h3 ng-switch-when="false">View or edit MerchantCategory</h3>
+</header>
+<form id="MerchantCategoryForm" name="MerchantCategoryForm" class="form-horizontal" role="form">
+    <div ng-show="displayError" class="alert alert-danger">
+        <strong>Error!</strong> Something broke. Retry, or cancel and start afresh.
+    </div>
+    
+    <div class="form-group" ng-class="{'has-error': MerchantCategoryForm.categoryId.$invalid}">
+        <label for="categoryId" class="col-sm-2 control-label">Category Id</label>
+        <div id="categoryIdControls" class="col-sm-10">
+            <input id="categoryId" name="categoryId" type="text" required ng-maxlength="45" class="form-control" ng-model="merchantCategory.categoryId" placeholder="Enter the MerchantCategory Category Id"></input>
+            <span class="help-block error" ng-show="MerchantCategoryForm.categoryId.$error.required">required</span> 
+            <span class="help-block error" ng-show="MerchantCategoryForm.categoryId.$error.maxlength">maximum length is 45</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': MerchantCategoryForm.merchantId.$invalid}">
+        <label for="merchantId" class="col-sm-2 control-label">Merchant Id</label>
+        <div id="merchantIdControls" class="col-sm-10">
+            <input id="merchantId" name="merchantId" type="text" required ng-maxlength="45" class="form-control" ng-model="merchantCategory.merchantId" placeholder="Enter the MerchantCategory Merchant Id"></input>
+            <span class="help-block error" ng-show="MerchantCategoryForm.merchantId.$error.required">required</span> 
+            <span class="help-block error" ng-show="MerchantCategoryForm.merchantId.$error.maxlength">maximum length is 45</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': MerchantCategoryForm.lastUpdateUserId.$invalid}">
+        <label for="lastUpdateUserId" class="col-sm-2 control-label">Last Update User Id</label>
+        <div id="lastUpdateUserIdControls" class="col-sm-10">
+            <input id="lastUpdateUserId" name="lastUpdateUserId" type="text" ng-maxlength="45" class="form-control" ng-model="merchantCategory.lastUpdateUserId" placeholder="Enter the MerchantCategory Last Update User Id"></input>
+            <span class="help-block error" ng-show="MerchantCategoryForm.lastUpdateUserId.$error.maxlength">maximum length is 45</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': MerchantCategoryForm.lastUpdateTs.$invalid}">
+        <label for="lastUpdateTs" class="col-sm-2 control-label">Last Update Ts</label>
+        <div id="lastUpdateTsControls" class="col-sm-10">
+            <datetime id="lastUpdateTs" name="lastUpdateTs" ng-model="merchantCategory.lastUpdateTs" placeholder="Enter the MerchantCategory Last Update Ts"></datetime>
+            <span class="help-block error" ng-show="MerchantCategoryForm.lastUpdateTs.$error.maxlength">maximum length is 19</span>
+            <span class="help-block error" ng-show="MerchantCategoryForm.lastUpdateTs.$error.datetimeFormat">does not match format "yyyy-MM-dd hh:mm:ss" (e.g. 2013-12-01 22:00:00)</span>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button id="saveMerchantCategory" name="saveMerchantCategory" class="btn btn-primary" ng-disabled="isClean() || MerchantCategoryForm.$invalid" ng-click="save()"><span class="glyphicon glyphicon-ok-sign"></span> Save</button>
+            <button id="cancel" name="cancel" class="btn btn-default" ng-click="cancel()"><span class="glyphicon glyphicon-remove-sign"></span> Cancel</button>
+            <button id="deleteMerchantCategory" name="deleteMerchantCategory" class="btn btn-danger" ng-show="merchantCategory.merchantCategoryId" ng-click="remove()"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+        </div>
+    </div>
+</form>

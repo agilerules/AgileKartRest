@@ -1,0 +1,43 @@
+<header ng-switch on="$location.path().indexOf('/Categories/new') > -1">
+    <h3 ng-switch-when="true">Create a new Category</h3>
+    <h3 ng-switch-when="false">View or edit Category</h3>
+</header>
+<form id="CategoryForm" name="CategoryForm" class="form-horizontal" role="form">
+    <div ng-show="displayError" class="alert alert-danger">
+        <strong>Error!</strong> Something broke. Retry, or cancel and start afresh.
+    </div>
+    
+    <div class="form-group" ng-class="{'has-error': CategoryForm.categoryName.$invalid}">
+        <label for="categoryName" class="col-sm-2 control-label">Category Name</label>
+        <div id="categoryNameControls" class="col-sm-10">
+            <input id="categoryName" name="categoryName" type="text" ng-maxlength="45" class="form-control" ng-model="category.categoryName" placeholder="Enter the Category Category Name"></input>
+            <span class="help-block error" ng-show="CategoryForm.categoryName.$error.maxlength">maximum length is 45</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': CategoryForm.lastUpdateUserId.$invalid}">
+        <label for="lastUpdateUserId" class="col-sm-2 control-label">Last Update User Id</label>
+        <div id="lastUpdateUserIdControls" class="col-sm-10">
+            <input id="lastUpdateUserId" name="lastUpdateUserId" type="text" ng-maxlength="45" class="form-control" ng-model="category.lastUpdateUserId" placeholder="Enter the Category Last Update User Id"></input>
+            <span class="help-block error" ng-show="CategoryForm.lastUpdateUserId.$error.maxlength">maximum length is 45</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': CategoryForm.lastUpdateTs.$invalid}">
+        <label for="lastUpdateTs" class="col-sm-2 control-label">Last Update Ts</label>
+        <div id="lastUpdateTsControls" class="col-sm-10">
+            <datetime id="lastUpdateTs" name="lastUpdateTs" ng-model="category.lastUpdateTs" placeholder="Enter the Category Last Update Ts"></datetime>
+            <span class="help-block error" ng-show="CategoryForm.lastUpdateTs.$error.maxlength">maximum length is 19</span>
+            <span class="help-block error" ng-show="CategoryForm.lastUpdateTs.$error.datetimeFormat">does not match format "yyyy-MM-dd hh:mm:ss" (e.g. 2013-12-01 22:00:00)</span>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button id="saveCategory" name="saveCategory" class="btn btn-primary" ng-disabled="isClean() || CategoryForm.$invalid" ng-click="save()"><span class="glyphicon glyphicon-ok-sign"></span> Save</button>
+            <button id="cancel" name="cancel" class="btn btn-default" ng-click="cancel()"><span class="glyphicon glyphicon-remove-sign"></span> Cancel</button>
+            <button id="deleteCategory" name="deleteCategory" class="btn btn-danger" ng-show="category.categoryId" ng-click="remove()"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+        </div>
+    </div>
+</form>

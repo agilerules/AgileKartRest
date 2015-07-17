@@ -1,0 +1,51 @@
+<header ng-switch on="$location.path().indexOf('/PaymentGateways/new') > -1">
+    <h3 ng-switch-when="true">Create a new PaymentGateway</h3>
+    <h3 ng-switch-when="false">View or edit PaymentGateway</h3>
+</header>
+<form id="PaymentGatewayForm" name="PaymentGatewayForm" class="form-horizontal" role="form">
+    <div ng-show="displayError" class="alert alert-danger">
+        <strong>Error!</strong> Something broke. Retry, or cancel and start afresh.
+    </div>
+    
+    <div class="form-group" ng-class="{'has-error': PaymentGatewayForm.paymentGatewayName.$invalid}">
+        <label for="paymentGatewayName" class="col-sm-2 control-label">Payment Gateway Name</label>
+        <div id="paymentGatewayNameControls" class="col-sm-10">
+            <input id="paymentGatewayName" name="paymentGatewayName" type="text" ng-maxlength="45" class="form-control" ng-model="paymentGateway.paymentGatewayName" placeholder="Enter the PaymentGateway Payment Gateway Name"></input>
+            <span class="help-block error" ng-show="PaymentGatewayForm.paymentGatewayName.$error.maxlength">maximum length is 45</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': PaymentGatewayForm.paymentGatewayDesc.$invalid}">
+        <label for="paymentGatewayDesc" class="col-sm-2 control-label">Payment Gateway Desc</label>
+        <div id="paymentGatewayDescControls" class="col-sm-10">
+            <input id="paymentGatewayDesc" name="paymentGatewayDesc" type="text" ng-maxlength="500" class="form-control" ng-model="paymentGateway.paymentGatewayDesc" placeholder="Enter the PaymentGateway Payment Gateway Desc"></input>
+            <span class="help-block error" ng-show="PaymentGatewayForm.paymentGatewayDesc.$error.maxlength">maximum length is 500</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': PaymentGatewayForm.lastUpdateUserId.$invalid}">
+        <label for="lastUpdateUserId" class="col-sm-2 control-label">Last Update User Id</label>
+        <div id="lastUpdateUserIdControls" class="col-sm-10">
+            <input id="lastUpdateUserId" name="lastUpdateUserId" type="text" ng-maxlength="45" class="form-control" ng-model="paymentGateway.lastUpdateUserId" placeholder="Enter the PaymentGateway Last Update User Id"></input>
+            <span class="help-block error" ng-show="PaymentGatewayForm.lastUpdateUserId.$error.maxlength">maximum length is 45</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': PaymentGatewayForm.lastUpdateTs.$invalid}">
+        <label for="lastUpdateTs" class="col-sm-2 control-label">Last Update Ts</label>
+        <div id="lastUpdateTsControls" class="col-sm-10">
+            <datetime id="lastUpdateTs" name="lastUpdateTs" ng-model="paymentGateway.lastUpdateTs" placeholder="Enter the PaymentGateway Last Update Ts"></datetime>
+            <span class="help-block error" ng-show="PaymentGatewayForm.lastUpdateTs.$error.maxlength">maximum length is 19</span>
+            <span class="help-block error" ng-show="PaymentGatewayForm.lastUpdateTs.$error.datetimeFormat">does not match format "yyyy-MM-dd hh:mm:ss" (e.g. 2013-12-01 22:00:00)</span>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button id="savePaymentGateway" name="savePaymentGateway" class="btn btn-primary" ng-disabled="isClean() || PaymentGatewayForm.$invalid" ng-click="save()"><span class="glyphicon glyphicon-ok-sign"></span> Save</button>
+            <button id="cancel" name="cancel" class="btn btn-default" ng-click="cancel()"><span class="glyphicon glyphicon-remove-sign"></span> Cancel</button>
+            <button id="deletePaymentGateway" name="deletePaymentGateway" class="btn btn-danger" ng-show="paymentGateway.paymentGatewayId" ng-click="remove()"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+        </div>
+    </div>
+</form>

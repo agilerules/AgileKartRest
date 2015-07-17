@@ -1,0 +1,94 @@
+<header ng-switch on="$location.path().indexOf('/Offers/new') > -1">
+    <h3 ng-switch-when="true">Create a new Offer</h3>
+    <h3 ng-switch-when="false">View or edit Offer</h3>
+</header>
+<form id="OfferForm" name="OfferForm" class="form-horizontal" role="form">
+    <div ng-show="displayError" class="alert alert-danger">
+        <strong>Error!</strong> Something broke. Retry, or cancel and start afresh.
+    </div>
+    
+    <div class="form-group" ng-class="{'has-error': OfferForm.offerName.$invalid}">
+        <label for="offerName" class="col-sm-2 control-label">Offer Name</label>
+        <div id="offerNameControls" class="col-sm-10">
+            <input id="offerName" name="offerName" type="text" required ng-maxlength="45" class="form-control" ng-model="offer.offerName" placeholder="Enter the Offer Offer Name"></input>
+            <span class="help-block error" ng-show="OfferForm.offerName.$error.required">required</span> 
+            <span class="help-block error" ng-show="OfferForm.offerName.$error.maxlength">maximum length is 45</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': OfferForm.offerDiscountPct.$invalid}">
+        <label for="offerDiscountPct" class="col-sm-2 control-label">Offer Discount Pct</label>
+        <div id="offerDiscountPctControls" class="col-sm-10">
+            <input id="offerDiscountPct" name="offerDiscountPct" type="number" class="form-control" ng-model="offer.offerDiscountPct" placeholder="Enter the Offer Offer Discount Pct"></input>
+            <span class="help-block error" ng-show="OfferForm.offerDiscountPct.$error.number">not a number</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': OfferForm.offerStartDate.$invalid}">
+        <label for="offerStartDate" class="col-sm-2 control-label">Offer Start Date</label>
+        <div id="offerStartDateControls" class="col-sm-10">
+            <date id="offerStartDate" name="offerStartDate" ng-model="offer.offerStartDate" placeholder="Enter the Offer Offer Start Date"></date>
+            <span class="help-block error" ng-show="OfferForm.offerStartDate.$error.maxlength">maximum length is 10</span>
+            <span class="help-block error" ng-show="OfferForm.offerStartDate.$error.dateFormat">does not match format "yyyy-MM-dd" (e.g. 2013-12-01)</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': OfferForm.offerEndDate.$invalid}">
+        <label for="offerEndDate" class="col-sm-2 control-label">Offer End Date</label>
+        <div id="offerEndDateControls" class="col-sm-10">
+            <date id="offerEndDate" name="offerEndDate" ng-model="offer.offerEndDate" placeholder="Enter the Offer Offer End Date"></date>
+            <span class="help-block error" ng-show="OfferForm.offerEndDate.$error.maxlength">maximum length is 10</span>
+            <span class="help-block error" ng-show="OfferForm.offerEndDate.$error.dateFormat">does not match format "yyyy-MM-dd" (e.g. 2013-12-01)</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': OfferForm.merchantId.$invalid}">
+        <label for="merchantId" class="col-sm-2 control-label">Merchant Id</label>
+        <div id="merchantIdControls" class="col-sm-10">
+            <input id="merchantId" name="merchantId" type="text" ng-maxlength="45" class="form-control" ng-model="offer.merchantId" placeholder="Enter the Offer Merchant Id"></input>
+            <span class="help-block error" ng-show="OfferForm.merchantId.$error.maxlength">maximum length is 45</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': OfferForm.productId.$invalid}">
+        <label for="productId" class="col-sm-2 control-label">Product Id</label>
+        <div id="productIdControls" class="col-sm-10">
+            <input id="productId" name="productId" type="text" ng-maxlength="45" class="form-control" ng-model="offer.productId" placeholder="Enter the Offer Product Id"></input>
+            <span class="help-block error" ng-show="OfferForm.productId.$error.maxlength">maximum length is 45</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': OfferForm.offerMaxCount.$invalid}">
+        <label for="offerMaxCount" class="col-sm-2 control-label">Offer Max Count</label>
+        <div id="offerMaxCountControls" class="col-sm-10">
+            <input id="offerMaxCount" name="offerMaxCount" type="number" class="form-control" ng-model="offer.offerMaxCount" placeholder="Enter the Offer Offer Max Count"></input>
+            <span class="help-block error" ng-show="OfferForm.offerMaxCount.$error.number">not a number</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': OfferForm.lastUpdateUserId.$invalid}">
+        <label for="lastUpdateUserId" class="col-sm-2 control-label">Last Update User Id</label>
+        <div id="lastUpdateUserIdControls" class="col-sm-10">
+            <input id="lastUpdateUserId" name="lastUpdateUserId" type="text" ng-maxlength="45" class="form-control" ng-model="offer.lastUpdateUserId" placeholder="Enter the Offer Last Update User Id"></input>
+            <span class="help-block error" ng-show="OfferForm.lastUpdateUserId.$error.maxlength">maximum length is 45</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': OfferForm.lastUpdateTs.$invalid}">
+        <label for="lastUpdateTs" class="col-sm-2 control-label">Last Update Ts</label>
+        <div id="lastUpdateTsControls" class="col-sm-10">
+            <datetime id="lastUpdateTs" name="lastUpdateTs" ng-model="offer.lastUpdateTs" placeholder="Enter the Offer Last Update Ts"></datetime>
+            <span class="help-block error" ng-show="OfferForm.lastUpdateTs.$error.maxlength">maximum length is 19</span>
+            <span class="help-block error" ng-show="OfferForm.lastUpdateTs.$error.datetimeFormat">does not match format "yyyy-MM-dd hh:mm:ss" (e.g. 2013-12-01 22:00:00)</span>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button id="saveOffer" name="saveOffer" class="btn btn-primary" ng-disabled="isClean() || OfferForm.$invalid" ng-click="save()"><span class="glyphicon glyphicon-ok-sign"></span> Save</button>
+            <button id="cancel" name="cancel" class="btn btn-default" ng-click="cancel()"><span class="glyphicon glyphicon-remove-sign"></span> Cancel</button>
+            <button id="deleteOffer" name="deleteOffer" class="btn btn-danger" ng-show="offer.offerId" ng-click="remove()"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,53 @@
+<header ng-switch on="$location.path().indexOf('/MerchantPaymentGateways/new') > -1">
+    <h3 ng-switch-when="true">Create a new MerchantPaymentGateway</h3>
+    <h3 ng-switch-when="false">View or edit MerchantPaymentGateway</h3>
+</header>
+<form id="MerchantPaymentGatewayForm" name="MerchantPaymentGatewayForm" class="form-horizontal" role="form">
+    <div ng-show="displayError" class="alert alert-danger">
+        <strong>Error!</strong> Something broke. Retry, or cancel and start afresh.
+    </div>
+    
+    <div class="form-group" ng-class="{'has-error': MerchantPaymentGatewayForm.paymentGatewayId.$invalid}">
+        <label for="paymentGatewayId" class="col-sm-2 control-label">Payment Gateway Id</label>
+        <div id="paymentGatewayIdControls" class="col-sm-10">
+            <input id="paymentGatewayId" name="paymentGatewayId" type="text" required ng-maxlength="45" class="form-control" ng-model="merchantPaymentGateway.paymentGatewayId" placeholder="Enter the MerchantPaymentGateway Payment Gateway Id"></input>
+            <span class="help-block error" ng-show="MerchantPaymentGatewayForm.paymentGatewayId.$error.required">required</span> 
+            <span class="help-block error" ng-show="MerchantPaymentGatewayForm.paymentGatewayId.$error.maxlength">maximum length is 45</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': MerchantPaymentGatewayForm.merchantId.$invalid}">
+        <label for="merchantId" class="col-sm-2 control-label">Merchant Id</label>
+        <div id="merchantIdControls" class="col-sm-10">
+            <input id="merchantId" name="merchantId" type="text" required ng-maxlength="45" class="form-control" ng-model="merchantPaymentGateway.merchantId" placeholder="Enter the MerchantPaymentGateway Merchant Id"></input>
+            <span class="help-block error" ng-show="MerchantPaymentGatewayForm.merchantId.$error.required">required</span> 
+            <span class="help-block error" ng-show="MerchantPaymentGatewayForm.merchantId.$error.maxlength">maximum length is 45</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': MerchantPaymentGatewayForm.lastUpdateUserId.$invalid}">
+        <label for="lastUpdateUserId" class="col-sm-2 control-label">Last Update User Id</label>
+        <div id="lastUpdateUserIdControls" class="col-sm-10">
+            <input id="lastUpdateUserId" name="lastUpdateUserId" type="text" ng-maxlength="45" class="form-control" ng-model="merchantPaymentGateway.lastUpdateUserId" placeholder="Enter the MerchantPaymentGateway Last Update User Id"></input>
+            <span class="help-block error" ng-show="MerchantPaymentGatewayForm.lastUpdateUserId.$error.maxlength">maximum length is 45</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': MerchantPaymentGatewayForm.lastUpdateTs.$invalid}">
+        <label for="lastUpdateTs" class="col-sm-2 control-label">Last Update Ts</label>
+        <div id="lastUpdateTsControls" class="col-sm-10">
+            <datetime id="lastUpdateTs" name="lastUpdateTs" ng-model="merchantPaymentGateway.lastUpdateTs" placeholder="Enter the MerchantPaymentGateway Last Update Ts"></datetime>
+            <span class="help-block error" ng-show="MerchantPaymentGatewayForm.lastUpdateTs.$error.maxlength">maximum length is 19</span>
+            <span class="help-block error" ng-show="MerchantPaymentGatewayForm.lastUpdateTs.$error.datetimeFormat">does not match format "yyyy-MM-dd hh:mm:ss" (e.g. 2013-12-01 22:00:00)</span>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button id="saveMerchantPaymentGateway" name="saveMerchantPaymentGateway" class="btn btn-primary" ng-disabled="isClean() || MerchantPaymentGatewayForm.$invalid" ng-click="save()"><span class="glyphicon glyphicon-ok-sign"></span> Save</button>
+            <button id="cancel" name="cancel" class="btn btn-default" ng-click="cancel()"><span class="glyphicon glyphicon-remove-sign"></span> Cancel</button>
+            <button id="deleteMerchantPaymentGateway" name="deleteMerchantPaymentGateway" class="btn btn-danger" ng-show="merchantPaymentGateway.merchantPaymentGatewayId" ng-click="remove()"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+        </div>
+    </div>
+</form>

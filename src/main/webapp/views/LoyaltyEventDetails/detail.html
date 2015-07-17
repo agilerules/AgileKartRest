@@ -1,0 +1,61 @@
+<header ng-switch on="$location.path().indexOf('/LoyaltyEventDetails/new') > -1">
+    <h3 ng-switch-when="true">Create a new LoyaltyEventDetails</h3>
+    <h3 ng-switch-when="false">View or edit LoyaltyEventDetails</h3>
+</header>
+<form id="LoyaltyEventDetailsForm" name="LoyaltyEventDetailsForm" class="form-horizontal" role="form">
+    <div ng-show="displayError" class="alert alert-danger">
+        <strong>Error!</strong> Something broke. Retry, or cancel and start afresh.
+    </div>
+    
+    <div class="form-group" ng-class="{'has-error': LoyaltyEventDetailsForm.eventId.$invalid}">
+        <label for="eventId" class="col-sm-2 control-label">Event Id</label>
+        <div id="eventIdControls" class="col-sm-10">
+            <input id="eventId" name="eventId" type="text" required ng-maxlength="45" class="form-control" ng-model="loyaltyEventDetails.eventId" placeholder="Enter the LoyaltyEventDetails Event Id"></input>
+            <span class="help-block error" ng-show="LoyaltyEventDetailsForm.eventId.$error.required">required</span> 
+            <span class="help-block error" ng-show="LoyaltyEventDetailsForm.eventId.$error.maxlength">maximum length is 45</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': LoyaltyEventDetailsForm.tierId.$invalid}">
+        <label for="tierId" class="col-sm-2 control-label">Tier Id</label>
+        <div id="tierIdControls" class="col-sm-10">
+            <input id="tierId" name="tierId" type="text" required ng-maxlength="45" class="form-control" ng-model="loyaltyEventDetails.tierId" placeholder="Enter the LoyaltyEventDetails Tier Id"></input>
+            <span class="help-block error" ng-show="LoyaltyEventDetailsForm.tierId.$error.required">required</span> 
+            <span class="help-block error" ng-show="LoyaltyEventDetailsForm.tierId.$error.maxlength">maximum length is 45</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': LoyaltyEventDetailsForm.pointsEarned.$invalid}">
+        <label for="pointsEarned" class="col-sm-2 control-label">Points Earned</label>
+        <div id="pointsEarnedControls" class="col-sm-10">
+            <input id="pointsEarned" name="pointsEarned" type="number" class="form-control" ng-model="loyaltyEventDetails.pointsEarned" placeholder="Enter the LoyaltyEventDetails Points Earned"></input>
+            <span class="help-block error" ng-show="LoyaltyEventDetailsForm.pointsEarned.$error.number">not a number</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': LoyaltyEventDetailsForm.lastUpdateUserId.$invalid}">
+        <label for="lastUpdateUserId" class="col-sm-2 control-label">Last Update User Id</label>
+        <div id="lastUpdateUserIdControls" class="col-sm-10">
+            <input id="lastUpdateUserId" name="lastUpdateUserId" type="text" ng-maxlength="45" class="form-control" ng-model="loyaltyEventDetails.lastUpdateUserId" placeholder="Enter the LoyaltyEventDetails Last Update User Id"></input>
+            <span class="help-block error" ng-show="LoyaltyEventDetailsForm.lastUpdateUserId.$error.maxlength">maximum length is 45</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': LoyaltyEventDetailsForm.lastUpdateTs.$invalid}">
+        <label for="lastUpdateTs" class="col-sm-2 control-label">Last Update Ts</label>
+        <div id="lastUpdateTsControls" class="col-sm-10">
+            <datetime id="lastUpdateTs" name="lastUpdateTs" ng-model="loyaltyEventDetails.lastUpdateTs" placeholder="Enter the LoyaltyEventDetails Last Update Ts"></datetime>
+            <span class="help-block error" ng-show="LoyaltyEventDetailsForm.lastUpdateTs.$error.maxlength">maximum length is 19</span>
+            <span class="help-block error" ng-show="LoyaltyEventDetailsForm.lastUpdateTs.$error.datetimeFormat">does not match format "yyyy-MM-dd hh:mm:ss" (e.g. 2013-12-01 22:00:00)</span>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button id="saveLoyaltyEventDetails" name="saveLoyaltyEventDetails" class="btn btn-primary" ng-disabled="isClean() || LoyaltyEventDetailsForm.$invalid" ng-click="save()"><span class="glyphicon glyphicon-ok-sign"></span> Save</button>
+            <button id="cancel" name="cancel" class="btn btn-default" ng-click="cancel()"><span class="glyphicon glyphicon-remove-sign"></span> Cancel</button>
+            <button id="deleteLoyaltyEventDetails" name="deleteLoyaltyEventDetails" class="btn btn-danger" ng-show="loyaltyEventDetails.loyaltyEventDetailsId" ng-click="remove()"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+        </div>
+    </div>
+</form>

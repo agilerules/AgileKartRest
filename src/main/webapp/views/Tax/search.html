@@ -1,0 +1,78 @@
+<div class="form-horizontal">
+    <h3>Create a new Tax</h3>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-sm-2">
+            <a id="Create" name="Create" class="btn btn-primary" href="#/Taxes/new"><span class="glyphicon glyphicon-plus-sign"></span> Create</a>
+        </div>
+    </div>
+</div>
+<hr/>
+<div>
+    <h3>Search for Taxes</h3>
+    <form id="TaxSearch" class="form-horizontal">
+        
+    <div class="form-group">
+        <label for="taxRate" class="col-sm-2 control-label">Tax Rate</label>
+        <div class="col-sm-10">
+            <input id="taxRate" name="taxRate" class="form-control" type="text" ng-model="search.taxRate" placeholder="Enter the Tax Tax Rate"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="taxIsActive" class="col-sm-2 control-label">Tax Is Active</label>
+        <div class="col-sm-10">
+            <input id="taxIsActive" name="taxIsActive" class="form-control" type="text" ng-model="search.taxIsActive" placeholder="Enter the Tax Tax Is Active"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="lastUpdateUserId" class="col-sm-2 control-label">Last Update User Id</label>
+        <div class="col-sm-10">
+            <input id="lastUpdateUserId" name="lastUpdateUserId" class="form-control" type="text" ng-model="search.lastUpdateUserId" placeholder="Enter the Tax Last Update User Id"></input>
+        </div>
+    </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-sm-10">
+                <a id="Search" name="Search" class="btn btn-primary" ng-click="performSearch()"><span class="glyphicon glyphicon-search"></span> Search</a>
+            </div>
+        </div>
+    </form>
+</div>
+<div id="search-results">
+        <div class="table-responsive">
+        <table class="table table-responsive table-bordered table-striped clearfix">
+            <thead>
+                <tr>
+                    <th>Tax Rate</th>
+                    <th>Tax Is Active</th>
+                    <th>Last Update User Id</th>
+                    <th>Last Update Ts</th>
+                </tr>
+            </thead>
+            <tbody id="search-results-body">
+                <tr ng-repeat="result in searchResults | searchFilter:searchResults | startFrom:currentPage*pageSize | limitTo:pageSize">
+                    <td><a href="#/Taxes/edit/{{result.taxId}}">{{result.taxRate}}</a></td>
+                    <td><a href="#/Taxes/edit/{{result.taxId}}">{{result.taxIsActive}}</a></td>
+                    <td><a href="#/Taxes/edit/{{result.taxId}}">{{result.lastUpdateUserId}}</a></td>
+                    <td><a href="#/Taxes/edit/{{result.taxId}}">{{result.lastUpdateTs| date:'yyyy-MM-dd HH:mm:ss Z'}}</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+        <ul class="pagination pagination-centered">
+        <li ng-class="{disabled:currentPage == 0}">
+            <a id="prev" href ng-click="previous()">«</a>
+        </li>
+        <li ng-repeat="n in pageRange" ng-class="{active:currentPage == n}" ng-click="setPage(n)">
+            <a href ng-bind="n + 1">1</a>
+        </li>
+        <li ng-class="{disabled: currentPage == (numberOfPages() - 1)}">
+            <a id="next" href ng-click="next()">»</a>
+        </li>
+    </ul>
+
+</div>

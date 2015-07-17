@@ -1,0 +1,96 @@
+<div class="form-horizontal">
+    <h3>Create a new OrderStatus</h3>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-sm-2">
+            <a id="Create" name="Create" class="btn btn-primary" href="#/OrderStatuses/new"><span class="glyphicon glyphicon-plus-sign"></span> Create</a>
+        </div>
+    </div>
+</div>
+<hr/>
+<div>
+    <h3>Search for OrderStatuses</h3>
+    <form id="OrderStatusSearch" class="form-horizontal">
+        
+    <div class="form-group">
+        <label for="orderId" class="col-sm-2 control-label">Order Id</label>
+        <div class="col-sm-10">
+            <input id="orderId" name="orderId" class="form-control" type="text" ng-model="search.orderId" placeholder="Enter the OrderStatus Order Id"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="orderStatusDescId" class="col-sm-2 control-label">Order Status Desc Id</label>
+        <div class="col-sm-10">
+            <input id="orderStatusDescId" name="orderStatusDescId" class="form-control" type="text" ng-model="search.orderStatusDescId" placeholder="Enter the OrderStatus Order Status Desc Id"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="orderStatusComment" class="col-sm-2 control-label">Order Status Comment</label>
+        <div class="col-sm-10">
+            <input id="orderStatusComment" name="orderStatusComment" class="form-control" type="text" ng-model="search.orderStatusComment" placeholder="Enter the OrderStatus Order Status Comment"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="orderStatusIsActive" class="col-sm-2 control-label">Order Status Is Active</label>
+        <div class="col-sm-10">
+            <input id="orderStatusIsActive" name="orderStatusIsActive" class="form-control" type="text" ng-model="search.orderStatusIsActive" placeholder="Enter the OrderStatus Order Status Is Active"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="lastUpdateUserId" class="col-sm-2 control-label">Last Update User Id</label>
+        <div class="col-sm-10">
+            <input id="lastUpdateUserId" name="lastUpdateUserId" class="form-control" type="text" ng-model="search.lastUpdateUserId" placeholder="Enter the OrderStatus Last Update User Id"></input>
+        </div>
+    </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-sm-10">
+                <a id="Search" name="Search" class="btn btn-primary" ng-click="performSearch()"><span class="glyphicon glyphicon-search"></span> Search</a>
+            </div>
+        </div>
+    </form>
+</div>
+<div id="search-results">
+        <div class="table-responsive">
+        <table class="table table-responsive table-bordered table-striped clearfix">
+            <thead>
+                <tr>
+                    <th>Order Id</th>
+                    <th>Order Status Desc Id</th>
+                    <th>Order Status Comment</th>
+                    <th>Order Status Is Active</th>
+                    <th>Last Update User Id</th>
+                    <th>Last Update Ts</th>
+                </tr>
+            </thead>
+            <tbody id="search-results-body">
+                <tr ng-repeat="result in searchResults | searchFilter:searchResults | startFrom:currentPage*pageSize | limitTo:pageSize">
+                    <td><a href="#/OrderStatuses/edit/{{result.orderStatusId}}">{{result.orderId}}</a></td>
+                    <td><a href="#/OrderStatuses/edit/{{result.orderStatusId}}">{{result.orderStatusDescId}}</a></td>
+                    <td><a href="#/OrderStatuses/edit/{{result.orderStatusId}}">{{result.orderStatusComment}}</a></td>
+                    <td><a href="#/OrderStatuses/edit/{{result.orderStatusId}}">{{result.orderStatusIsActive}}</a></td>
+                    <td><a href="#/OrderStatuses/edit/{{result.orderStatusId}}">{{result.lastUpdateUserId}}</a></td>
+                    <td><a href="#/OrderStatuses/edit/{{result.orderStatusId}}">{{result.lastUpdateTs| date:'yyyy-MM-dd HH:mm:ss Z'}}</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+        <ul class="pagination pagination-centered">
+        <li ng-class="{disabled:currentPage == 0}">
+            <a id="prev" href ng-click="previous()">«</a>
+        </li>
+        <li ng-repeat="n in pageRange" ng-class="{active:currentPage == n}" ng-click="setPage(n)">
+            <a href ng-bind="n + 1">1</a>
+        </li>
+        <li ng-class="{disabled: currentPage == (numberOfPages() - 1)}">
+            <a id="next" href ng-click="next()">»</a>
+        </li>
+    </ul>
+
+</div>
