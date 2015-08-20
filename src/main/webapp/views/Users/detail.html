@@ -98,6 +98,60 @@
         </div>
     </div>
 
+    <div class="form-group" ng-class="{'has-error': UsersForm.orderses.$invalid}">
+        <label for="orderses" class="col-sm-2 control-label">Orderses</label>
+        <div id="ordersesControls" class="col-sm-10">
+            <select id="orderses" name="orderses" multiple class="form-control" ng-model="ordersesSelection" ng-options="o.text for o in ordersesSelectionList">
+                <option value="">Choose a Orderses</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': UsersForm.productReviews.$invalid}">
+        <label for="productReviews" class="col-sm-2 control-label">Product Reviews</label>
+        <div id="productReviewsControls" class="col-sm-10">
+            <select id="productReviews" name="productReviews" multiple class="form-control" ng-model="productReviewsSelection" ng-options="p.text for p in productReviewsSelectionList">
+                <option value="">Choose a Product Reviews</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': UsersForm.userRewardses.$invalid}">
+        <label for="userRewardses" class="col-sm-2 control-label">User Rewardses</label>
+        <div id="userRewardsesControls" class="col-sm-10">
+            <select id="userRewardses" name="userRewardses" multiple class="form-control" ng-model="userRewardsesSelection" ng-options="u.text for u in userRewardsesSelectionList">
+                <option value="">Choose a User Rewardses</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': UsersForm.userAddresses.$invalid}">
+        <label for="userAddresses" class="col-sm-2 control-label">User Addresses</label>
+        <div id="userAddressesControls" class="col-sm-10">
+            <select id="userAddresses" name="userAddresses" multiple class="form-control" ng-model="userAddressesSelection" ng-options="u.text for u in userAddressesSelectionList">
+                <option value="">Choose a User Addresses</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': UsersForm.userFavouriteses.$invalid}">
+        <label for="userFavouriteses" class="col-sm-2 control-label">User Favouriteses</label>
+        <div id="userFavouritesesControls" class="col-sm-10">
+            <select id="userFavouriteses" name="userFavouriteses" multiple class="form-control" ng-model="userFavouritesesSelection" ng-options="u.text for u in userFavouritesesSelectionList">
+                <option value="">Choose a User Favouriteses</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': UsersForm.merchantReviews.$invalid}">
+        <label for="merchantReviews" class="col-sm-2 control-label">Merchant Reviews</label>
+        <div id="merchantReviewsControls" class="col-sm-10">
+            <select id="merchantReviews" name="merchantReviews" multiple class="form-control" ng-model="merchantReviewsSelection" ng-options="m.text for m in merchantReviewsSelectionList">
+                <option value="">Choose a Merchant Reviews</option>
+            </select>
+        </div>
+    </div>
+
 
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">

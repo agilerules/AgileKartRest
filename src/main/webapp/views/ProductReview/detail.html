@@ -7,21 +7,21 @@
         <strong>Error!</strong> Something broke. Retry, or cancel and start afresh.
     </div>
     
-    <div class="form-group" ng-class="{'has-error': ProductReviewForm.userId.$invalid}">
-        <label for="userId" class="col-sm-2 control-label">User Id</label>
-        <div id="userIdControls" class="col-sm-10">
-            <input id="userId" name="userId" type="text" required ng-maxlength="45" class="form-control" ng-model="productReview.userId" placeholder="Enter the ProductReview User Id"></input>
-            <span class="help-block error" ng-show="ProductReviewForm.userId.$error.required">required</span> 
-            <span class="help-block error" ng-show="ProductReviewForm.userId.$error.maxlength">maximum length is 45</span>
+    <div class="form-group" ng-class="{'has-error': ProductReviewForm.product.$invalid}">
+        <label for="product" class="col-sm-2 control-label">Product</label>
+        <div id="productControls" class="col-sm-10">
+        <select id="product" name="product" class="form-control" ng-model="productSelection" ng-options="p.text for p in productSelectionList"  >
+            <option value="">Choose a Product</option>
+        </select>
         </div>
     </div>
 
-    <div class="form-group" ng-class="{'has-error': ProductReviewForm.productId.$invalid}">
-        <label for="productId" class="col-sm-2 control-label">Product Id</label>
-        <div id="productIdControls" class="col-sm-10">
-            <input id="productId" name="productId" type="text" required ng-maxlength="45" class="form-control" ng-model="productReview.productId" placeholder="Enter the ProductReview Product Id"></input>
-            <span class="help-block error" ng-show="ProductReviewForm.productId.$error.required">required</span> 
-            <span class="help-block error" ng-show="ProductReviewForm.productId.$error.maxlength">maximum length is 45</span>
+    <div class="form-group" ng-class="{'has-error': ProductReviewForm.users.$invalid}">
+        <label for="users" class="col-sm-2 control-label">Users</label>
+        <div id="usersControls" class="col-sm-10">
+        <select id="users" name="users" class="form-control" ng-model="usersSelection" ng-options="u.text for u in usersSelectionList"  >
+            <option value="">Choose a Users</option>
+        </select>
         </div>
     </div>
 

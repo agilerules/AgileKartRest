@@ -1,8 +1,23 @@
 
-angular.module('agilekartV2').controller('NewMerchantAddressController', function ($scope, $location, locationParser, MerchantAddressResource ) {
+angular.module('agileKartRest').controller('NewMerchantAddressController', function ($scope, $location, locationParser, MerchantAddressResource , MerchantResource) {
     $scope.disabled = false;
     $scope.$location = $location;
     $scope.merchantAddress = $scope.merchantAddress || {};
+    
+    $scope.merchantList = MerchantResource.queryAll(function(items){
+        $scope.merchantSelectionList = $.map(items, function(item) {
+            return ( {
+                value : item.merchantId,
+                text : item.merchantId
+            });
+        });
+    });
+    $scope.$watch("merchantSelection", function(selection) {
+        if ( typeof selection != 'undefined') {
+            $scope.merchantAddress.merchant = {};
+            $scope.merchantAddress.merchant.merchantId = selection.value;
+        }
+    });
     
 
     $scope.save = function() {

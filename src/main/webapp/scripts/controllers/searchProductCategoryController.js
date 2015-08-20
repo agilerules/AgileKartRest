@@ -1,6 +1,6 @@
 
 
-angular.module('agilekartV2').controller('SearchProductCategoryController', function($scope, $http, ProductCategoryResource ) {
+angular.module('agileKartRest').controller('SearchProductCategoryController', function($scope, $http, ProductCategoryResource , CategoryResource, ProductResource) {
 
     $scope.search={};
     $scope.currentPage = 0;
@@ -17,6 +17,8 @@ angular.module('agilekartV2').controller('SearchProductCategoryController', func
         }
         return max;
     };
+    $scope.categoryList = CategoryResource.queryAll();
+    $scope.productList = ProductResource.queryAll();
 
     $scope.performSearch = function() {
         $scope.searchResults = ProductCategoryResource.queryAll(function(){

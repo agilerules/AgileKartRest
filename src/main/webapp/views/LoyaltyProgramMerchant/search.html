@@ -12,9 +12,11 @@
     <form id="LoyaltyProgramMerchantSearch" class="form-horizontal">
         
     <div class="form-group">
-        <label for="merchantId" class="col-sm-2 control-label">Merchant Id</label>
+        <label for="merchant" class="col-sm-2 control-label">Merchant</label>
         <div class="col-sm-10">
-            <input id="merchantId" name="merchantId" class="form-control" type="text" ng-model="search.merchantId" placeholder="Enter the LoyaltyProgramMerchant Merchant Id"></input>
+            <select id="merchant" name="merchant" class="form-control" ng-model="search.merchant" ng-options="m as m.merchantId for m in merchantList">
+                <option value="">Choose a Merchant</option>
+            </select>
         </div>
     </div>
 
@@ -83,7 +85,7 @@
         <table class="table table-responsive table-bordered table-striped clearfix">
             <thead>
                 <tr>
-                    <th>Merchant Id</th>
+                    <th>Merchant</th>
                     <th>Start Date</th>
                     <th>End Date</th>
                     <th>Program Participate Flag</th>
@@ -98,7 +100,7 @@
             </thead>
             <tbody id="search-results-body">
                 <tr ng-repeat="result in searchResults | searchFilter:searchResults | startFrom:currentPage*pageSize | limitTo:pageSize">
-                    <td><a href="#/LoyaltyProgramMerchants/edit/{{result.loyaltyProgramMerchantId}}">{{result.merchantId}}</a></td>
+                        <td><a href="#/LoyaltyProgramMerchants/edit/{{result.loyaltyProgramMerchantId}}">{{result.merchant.merchantId}}</a></td>
                     <td><a href="#/LoyaltyProgramMerchants/edit/{{result.loyaltyProgramMerchantId}}">{{result.startDate| date:'mediumDate'}}</a></td>
                     <td><a href="#/LoyaltyProgramMerchants/edit/{{result.loyaltyProgramMerchantId}}">{{result.endDate| date:'mediumDate'}}</a></td>
                     <td><a href="#/LoyaltyProgramMerchants/edit/{{result.loyaltyProgramMerchantId}}">{{result.programParticipateFlag}}</a></td>

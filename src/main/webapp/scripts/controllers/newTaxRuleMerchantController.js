@@ -1,8 +1,38 @@
 
-angular.module('agilekartV2').controller('NewTaxRuleMerchantController', function ($scope, $location, locationParser, TaxRuleMerchantResource ) {
+angular.module('agileKartRest').controller('NewTaxRuleMerchantController', function ($scope, $location, locationParser, TaxRuleMerchantResource , MerchantResource, TaxRuleResource) {
     $scope.disabled = false;
     $scope.$location = $location;
     $scope.taxRuleMerchant = $scope.taxRuleMerchant || {};
+    
+    $scope.merchantList = MerchantResource.queryAll(function(items){
+        $scope.merchantSelectionList = $.map(items, function(item) {
+            return ( {
+                value : item.merchantId,
+                text : item.merchantId
+            });
+        });
+    });
+    $scope.$watch("merchantSelection", function(selection) {
+        if ( typeof selection != 'undefined') {
+            $scope.taxRuleMerchant.merchant = {};
+            $scope.taxRuleMerchant.merchant.merchantId = selection.value;
+        }
+    });
+    
+    $scope.taxRuleList = TaxRuleResource.queryAll(function(items){
+        $scope.taxRuleSelectionList = $.map(items, function(item) {
+            return ( {
+                value : item.taxRuleId,
+                text : item.taxRuleId
+            });
+        });
+    });
+    $scope.$watch("taxRuleSelection", function(selection) {
+        if ( typeof selection != 'undefined') {
+            $scope.taxRuleMerchant.taxRule = {};
+            $scope.taxRuleMerchant.taxRule.taxRuleId = selection.value;
+        }
+    });
     
 
     $scope.save = function() {

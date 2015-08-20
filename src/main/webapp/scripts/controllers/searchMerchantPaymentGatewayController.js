@@ -1,6 +1,6 @@
 
 
-angular.module('agilekartV2').controller('SearchMerchantPaymentGatewayController', function($scope, $http, MerchantPaymentGatewayResource ) {
+angular.module('agileKartRest').controller('SearchMerchantPaymentGatewayController', function($scope, $http, MerchantPaymentGatewayResource , MerchantResource, PaymentGatewayResource) {
 
     $scope.search={};
     $scope.currentPage = 0;
@@ -17,6 +17,8 @@ angular.module('agilekartV2').controller('SearchMerchantPaymentGatewayController
         }
         return max;
     };
+    $scope.merchantList = MerchantResource.queryAll();
+    $scope.paymentGatewayList = PaymentGatewayResource.queryAll();
 
     $scope.performSearch = function() {
         $scope.searchResults = MerchantPaymentGatewayResource.queryAll(function(){

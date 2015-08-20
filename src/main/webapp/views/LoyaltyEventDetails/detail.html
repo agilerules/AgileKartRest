@@ -7,21 +7,21 @@
         <strong>Error!</strong> Something broke. Retry, or cancel and start afresh.
     </div>
     
-    <div class="form-group" ng-class="{'has-error': LoyaltyEventDetailsForm.eventId.$invalid}">
-        <label for="eventId" class="col-sm-2 control-label">Event Id</label>
-        <div id="eventIdControls" class="col-sm-10">
-            <input id="eventId" name="eventId" type="text" required ng-maxlength="45" class="form-control" ng-model="loyaltyEventDetails.eventId" placeholder="Enter the LoyaltyEventDetails Event Id"></input>
-            <span class="help-block error" ng-show="LoyaltyEventDetailsForm.eventId.$error.required">required</span> 
-            <span class="help-block error" ng-show="LoyaltyEventDetailsForm.eventId.$error.maxlength">maximum length is 45</span>
+    <div class="form-group" ng-class="{'has-error': LoyaltyEventDetailsForm.event.$invalid}">
+        <label for="event" class="col-sm-2 control-label">Event</label>
+        <div id="eventControls" class="col-sm-10">
+        <select id="event" name="event" class="form-control" ng-model="eventSelection" ng-options="e.text for e in eventSelectionList"  >
+            <option value="">Choose a Event</option>
+        </select>
         </div>
     </div>
 
-    <div class="form-group" ng-class="{'has-error': LoyaltyEventDetailsForm.tierId.$invalid}">
-        <label for="tierId" class="col-sm-2 control-label">Tier Id</label>
-        <div id="tierIdControls" class="col-sm-10">
-            <input id="tierId" name="tierId" type="text" required ng-maxlength="45" class="form-control" ng-model="loyaltyEventDetails.tierId" placeholder="Enter the LoyaltyEventDetails Tier Id"></input>
-            <span class="help-block error" ng-show="LoyaltyEventDetailsForm.tierId.$error.required">required</span> 
-            <span class="help-block error" ng-show="LoyaltyEventDetailsForm.tierId.$error.maxlength">maximum length is 45</span>
+    <div class="form-group" ng-class="{'has-error': LoyaltyEventDetailsForm.loyaltyProgramTier.$invalid}">
+        <label for="loyaltyProgramTier" class="col-sm-2 control-label">Loyalty Program Tier</label>
+        <div id="loyaltyProgramTierControls" class="col-sm-10">
+        <select id="loyaltyProgramTier" name="loyaltyProgramTier" class="form-control" ng-model="loyaltyProgramTierSelection" ng-options="l.text for l in loyaltyProgramTierSelectionList"  >
+            <option value="">Choose a Loyalty Program Tier</option>
+        </select>
         </div>
     </div>
 

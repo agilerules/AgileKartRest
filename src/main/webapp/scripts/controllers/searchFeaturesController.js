@@ -1,6 +1,6 @@
 
 
-angular.module('agilekartV2').controller('SearchFeaturesController', function($scope, $http, FeaturesResource ) {
+angular.module('agileKartRest').controller('SearchFeaturesController', function($scope, $http, FeaturesResource , FeatureOptionsResource, MerchantFeaturesResource) {
 
     $scope.search={};
     $scope.currentPage = 0;

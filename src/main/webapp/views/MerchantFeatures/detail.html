@@ -7,30 +7,30 @@
         <strong>Error!</strong> Something broke. Retry, or cancel and start afresh.
     </div>
     
-    <div class="form-group" ng-class="{'has-error': MerchantFeaturesForm.merchantId.$invalid}">
-        <label for="merchantId" class="col-sm-2 control-label">Merchant Id</label>
-        <div id="merchantIdControls" class="col-sm-10">
-            <input id="merchantId" name="merchantId" type="text" required ng-maxlength="45" class="form-control" ng-model="merchantFeatures.merchantId" placeholder="Enter the MerchantFeatures Merchant Id"></input>
-            <span class="help-block error" ng-show="MerchantFeaturesForm.merchantId.$error.required">required</span> 
-            <span class="help-block error" ng-show="MerchantFeaturesForm.merchantId.$error.maxlength">maximum length is 45</span>
+    <div class="form-group" ng-class="{'has-error': MerchantFeaturesForm.featureOptions.$invalid}">
+        <label for="featureOptions" class="col-sm-2 control-label">Feature Options</label>
+        <div id="featureOptionsControls" class="col-sm-10">
+        <select id="featureOptions" name="featureOptions" class="form-control" ng-model="featureOptionsSelection" ng-options="f.text for f in featureOptionsSelectionList"  >
+            <option value="">Choose a Feature Options</option>
+        </select>
         </div>
     </div>
 
-    <div class="form-group" ng-class="{'has-error': MerchantFeaturesForm.featureOptionsId.$invalid}">
-        <label for="featureOptionsId" class="col-sm-2 control-label">Feature Options Id</label>
-        <div id="featureOptionsIdControls" class="col-sm-10">
-            <input id="featureOptionsId" name="featureOptionsId" type="text" required ng-maxlength="45" class="form-control" ng-model="merchantFeatures.featureOptionsId" placeholder="Enter the MerchantFeatures Feature Options Id"></input>
-            <span class="help-block error" ng-show="MerchantFeaturesForm.featureOptionsId.$error.required">required</span> 
-            <span class="help-block error" ng-show="MerchantFeaturesForm.featureOptionsId.$error.maxlength">maximum length is 45</span>
+    <div class="form-group" ng-class="{'has-error': MerchantFeaturesForm.features.$invalid}">
+        <label for="features" class="col-sm-2 control-label">Features</label>
+        <div id="featuresControls" class="col-sm-10">
+        <select id="features" name="features" class="form-control" ng-model="featuresSelection" ng-options="f.text for f in featuresSelectionList"  >
+            <option value="">Choose a Features</option>
+        </select>
         </div>
     </div>
 
-    <div class="form-group" ng-class="{'has-error': MerchantFeaturesForm.featureId.$invalid}">
-        <label for="featureId" class="col-sm-2 control-label">Feature Id</label>
-        <div id="featureIdControls" class="col-sm-10">
-            <input id="featureId" name="featureId" type="text" required ng-maxlength="45" class="form-control" ng-model="merchantFeatures.featureId" placeholder="Enter the MerchantFeatures Feature Id"></input>
-            <span class="help-block error" ng-show="MerchantFeaturesForm.featureId.$error.required">required</span> 
-            <span class="help-block error" ng-show="MerchantFeaturesForm.featureId.$error.maxlength">maximum length is 45</span>
+    <div class="form-group" ng-class="{'has-error': MerchantFeaturesForm.merchant.$invalid}">
+        <label for="merchant" class="col-sm-2 control-label">Merchant</label>
+        <div id="merchantControls" class="col-sm-10">
+        <select id="merchant" name="merchant" class="form-control" ng-model="merchantSelection" ng-options="m.text for m in merchantSelectionList"  >
+            <option value="">Choose a Merchant</option>
+        </select>
         </div>
     </div>
 

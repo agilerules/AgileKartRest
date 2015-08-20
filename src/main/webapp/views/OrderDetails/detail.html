@@ -7,21 +7,21 @@
         <strong>Error!</strong> Something broke. Retry, or cancel and start afresh.
     </div>
     
-    <div class="form-group" ng-class="{'has-error': OrderDetailsForm.orderId.$invalid}">
-        <label for="orderId" class="col-sm-2 control-label">Order Id</label>
-        <div id="orderIdControls" class="col-sm-10">
-            <input id="orderId" name="orderId" type="text" required ng-maxlength="45" class="form-control" ng-model="orderDetails.orderId" placeholder="Enter the OrderDetails Order Id"></input>
-            <span class="help-block error" ng-show="OrderDetailsForm.orderId.$error.required">required</span> 
-            <span class="help-block error" ng-show="OrderDetailsForm.orderId.$error.maxlength">maximum length is 45</span>
+    <div class="form-group" ng-class="{'has-error': OrderDetailsForm.orders.$invalid}">
+        <label for="orders" class="col-sm-2 control-label">Orders</label>
+        <div id="ordersControls" class="col-sm-10">
+        <select id="orders" name="orders" class="form-control" ng-model="ordersSelection" ng-options="o.text for o in ordersSelectionList"  >
+            <option value="">Choose a Orders</option>
+        </select>
         </div>
     </div>
 
-    <div class="form-group" ng-class="{'has-error': OrderDetailsForm.productId.$invalid}">
-        <label for="productId" class="col-sm-2 control-label">Product Id</label>
-        <div id="productIdControls" class="col-sm-10">
-            <input id="productId" name="productId" type="text" required ng-maxlength="45" class="form-control" ng-model="orderDetails.productId" placeholder="Enter the OrderDetails Product Id"></input>
-            <span class="help-block error" ng-show="OrderDetailsForm.productId.$error.required">required</span> 
-            <span class="help-block error" ng-show="OrderDetailsForm.productId.$error.maxlength">maximum length is 45</span>
+    <div class="form-group" ng-class="{'has-error': OrderDetailsForm.product.$invalid}">
+        <label for="product" class="col-sm-2 control-label">Product</label>
+        <div id="productControls" class="col-sm-10">
+        <select id="product" name="product" class="form-control" ng-model="productSelection" ng-options="p.text for p in productSelectionList"  >
+            <option value="">Choose a Product</option>
+        </select>
         </div>
     </div>
 

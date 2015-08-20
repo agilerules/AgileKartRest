@@ -1,6 +1,6 @@
 
 
-angular.module('agilekartV2').controller('SearchTaxRuleMerchantController', function($scope, $http, TaxRuleMerchantResource ) {
+angular.module('agileKartRest').controller('SearchTaxRuleMerchantController', function($scope, $http, TaxRuleMerchantResource , MerchantResource, TaxRuleResource) {
 
     $scope.search={};
     $scope.currentPage = 0;
@@ -17,6 +17,8 @@ angular.module('agilekartV2').controller('SearchTaxRuleMerchantController', func
         }
         return max;
     };
+    $scope.merchantList = MerchantResource.queryAll();
+    $scope.taxRuleList = TaxRuleResource.queryAll();
 
     $scope.performSearch = function() {
         $scope.searchResults = TaxRuleMerchantResource.queryAll(function(){

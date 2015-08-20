@@ -1,8 +1,38 @@
 
-angular.module('agilekartV2').controller('NewMerchantPaymentGatewayController', function ($scope, $location, locationParser, MerchantPaymentGatewayResource ) {
+angular.module('agileKartRest').controller('NewMerchantPaymentGatewayController', function ($scope, $location, locationParser, MerchantPaymentGatewayResource , MerchantResource, PaymentGatewayResource) {
     $scope.disabled = false;
     $scope.$location = $location;
     $scope.merchantPaymentGateway = $scope.merchantPaymentGateway || {};
+    
+    $scope.merchantList = MerchantResource.queryAll(function(items){
+        $scope.merchantSelectionList = $.map(items, function(item) {
+            return ( {
+                value : item.merchantId,
+                text : item.merchantId
+            });
+        });
+    });
+    $scope.$watch("merchantSelection", function(selection) {
+        if ( typeof selection != 'undefined') {
+            $scope.merchantPaymentGateway.merchant = {};
+            $scope.merchantPaymentGateway.merchant.merchantId = selection.value;
+        }
+    });
+    
+    $scope.paymentGatewayList = PaymentGatewayResource.queryAll(function(items){
+        $scope.paymentGatewaySelectionList = $.map(items, function(item) {
+            return ( {
+                value : item.paymentGatewayId,
+                text : item.paymentGatewayId
+            });
+        });
+    });
+    $scope.$watch("paymentGatewaySelection", function(selection) {
+        if ( typeof selection != 'undefined') {
+            $scope.merchantPaymentGateway.paymentGateway = {};
+            $scope.merchantPaymentGateway.paymentGateway.paymentGatewayId = selection.value;
+        }
+    });
     
 
     $scope.save = function() {

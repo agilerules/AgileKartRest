@@ -7,21 +7,21 @@
         <strong>Error!</strong> Something broke. Retry, or cancel and start afresh.
     </div>
     
-    <div class="form-group" ng-class="{'has-error': ProductCategoryForm.productId.$invalid}">
-        <label for="productId" class="col-sm-2 control-label">Product Id</label>
-        <div id="productIdControls" class="col-sm-10">
-            <input id="productId" name="productId" type="text" required ng-maxlength="45" class="form-control" ng-model="productCategory.productId" placeholder="Enter the ProductCategory Product Id"></input>
-            <span class="help-block error" ng-show="ProductCategoryForm.productId.$error.required">required</span> 
-            <span class="help-block error" ng-show="ProductCategoryForm.productId.$error.maxlength">maximum length is 45</span>
+    <div class="form-group" ng-class="{'has-error': ProductCategoryForm.category.$invalid}">
+        <label for="category" class="col-sm-2 control-label">Category</label>
+        <div id="categoryControls" class="col-sm-10">
+        <select id="category" name="category" class="form-control" ng-model="categorySelection" ng-options="c.text for c in categorySelectionList"  >
+            <option value="">Choose a Category</option>
+        </select>
         </div>
     </div>
 
-    <div class="form-group" ng-class="{'has-error': ProductCategoryForm.categoryId.$invalid}">
-        <label for="categoryId" class="col-sm-2 control-label">Category Id</label>
-        <div id="categoryIdControls" class="col-sm-10">
-            <input id="categoryId" name="categoryId" type="text" required ng-maxlength="45" class="form-control" ng-model="productCategory.categoryId" placeholder="Enter the ProductCategory Category Id"></input>
-            <span class="help-block error" ng-show="ProductCategoryForm.categoryId.$error.required">required</span> 
-            <span class="help-block error" ng-show="ProductCategoryForm.categoryId.$error.maxlength">maximum length is 45</span>
+    <div class="form-group" ng-class="{'has-error': ProductCategoryForm.product.$invalid}">
+        <label for="product" class="col-sm-2 control-label">Product</label>
+        <div id="productControls" class="col-sm-10">
+        <select id="product" name="product" class="form-control" ng-model="productSelection" ng-options="p.text for p in productSelectionList"  >
+            <option value="">Choose a Product</option>
+        </select>
         </div>
     </div>
 

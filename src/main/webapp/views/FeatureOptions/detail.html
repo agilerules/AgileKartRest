@@ -7,12 +7,12 @@
         <strong>Error!</strong> Something broke. Retry, or cancel and start afresh.
     </div>
     
-    <div class="form-group" ng-class="{'has-error': FeatureOptionsForm.featureId.$invalid}">
-        <label for="featureId" class="col-sm-2 control-label">Feature Id</label>
-        <div id="featureIdControls" class="col-sm-10">
-            <input id="featureId" name="featureId" type="text" required ng-maxlength="45" class="form-control" ng-model="featureOptions.featureId" placeholder="Enter the FeatureOptions Feature Id"></input>
-            <span class="help-block error" ng-show="FeatureOptionsForm.featureId.$error.required">required</span> 
-            <span class="help-block error" ng-show="FeatureOptionsForm.featureId.$error.maxlength">maximum length is 45</span>
+    <div class="form-group" ng-class="{'has-error': FeatureOptionsForm.features.$invalid}">
+        <label for="features" class="col-sm-2 control-label">Features</label>
+        <div id="featuresControls" class="col-sm-10">
+        <select id="features" name="features" class="form-control" ng-model="featuresSelection" ng-options="f.text for f in featuresSelectionList"  >
+            <option value="">Choose a Features</option>
+        </select>
         </div>
     </div>
 
@@ -38,6 +38,15 @@
             <datetime id="lastUpdateTs" name="lastUpdateTs" ng-model="featureOptions.lastUpdateTs" placeholder="Enter the FeatureOptions Last Update Ts"></datetime>
             <span class="help-block error" ng-show="FeatureOptionsForm.lastUpdateTs.$error.maxlength">maximum length is 19</span>
             <span class="help-block error" ng-show="FeatureOptionsForm.lastUpdateTs.$error.datetimeFormat">does not match format "yyyy-MM-dd hh:mm:ss" (e.g. 2013-12-01 22:00:00)</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': FeatureOptionsForm.merchantFeatureses.$invalid}">
+        <label for="merchantFeatureses" class="col-sm-2 control-label">Merchant Featureses</label>
+        <div id="merchantFeaturesesControls" class="col-sm-10">
+            <select id="merchantFeatureses" name="merchantFeatureses" multiple class="form-control" ng-model="merchantFeaturesesSelection" ng-options="m.text for m in merchantFeaturesesSelectionList">
+                <option value="">Choose a Merchant Featureses</option>
+            </select>
         </div>
     </div>
 

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('agilekartV2',['ngRoute','ngResource'])
+angular.module('agileKartRest',['ngRoute','ngResource'])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
       .when('/',{templateUrl:'views/landing.html',controller:'LandingPageController'})
@@ -82,6 +82,9 @@ angular.module('agilekartV2',['ngRoute','ngResource'])
       .when('/ProductReviews',{templateUrl:'views/ProductReview/search.html',controller:'SearchProductReviewController'})
       .when('/ProductReviews/new',{templateUrl:'views/ProductReview/detail.html',controller:'NewProductReviewController'})
       .when('/ProductReviews/edit/:ProductReviewId',{templateUrl:'views/ProductReview/detail.html',controller:'EditProductReviewController'})
+      .when('/SequenceKeyTables',{templateUrl:'views/SequenceKeyTable/search.html',controller:'SearchSequenceKeyTableController'})
+      .when('/SequenceKeyTables/new',{templateUrl:'views/SequenceKeyTable/detail.html',controller:'NewSequenceKeyTableController'})
+      .when('/SequenceKeyTables/edit/:SequenceKeyTableId',{templateUrl:'views/SequenceKeyTable/detail.html',controller:'EditSequenceKeyTableController'})
       .when('/Taxes',{templateUrl:'views/Tax/search.html',controller:'SearchTaxController'})
       .when('/Taxes/new',{templateUrl:'views/Tax/detail.html',controller:'NewTaxController'})
       .when('/Taxes/edit/:TaxId',{templateUrl:'views/Tax/detail.html',controller:'EditTaxController'})

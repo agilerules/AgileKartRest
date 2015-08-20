@@ -1,8 +1,38 @@
 
-angular.module('agilekartV2').controller('NewMerchantCategoryController', function ($scope, $location, locationParser, MerchantCategoryResource ) {
+angular.module('agileKartRest').controller('NewMerchantCategoryController', function ($scope, $location, locationParser, MerchantCategoryResource , CategoryResource, MerchantResource) {
     $scope.disabled = false;
     $scope.$location = $location;
     $scope.merchantCategory = $scope.merchantCategory || {};
+    
+    $scope.categoryList = CategoryResource.queryAll(function(items){
+        $scope.categorySelectionList = $.map(items, function(item) {
+            return ( {
+                value : item.categoryId,
+                text : item.categoryId
+            });
+        });
+    });
+    $scope.$watch("categorySelection", function(selection) {
+        if ( typeof selection != 'undefined') {
+            $scope.merchantCategory.category = {};
+            $scope.merchantCategory.category.categoryId = selection.value;
+        }
+    });
+    
+    $scope.merchantList = MerchantResource.queryAll(function(items){
+        $scope.merchantSelectionList = $.map(items, function(item) {
+            return ( {
+                value : item.merchantId,
+                text : item.merchantId
+            });
+        });
+    });
+    $scope.$watch("merchantSelection", function(selection) {
+        if ( typeof selection != 'undefined') {
+            $scope.merchantCategory.merchant = {};
+            $scope.merchantCategory.merchant.merchantId = selection.value;
+        }
+    });
     
 
     $scope.save = function() {

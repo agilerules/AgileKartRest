@@ -100,6 +100,96 @@
         </div>
     </div>
 
+    <div class="form-group" ng-class="{'has-error': MerchantForm.merchantFeatureses.$invalid}">
+        <label for="merchantFeatureses" class="col-sm-2 control-label">Merchant Featureses</label>
+        <div id="merchantFeaturesesControls" class="col-sm-10">
+            <select id="merchantFeatureses" name="merchantFeatureses" multiple class="form-control" ng-model="merchantFeaturesesSelection" ng-options="m.text for m in merchantFeaturesesSelectionList">
+                <option value="">Choose a Merchant Featureses</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': MerchantForm.offers.$invalid}">
+        <label for="offers" class="col-sm-2 control-label">Offers</label>
+        <div id="offersControls" class="col-sm-10">
+            <select id="offers" name="offers" multiple class="form-control" ng-model="offersSelection" ng-options="o.text for o in offersSelectionList">
+                <option value="">Choose a Offers</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': MerchantForm.merchantReviews.$invalid}">
+        <label for="merchantReviews" class="col-sm-2 control-label">Merchant Reviews</label>
+        <div id="merchantReviewsControls" class="col-sm-10">
+            <select id="merchantReviews" name="merchantReviews" multiple class="form-control" ng-model="merchantReviewsSelection" ng-options="m.text for m in merchantReviewsSelectionList">
+                <option value="">Choose a Merchant Reviews</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': MerchantForm.merchantCategories.$invalid}">
+        <label for="merchantCategories" class="col-sm-2 control-label">Merchant Categories</label>
+        <div id="merchantCategoriesControls" class="col-sm-10">
+            <select id="merchantCategories" name="merchantCategories" multiple class="form-control" ng-model="merchantCategoriesSelection" ng-options="m.text for m in merchantCategoriesSelectionList">
+                <option value="">Choose a Merchant Categories</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': MerchantForm.merchantAddresses.$invalid}">
+        <label for="merchantAddresses" class="col-sm-2 control-label">Merchant Addresses</label>
+        <div id="merchantAddressesControls" class="col-sm-10">
+            <select id="merchantAddresses" name="merchantAddresses" multiple class="form-control" ng-model="merchantAddressesSelection" ng-options="m.text for m in merchantAddressesSelectionList">
+                <option value="">Choose a Merchant Addresses</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': MerchantForm.merchantPaymentGateways.$invalid}">
+        <label for="merchantPaymentGateways" class="col-sm-2 control-label">Merchant Payment Gateways</label>
+        <div id="merchantPaymentGatewaysControls" class="col-sm-10">
+            <select id="merchantPaymentGateways" name="merchantPaymentGateways" multiple class="form-control" ng-model="merchantPaymentGatewaysSelection" ng-options="m.text for m in merchantPaymentGatewaysSelectionList">
+                <option value="">Choose a Merchant Payment Gateways</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': MerchantForm.loyaltyProgramMerchants.$invalid}">
+        <label for="loyaltyProgramMerchants" class="col-sm-2 control-label">Loyalty Program Merchants</label>
+        <div id="loyaltyProgramMerchantsControls" class="col-sm-10">
+            <select id="loyaltyProgramMerchants" name="loyaltyProgramMerchants" multiple class="form-control" ng-model="loyaltyProgramMerchantsSelection" ng-options="l.text for l in loyaltyProgramMerchantsSelectionList">
+                <option value="">Choose a Loyalty Program Merchants</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': MerchantForm.taxRuleMerchants.$invalid}">
+        <label for="taxRuleMerchants" class="col-sm-2 control-label">Tax Rule Merchants</label>
+        <div id="taxRuleMerchantsControls" class="col-sm-10">
+            <select id="taxRuleMerchants" name="taxRuleMerchants" multiple class="form-control" ng-model="taxRuleMerchantsSelection" ng-options="t.text for t in taxRuleMerchantsSelectionList">
+                <option value="">Choose a Tax Rule Merchants</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': MerchantForm.userFavouriteses.$invalid}">
+        <label for="userFavouriteses" class="col-sm-2 control-label">User Favouriteses</label>
+        <div id="userFavouritesesControls" class="col-sm-10">
+            <select id="userFavouriteses" name="userFavouriteses" multiple class="form-control" ng-model="userFavouritesesSelection" ng-options="u.text for u in userFavouritesesSelectionList">
+                <option value="">Choose a User Favouriteses</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': MerchantForm.products.$invalid}">
+        <label for="products" class="col-sm-2 control-label">Products</label>
+        <div id="productsControls" class="col-sm-10">
+            <select id="products" name="products" multiple class="form-control" ng-model="productsSelection" ng-options="p.text for p in productsSelectionList">
+                <option value="">Choose a Products</option>
+            </select>
+        </div>
+    </div>
+
 
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">

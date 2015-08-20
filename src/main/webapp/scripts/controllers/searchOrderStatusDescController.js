@@ -1,6 +1,6 @@
 
 
-angular.module('agilekartV2').controller('SearchOrderStatusDescController', function($scope, $http, OrderStatusDescResource ) {
+angular.module('agileKartRest').controller('SearchOrderStatusDescController', function($scope, $http, OrderStatusDescResource , OrderStatusResource) {
 
     $scope.search={};
     $scope.currentPage = 0;

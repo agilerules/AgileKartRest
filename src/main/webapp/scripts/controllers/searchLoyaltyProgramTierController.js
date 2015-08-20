@@ -1,6 +1,6 @@
 
 
-angular.module('agilekartV2').controller('SearchLoyaltyProgramTierController', function($scope, $http, LoyaltyProgramTierResource ) {
+angular.module('agileKartRest').controller('SearchLoyaltyProgramTierController', function($scope, $http, LoyaltyProgramTierResource , UserRewardsResource, LoyaltyEventDetailsResource) {
 
     $scope.search={};
     $scope.currentPage = 0;

@@ -12,16 +12,20 @@
     <form id="LoyaltyEventDetailsSearch" class="form-horizontal">
         
     <div class="form-group">
-        <label for="eventId" class="col-sm-2 control-label">Event Id</label>
+        <label for="event" class="col-sm-2 control-label">Event</label>
         <div class="col-sm-10">
-            <input id="eventId" name="eventId" class="form-control" type="text" ng-model="search.eventId" placeholder="Enter the LoyaltyEventDetails Event Id"></input>
+            <select id="event" name="event" class="form-control" ng-model="search.event" ng-options="e as e.eventId for e in eventList">
+                <option value="">Choose a Event</option>
+            </select>
         </div>
     </div>
 
     <div class="form-group">
-        <label for="tierId" class="col-sm-2 control-label">Tier Id</label>
+        <label for="loyaltyProgramTier" class="col-sm-2 control-label">Loyalty Program Tier</label>
         <div class="col-sm-10">
-            <input id="tierId" name="tierId" class="form-control" type="text" ng-model="search.tierId" placeholder="Enter the LoyaltyEventDetails Tier Id"></input>
+            <select id="loyaltyProgramTier" name="loyaltyProgramTier" class="form-control" ng-model="search.loyaltyProgramTier" ng-options="l as l.tierId for l in loyaltyProgramTierList">
+                <option value="">Choose a Loyalty Program Tier</option>
+            </select>
         </div>
     </div>
 
@@ -53,8 +57,8 @@
         <table class="table table-responsive table-bordered table-striped clearfix">
             <thead>
                 <tr>
-                    <th>Event Id</th>
-                    <th>Tier Id</th>
+                    <th>Event</th>
+                    <th>Loyalty Program Tier</th>
                     <th>Points Earned</th>
                     <th>Last Update User Id</th>
                     <th>Last Update Ts</th>
@@ -62,8 +66,8 @@
             </thead>
             <tbody id="search-results-body">
                 <tr ng-repeat="result in searchResults | searchFilter:searchResults | startFrom:currentPage*pageSize | limitTo:pageSize">
-                    <td><a href="#/LoyaltyEventDetails/edit/{{result.loyaltyEventDetailsId}}">{{result.eventId}}</a></td>
-                    <td><a href="#/LoyaltyEventDetails/edit/{{result.loyaltyEventDetailsId}}">{{result.tierId}}</a></td>
+                        <td><a href="#/LoyaltyEventDetails/edit/{{result.loyaltyEventDetailsId}}">{{result.event.eventId}}</a></td>
+                        <td><a href="#/LoyaltyEventDetails/edit/{{result.loyaltyEventDetailsId}}">{{result.loyaltyProgramTier.tierId}}</a></td>
                     <td><a href="#/LoyaltyEventDetails/edit/{{result.loyaltyEventDetailsId}}">{{result.pointsEarned}}</a></td>
                     <td><a href="#/LoyaltyEventDetails/edit/{{result.loyaltyEventDetailsId}}">{{result.lastUpdateUserId}}</a></td>
                     <td><a href="#/LoyaltyEventDetails/edit/{{result.loyaltyEventDetailsId}}">{{result.lastUpdateTs| date:'yyyy-MM-dd HH:mm:ss Z'}}</a></td>

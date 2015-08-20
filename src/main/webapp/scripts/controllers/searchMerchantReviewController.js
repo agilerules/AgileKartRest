@@ -1,6 +1,6 @@
 
 
-angular.module('agilekartV2').controller('SearchMerchantReviewController', function($scope, $http, MerchantReviewResource ) {
+angular.module('agileKartRest').controller('SearchMerchantReviewController', function($scope, $http, MerchantReviewResource , MerchantResource, UsersResource) {
 
     $scope.search={};
     $scope.currentPage = 0;
@@ -17,6 +17,8 @@ angular.module('agilekartV2').controller('SearchMerchantReviewController', funct
         }
         return max;
     };
+    $scope.merchantList = MerchantResource.queryAll();
+    $scope.usersList = UsersResource.queryAll();
 
     $scope.performSearch = function() {
         $scope.searchResults = MerchantReviewResource.queryAll(function(){

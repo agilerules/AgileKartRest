@@ -1,6 +1,6 @@
 
 
-angular.module('agilekartV2').controller('SearchUserAddressController', function($scope, $http, UserAddressResource ) {
+angular.module('agileKartRest').controller('SearchUserAddressController', function($scope, $http, UserAddressResource , UsersResource) {
 
     $scope.search={};
     $scope.currentPage = 0;
@@ -17,6 +17,7 @@ angular.module('agilekartV2').controller('SearchUserAddressController', function
         }
         return max;
     };
+    $scope.usersList = UsersResource.queryAll();
 
     $scope.performSearch = function() {
         $scope.searchResults = UserAddressResource.queryAll(function(){

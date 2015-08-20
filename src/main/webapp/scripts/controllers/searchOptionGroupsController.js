@@ -1,6 +1,6 @@
 
 
-angular.module('agilekartV2').controller('SearchOptionGroupsController', function($scope, $http, OptionGroupsResource ) {
+angular.module('agileKartRest').controller('SearchOptionGroupsController', function($scope, $http, OptionGroupsResource , OptionsResource, CategoryOptionsResource, ProductOptionResource) {
 
     $scope.search={};
     $scope.currentPage = 0;

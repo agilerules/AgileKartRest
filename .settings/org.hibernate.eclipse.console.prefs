@@ -1,3 +1,3 @@
-default.configuration=agilekartV2
+default.configuration=AgileKartRest
 eclipse.preferences.version=1
 hibernate3.enabled=true

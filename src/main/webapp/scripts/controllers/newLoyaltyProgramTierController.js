@@ -1,8 +1,46 @@
 
-angular.module('agilekartV2').controller('NewLoyaltyProgramTierController', function ($scope, $location, locationParser, LoyaltyProgramTierResource ) {
+angular.module('agileKartRest').controller('NewLoyaltyProgramTierController', function ($scope, $location, locationParser, LoyaltyProgramTierResource , UserRewardsResource, LoyaltyEventDetailsResource) {
     $scope.disabled = false;
     $scope.$location = $location;
     $scope.loyaltyProgramTier = $scope.loyaltyProgramTier || {};
+    
+    $scope.userRewardsesList = UserRewardsResource.queryAll(function(items){
+        $scope.userRewardsesSelectionList = $.map(items, function(item) {
+            return ( {
+                value : item.rewardId,
+                text : item.rewardId
+            });
+        });
+    });
+    $scope.$watch("userRewardsesSelection", function(selection) {
+        if (typeof selection != 'undefined') {
+            $scope.loyaltyProgramTier.userRewardses = [];
+            $.each(selection, function(idx,selectedItem) {
+                var collectionItem = {};
+                collectionItem.rewardId = selectedItem.value;
+                $scope.loyaltyProgramTier.userRewardses.push(collectionItem);
+            });
+        }
+    });
+    
+    $scope.loyaltyEventDetailsesList = LoyaltyEventDetailsResource.queryAll(function(items){
+        $scope.loyaltyEventDetailsesSelectionList = $.map(items, function(item) {
+            return ( {
+                value : item.loyaltyEventDetailsId,
+                text : item.loyaltyEventDetailsId
+            });
+        });
+    });
+    $scope.$watch("loyaltyEventDetailsesSelection", function(selection) {
+        if (typeof selection != 'undefined') {
+            $scope.loyaltyProgramTier.loyaltyEventDetailses = [];
+            $.each(selection, function(idx,selectedItem) {
+                var collectionItem = {};
+                collectionItem.loyaltyEventDetailsId = selectedItem.value;
+                $scope.loyaltyProgramTier.loyaltyEventDetailses.push(collectionItem);
+            });
+        }
+    });
     
 
     $scope.save = function() {

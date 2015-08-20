@@ -12,16 +12,20 @@
     <form id="OrderStatusSearch" class="form-horizontal">
         
     <div class="form-group">
-        <label for="orderId" class="col-sm-2 control-label">Order Id</label>
+        <label for="orderStatusDesc" class="col-sm-2 control-label">Order Status Desc</label>
         <div class="col-sm-10">
-            <input id="orderId" name="orderId" class="form-control" type="text" ng-model="search.orderId" placeholder="Enter the OrderStatus Order Id"></input>
+            <select id="orderStatusDesc" name="orderStatusDesc" class="form-control" ng-model="search.orderStatusDesc" ng-options="o as o.orderStatusDescId for o in orderStatusDescList">
+                <option value="">Choose a Order Status Desc</option>
+            </select>
         </div>
     </div>
 
     <div class="form-group">
-        <label for="orderStatusDescId" class="col-sm-2 control-label">Order Status Desc Id</label>
+        <label for="orders" class="col-sm-2 control-label">Orders</label>
         <div class="col-sm-10">
-            <input id="orderStatusDescId" name="orderStatusDescId" class="form-control" type="text" ng-model="search.orderStatusDescId" placeholder="Enter the OrderStatus Order Status Desc Id"></input>
+            <select id="orders" name="orders" class="form-control" ng-model="search.orders" ng-options="o as o.orderId for o in ordersList">
+                <option value="">Choose a Orders</option>
+            </select>
         </div>
     </div>
 
@@ -60,8 +64,8 @@
         <table class="table table-responsive table-bordered table-striped clearfix">
             <thead>
                 <tr>
-                    <th>Order Id</th>
-                    <th>Order Status Desc Id</th>
+                    <th>Order Status Desc</th>
+                    <th>Orders</th>
                     <th>Order Status Comment</th>
                     <th>Order Status Is Active</th>
                     <th>Last Update User Id</th>
@@ -70,8 +74,8 @@
             </thead>
             <tbody id="search-results-body">
                 <tr ng-repeat="result in searchResults | searchFilter:searchResults | startFrom:currentPage*pageSize | limitTo:pageSize">
-                    <td><a href="#/OrderStatuses/edit/{{result.orderStatusId}}">{{result.orderId}}</a></td>
-                    <td><a href="#/OrderStatuses/edit/{{result.orderStatusId}}">{{result.orderStatusDescId}}</a></td>
+                        <td><a href="#/OrderStatuses/edit/{{result.orderStatusId}}">{{result.orderStatusDesc.orderStatusDescId}}</a></td>
+                        <td><a href="#/OrderStatuses/edit/{{result.orderStatusId}}">{{result.orders.orderId}}</a></td>
                     <td><a href="#/OrderStatuses/edit/{{result.orderStatusId}}">{{result.orderStatusComment}}</a></td>
                     <td><a href="#/OrderStatuses/edit/{{result.orderStatusId}}">{{result.orderStatusIsActive}}</a></td>
                     <td><a href="#/OrderStatuses/edit/{{result.orderStatusId}}">{{result.lastUpdateUserId}}</a></td>

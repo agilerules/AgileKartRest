@@ -12,9 +12,11 @@
     <form id="FeatureOptionsSearch" class="form-horizontal">
         
     <div class="form-group">
-        <label for="featureId" class="col-sm-2 control-label">Feature Id</label>
+        <label for="features" class="col-sm-2 control-label">Features</label>
         <div class="col-sm-10">
-            <input id="featureId" name="featureId" class="form-control" type="text" ng-model="search.featureId" placeholder="Enter the FeatureOptions Feature Id"></input>
+            <select id="features" name="features" class="form-control" ng-model="search.features" ng-options="f as f.featureId for f in featuresList">
+                <option value="">Choose a Features</option>
+            </select>
         </div>
     </div>
 
@@ -34,6 +36,7 @@
 
 
 
+
         <div class="form-group">
             <div class="col-md-offset-2 col-sm-10">
                 <a id="Search" name="Search" class="btn btn-primary" ng-click="performSearch()"><span class="glyphicon glyphicon-search"></span> Search</a>
@@ -46,7 +49,7 @@
         <table class="table table-responsive table-bordered table-striped clearfix">
             <thead>
                 <tr>
-                    <th>Feature Id</th>
+                    <th>Features</th>
                     <th>Feature Option Name</th>
                     <th>Last Update User Id</th>
                     <th>Last Update Ts</th>
@@ -54,7 +57,7 @@
             </thead>
             <tbody id="search-results-body">
                 <tr ng-repeat="result in searchResults | searchFilter:searchResults | startFrom:currentPage*pageSize | limitTo:pageSize">
-                    <td><a href="#/FeatureOptions/edit/{{result.featureOptionsId}}">{{result.featureId}}</a></td>
+                        <td><a href="#/FeatureOptions/edit/{{result.featureOptionsId}}">{{result.features.featureId}}</a></td>
                     <td><a href="#/FeatureOptions/edit/{{result.featureOptionsId}}">{{result.featureOptionName}}</a></td>
                     <td><a href="#/FeatureOptions/edit/{{result.featureOptionsId}}">{{result.lastUpdateUserId}}</a></td>
                     <td><a href="#/FeatureOptions/edit/{{result.featureOptionsId}}">{{result.lastUpdateTs| date:'yyyy-MM-dd HH:mm:ss Z'}}</a></td>

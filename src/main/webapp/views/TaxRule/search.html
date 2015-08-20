@@ -12,9 +12,11 @@
     <form id="TaxRuleSearch" class="form-horizontal">
         
     <div class="form-group">
-        <label for="taxId" class="col-sm-2 control-label">Tax Id</label>
+        <label for="tax" class="col-sm-2 control-label">Tax</label>
         <div class="col-sm-10">
-            <input id="taxId" name="taxId" class="form-control" type="text" ng-model="search.taxId" placeholder="Enter the TaxRule Tax Id"></input>
+            <select id="tax" name="tax" class="form-control" ng-model="search.tax" ng-options="t as t.taxId for t in taxList">
+                <option value="">Choose a Tax</option>
+            </select>
         </div>
     </div>
 
@@ -48,6 +50,7 @@
 
 
 
+
         <div class="form-group">
             <div class="col-md-offset-2 col-sm-10">
                 <a id="Search" name="Search" class="btn btn-primary" ng-click="performSearch()"><span class="glyphicon glyphicon-search"></span> Search</a>
@@ -60,7 +63,7 @@
         <table class="table table-responsive table-bordered table-striped clearfix">
             <thead>
                 <tr>
-                    <th>Tax Id</th>
+                    <th>Tax</th>
                     <th>Tax Rule Name</th>
                     <th>State Cd</th>
                     <th>Country Cd</th>
@@ -70,7 +73,7 @@
             </thead>
             <tbody id="search-results-body">
                 <tr ng-repeat="result in searchResults | searchFilter:searchResults | startFrom:currentPage*pageSize | limitTo:pageSize">
-                    <td><a href="#/TaxRules/edit/{{result.taxRuleId}}">{{result.taxId}}</a></td>
+                        <td><a href="#/TaxRules/edit/{{result.taxRuleId}}">{{result.tax.taxId}}</a></td>
                     <td><a href="#/TaxRules/edit/{{result.taxRuleId}}">{{result.taxRuleName}}</a></td>
                     <td><a href="#/TaxRules/edit/{{result.taxRuleId}}">{{result.stateCd}}</a></td>
                     <td><a href="#/TaxRules/edit/{{result.taxRuleId}}">{{result.countryCd}}</a></td>

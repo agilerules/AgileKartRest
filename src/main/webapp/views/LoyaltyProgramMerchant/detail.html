@@ -7,12 +7,12 @@
         <strong>Error!</strong> Something broke. Retry, or cancel and start afresh.
     </div>
     
-    <div class="form-group" ng-class="{'has-error': LoyaltyProgramMerchantForm.merchantId.$invalid}">
-        <label for="merchantId" class="col-sm-2 control-label">Merchant Id</label>
-        <div id="merchantIdControls" class="col-sm-10">
-            <input id="merchantId" name="merchantId" type="text" required ng-maxlength="45" class="form-control" ng-model="loyaltyProgramMerchant.merchantId" placeholder="Enter the LoyaltyProgramMerchant Merchant Id"></input>
-            <span class="help-block error" ng-show="LoyaltyProgramMerchantForm.merchantId.$error.required">required</span> 
-            <span class="help-block error" ng-show="LoyaltyProgramMerchantForm.merchantId.$error.maxlength">maximum length is 45</span>
+    <div class="form-group" ng-class="{'has-error': LoyaltyProgramMerchantForm.merchant.$invalid}">
+        <label for="merchant" class="col-sm-2 control-label">Merchant</label>
+        <div id="merchantControls" class="col-sm-10">
+        <select id="merchant" name="merchant" class="form-control" ng-model="merchantSelection" ng-options="m.text for m in merchantSelectionList"  >
+            <option value="">Choose a Merchant</option>
+        </select>
         </div>
     </div>
 

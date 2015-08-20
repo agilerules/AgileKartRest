@@ -32,6 +32,24 @@
         </div>
     </div>
 
+    <div class="form-group" ng-class="{'has-error': FeaturesForm.featureOptionses.$invalid}">
+        <label for="featureOptionses" class="col-sm-2 control-label">Feature Optionses</label>
+        <div id="featureOptionsesControls" class="col-sm-10">
+            <select id="featureOptionses" name="featureOptionses" multiple class="form-control" ng-model="featureOptionsesSelection" ng-options="f.text for f in featureOptionsesSelectionList">
+                <option value="">Choose a Feature Optionses</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': FeaturesForm.merchantFeatureses.$invalid}">
+        <label for="merchantFeatureses" class="col-sm-2 control-label">Merchant Featureses</label>
+        <div id="merchantFeaturesesControls" class="col-sm-10">
+            <select id="merchantFeatureses" name="merchantFeatureses" multiple class="form-control" ng-model="merchantFeaturesesSelection" ng-options="m.text for m in merchantFeaturesesSelectionList">
+                <option value="">Choose a Merchant Featureses</option>
+            </select>
+        </div>
+    </div>
+
 
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">

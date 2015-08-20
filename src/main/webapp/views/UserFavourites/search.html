@@ -12,9 +12,20 @@
     <form id="UserFavouritesSearch" class="form-horizontal">
         
     <div class="form-group">
-        <label for="userId" class="col-sm-2 control-label">User Id</label>
+        <label for="merchant" class="col-sm-2 control-label">Merchant</label>
         <div class="col-sm-10">
-            <input id="userId" name="userId" class="form-control" type="text" ng-model="search.userId" placeholder="Enter the UserFavourites User Id"></input>
+            <select id="merchant" name="merchant" class="form-control" ng-model="search.merchant" ng-options="m as m.merchantId for m in merchantList">
+                <option value="">Choose a Merchant</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="users" class="col-sm-2 control-label">Users</label>
+        <div class="col-sm-10">
+            <select id="users" name="users" class="form-control" ng-model="search.users" ng-options="u as u.userId for u in usersList">
+                <option value="">Choose a Users</option>
+            </select>
         </div>
     </div>
 
@@ -22,13 +33,6 @@
         <label for="favouriteId" class="col-sm-2 control-label">Favourite Id</label>
         <div class="col-sm-10">
             <input id="favouriteId" name="favouriteId" class="form-control" type="text" ng-model="search.favouriteId" placeholder="Enter the UserFavourites Favourite Id"></input>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="merchantId" class="col-sm-2 control-label">Merchant Id</label>
-        <div class="col-sm-10">
-            <input id="merchantId" name="merchantId" class="form-control" type="text" ng-model="search.merchantId" placeholder="Enter the UserFavourites Merchant Id"></input>
         </div>
     </div>
 
@@ -60,9 +64,9 @@
         <table class="table table-responsive table-bordered table-striped clearfix">
             <thead>
                 <tr>
-                    <th>User Id</th>
+                    <th>Merchant</th>
+                    <th>Users</th>
                     <th>Favourite Id</th>
-                    <th>Merchant Id</th>
                     <th>Order Fl</th>
                     <th>Last Update User Id</th>
                     <th>Last Update Ts</th>
@@ -70,9 +74,9 @@
             </thead>
             <tbody id="search-results-body">
                 <tr ng-repeat="result in searchResults | searchFilter:searchResults | startFrom:currentPage*pageSize | limitTo:pageSize">
-                    <td><a href="#/UserFavourites/edit/{{result.userFavouriteId}}">{{result.userId}}</a></td>
+                        <td><a href="#/UserFavourites/edit/{{result.userFavouriteId}}">{{result.merchant.merchantId}}</a></td>
+                        <td><a href="#/UserFavourites/edit/{{result.userFavouriteId}}">{{result.users.userId}}</a></td>
                     <td><a href="#/UserFavourites/edit/{{result.userFavouriteId}}">{{result.favouriteId}}</a></td>
-                    <td><a href="#/UserFavourites/edit/{{result.userFavouriteId}}">{{result.merchantId}}</a></td>
                     <td><a href="#/UserFavourites/edit/{{result.userFavouriteId}}">{{result.orderFl}}</a></td>
                     <td><a href="#/UserFavourites/edit/{{result.userFavouriteId}}">{{result.lastUpdateUserId}}</a></td>
                     <td><a href="#/UserFavourites/edit/{{result.userFavouriteId}}">{{result.lastUpdateTs| date:'yyyy-MM-dd HH:mm:ss Z'}}</a></td>

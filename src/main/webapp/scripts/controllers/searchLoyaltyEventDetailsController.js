@@ -1,6 +1,6 @@
 
 
-angular.module('agilekartV2').controller('SearchLoyaltyEventDetailsController', function($scope, $http, LoyaltyEventDetailsResource ) {
+angular.module('agileKartRest').controller('SearchLoyaltyEventDetailsController', function($scope, $http, LoyaltyEventDetailsResource , EventResource, LoyaltyProgramTierResource) {
 
     $scope.search={};
     $scope.currentPage = 0;
@@ -17,6 +17,8 @@ angular.module('agilekartV2').controller('SearchLoyaltyEventDetailsController', 
         }
         return max;
     };
+    $scope.eventList = EventResource.queryAll();
+    $scope.loyaltyProgramTierList = LoyaltyProgramTierResource.queryAll();
 
     $scope.performSearch = function() {
         $scope.searchResults = LoyaltyEventDetailsResource.queryAll(function(){

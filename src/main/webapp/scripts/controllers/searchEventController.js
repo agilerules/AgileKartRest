@@ -1,6 +1,6 @@
 
 
-angular.module('agilekartV2').controller('SearchEventController', function($scope, $http, EventResource ) {
+angular.module('agileKartRest').controller('SearchEventController', function($scope, $http, EventResource , LoyaltyEventDetailsResource) {
 
     $scope.search={};
     $scope.currentPage = 0;

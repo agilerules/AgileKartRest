@@ -1,6 +1,6 @@
 
 
-angular.module('agilekartV2').controller('SearchUserFavouritesController', function($scope, $http, UserFavouritesResource ) {
+angular.module('agileKartRest').controller('SearchUserFavouritesController', function($scope, $http, UserFavouritesResource , MerchantResource, UsersResource) {
 
     $scope.search={};
     $scope.currentPage = 0;
@@ -17,6 +17,8 @@ angular.module('agilekartV2').controller('SearchUserFavouritesController', funct
         }
         return max;
     };
+    $scope.merchantList = MerchantResource.queryAll();
+    $scope.usersList = UsersResource.queryAll();
 
     $scope.performSearch = function() {
         $scope.searchResults = UserFavouritesResource.queryAll(function(){

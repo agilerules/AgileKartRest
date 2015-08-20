@@ -39,6 +39,15 @@
         </div>
     </div>
 
+    <div class="form-group" ng-class="{'has-error': TaxForm.taxRules.$invalid}">
+        <label for="taxRules" class="col-sm-2 control-label">Tax Rules</label>
+        <div id="taxRulesControls" class="col-sm-10">
+            <select id="taxRules" name="taxRules" multiple class="form-control" ng-model="taxRulesSelection" ng-options="t.text for t in taxRulesSelectionList">
+                <option value="">Choose a Tax Rules</option>
+            </select>
+        </div>
+    </div>
+
 
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">

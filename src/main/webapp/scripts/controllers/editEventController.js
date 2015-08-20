@@ -1,6 +1,6 @@
 
 
-angular.module('agilekartV2').controller('EditEventController', function($scope, $routeParams, $location, EventResource ) {
+angular.module('agileKartRest').controller('EditEventController', function($scope, $routeParams, $location, EventResource , LoyaltyEventDetailsResource) {
     var self = this;
     $scope.disabled = false;
     $scope.$location = $location;
@@ -9,6 +9,27 @@ angular.module('agilekartV2').controller('EditEventController', function($scope,
         var successCallback = function(data){
             self.original = data;
             $scope.event = new EventResource(self.original);
+            LoyaltyEventDetailsResource.queryAll(function(items) {
+                $scope.loyaltyEventDetailsesSelectionList = $.map(items, function(item) {
+                    var wrappedObject = {
+                        loyaltyEventDetailsId : item.loyaltyEventDetailsId
+                    };
+                    var labelObject = {
+                        value : item.loyaltyEventDetailsId,
+                        text : item.loyaltyEventDetailsId
+                    };
+                    if($scope.event.loyaltyEventDetailses){
+                        $.each($scope.event.loyaltyEventDetailses, function(idx, element) {
+                            if(item.loyaltyEventDetailsId == element.loyaltyEventDetailsId) {
+                                $scope.loyaltyEventDetailsesSelection.push(labelObject);
+                                $scope.event.loyaltyEventDetailses.push(wrappedObject);
+                            }
+                        });
+                        self.original.loyaltyEventDetailses = $scope.event.loyaltyEventDetailses;
+                    }
+                    return labelObject;
+                });
+            });
         };
         var errorCallback = function() {
             $location.path("/Events");
@@ -46,6 +67,17 @@ angular.module('agilekartV2').controller('EditEventController', function($scope,
         $scope.event.$remove(successCallback, errorCallback);
     };
     
+    $scope.loyaltyEventDetailsesSelection = $scope.loyaltyEventDetailsesSelection || [];
+    $scope.$watch("loyaltyEventDetailsesSelection", function(selection) {
+        if (typeof selection != 'undefined' && $scope.event) {
+            $scope.event.loyaltyEventDetailses = [];
+            $.each(selection, function(idx,selectedItem) {
+                var collectionItem = {};
+                collectionItem.loyaltyEventDetailsId = selectedItem.value;
+                $scope.event.loyaltyEventDetailses.push(collectionItem);
+            });
+        }
+    });
     
     $scope.get();
 });

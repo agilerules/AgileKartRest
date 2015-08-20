@@ -42,6 +42,33 @@
         </div>
     </div>
 
+    <div class="form-group" ng-class="{'has-error': OptionGroupsForm.optionses.$invalid}">
+        <label for="optionses" class="col-sm-2 control-label">Optionses</label>
+        <div id="optionsesControls" class="col-sm-10">
+            <select id="optionses" name="optionses" multiple class="form-control" ng-model="optionsesSelection" ng-options="o.text for o in optionsesSelectionList">
+                <option value="">Choose a Optionses</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': OptionGroupsForm.categoryOptionses.$invalid}">
+        <label for="categoryOptionses" class="col-sm-2 control-label">Category Optionses</label>
+        <div id="categoryOptionsesControls" class="col-sm-10">
+            <select id="categoryOptionses" name="categoryOptionses" multiple class="form-control" ng-model="categoryOptionsesSelection" ng-options="c.text for c in categoryOptionsesSelectionList">
+                <option value="">Choose a Category Optionses</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': OptionGroupsForm.productOptions.$invalid}">
+        <label for="productOptions" class="col-sm-2 control-label">Product Options</label>
+        <div id="productOptionsControls" class="col-sm-10">
+            <select id="productOptions" name="productOptions" multiple class="form-control" ng-model="productOptionsSelection" ng-options="p.text for p in productOptionsSelectionList">
+                <option value="">Choose a Product Options</option>
+            </select>
+        </div>
+    </div>
+
 
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">

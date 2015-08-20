@@ -7,21 +7,30 @@
         <strong>Error!</strong> Something broke. Retry, or cancel and start afresh.
     </div>
     
-    <div class="form-group" ng-class="{'has-error': UserRewardsForm.userId.$invalid}">
-        <label for="userId" class="col-sm-2 control-label">User Id</label>
-        <div id="userIdControls" class="col-sm-10">
-            <input id="userId" name="userId" type="text" required ng-maxlength="45" class="form-control" ng-model="userRewards.userId" placeholder="Enter the UserRewards User Id"></input>
-            <span class="help-block error" ng-show="UserRewardsForm.userId.$error.required">required</span> 
-            <span class="help-block error" ng-show="UserRewardsForm.userId.$error.maxlength">maximum length is 45</span>
+    <div class="form-group" ng-class="{'has-error': UserRewardsForm.loyaltyProgramTier.$invalid}">
+        <label for="loyaltyProgramTier" class="col-sm-2 control-label">Loyalty Program Tier</label>
+        <div id="loyaltyProgramTierControls" class="col-sm-10">
+        <select id="loyaltyProgramTier" name="loyaltyProgramTier" class="form-control" ng-model="loyaltyProgramTierSelection" ng-options="l.text for l in loyaltyProgramTierSelectionList"  >
+            <option value="">Choose a Loyalty Program Tier</option>
+        </select>
         </div>
     </div>
 
-    <div class="form-group" ng-class="{'has-error': UserRewardsForm.orderId.$invalid}">
-        <label for="orderId" class="col-sm-2 control-label">Order Id</label>
-        <div id="orderIdControls" class="col-sm-10">
-            <input id="orderId" name="orderId" type="text" required ng-maxlength="45" class="form-control" ng-model="userRewards.orderId" placeholder="Enter the UserRewards Order Id"></input>
-            <span class="help-block error" ng-show="UserRewardsForm.orderId.$error.required">required</span> 
-            <span class="help-block error" ng-show="UserRewardsForm.orderId.$error.maxlength">maximum length is 45</span>
+    <div class="form-group" ng-class="{'has-error': UserRewardsForm.orders.$invalid}">
+        <label for="orders" class="col-sm-2 control-label">Orders</label>
+        <div id="ordersControls" class="col-sm-10">
+        <select id="orders" name="orders" class="form-control" ng-model="ordersSelection" ng-options="o.text for o in ordersSelectionList"  >
+            <option value="">Choose a Orders</option>
+        </select>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': UserRewardsForm.users.$invalid}">
+        <label for="users" class="col-sm-2 control-label">Users</label>
+        <div id="usersControls" class="col-sm-10">
+        <select id="users" name="users" class="form-control" ng-model="usersSelection" ng-options="u.text for u in usersSelectionList"  >
+            <option value="">Choose a Users</option>
+        </select>
         </div>
     </div>
 
@@ -65,15 +74,6 @@
             <date id="pointsRedeeemedDate" name="pointsRedeeemedDate" ng-model="userRewards.pointsRedeeemedDate" placeholder="Enter the UserRewards Points Redeeemed Date"></date>
             <span class="help-block error" ng-show="UserRewardsForm.pointsRedeeemedDate.$error.maxlength">maximum length is 10</span>
             <span class="help-block error" ng-show="UserRewardsForm.pointsRedeeemedDate.$error.dateFormat">does not match format "yyyy-MM-dd" (e.g. 2013-12-01)</span>
-        </div>
-    </div>
-
-    <div class="form-group" ng-class="{'has-error': UserRewardsForm.tierId.$invalid}">
-        <label for="tierId" class="col-sm-2 control-label">Tier Id</label>
-        <div id="tierIdControls" class="col-sm-10">
-            <input id="tierId" name="tierId" type="text" required ng-maxlength="45" class="form-control" ng-model="userRewards.tierId" placeholder="Enter the UserRewards Tier Id"></input>
-            <span class="help-block error" ng-show="UserRewardsForm.tierId.$error.required">required</span> 
-            <span class="help-block error" ng-show="UserRewardsForm.tierId.$error.maxlength">maximum length is 45</span>
         </div>
     </div>
 

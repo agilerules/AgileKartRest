@@ -7,21 +7,21 @@
         <strong>Error!</strong> Something broke. Retry, or cancel and start afresh.
     </div>
     
-    <div class="form-group" ng-class="{'has-error': MerchantCategoryForm.categoryId.$invalid}">
-        <label for="categoryId" class="col-sm-2 control-label">Category Id</label>
-        <div id="categoryIdControls" class="col-sm-10">
-            <input id="categoryId" name="categoryId" type="text" required ng-maxlength="45" class="form-control" ng-model="merchantCategory.categoryId" placeholder="Enter the MerchantCategory Category Id"></input>
-            <span class="help-block error" ng-show="MerchantCategoryForm.categoryId.$error.required">required</span> 
-            <span class="help-block error" ng-show="MerchantCategoryForm.categoryId.$error.maxlength">maximum length is 45</span>
+    <div class="form-group" ng-class="{'has-error': MerchantCategoryForm.category.$invalid}">
+        <label for="category" class="col-sm-2 control-label">Category</label>
+        <div id="categoryControls" class="col-sm-10">
+        <select id="category" name="category" class="form-control" ng-model="categorySelection" ng-options="c.text for c in categorySelectionList"  >
+            <option value="">Choose a Category</option>
+        </select>
         </div>
     </div>
 
-    <div class="form-group" ng-class="{'has-error': MerchantCategoryForm.merchantId.$invalid}">
-        <label for="merchantId" class="col-sm-2 control-label">Merchant Id</label>
-        <div id="merchantIdControls" class="col-sm-10">
-            <input id="merchantId" name="merchantId" type="text" required ng-maxlength="45" class="form-control" ng-model="merchantCategory.merchantId" placeholder="Enter the MerchantCategory Merchant Id"></input>
-            <span class="help-block error" ng-show="MerchantCategoryForm.merchantId.$error.required">required</span> 
-            <span class="help-block error" ng-show="MerchantCategoryForm.merchantId.$error.maxlength">maximum length is 45</span>
+    <div class="form-group" ng-class="{'has-error': MerchantCategoryForm.merchant.$invalid}">
+        <label for="merchant" class="col-sm-2 control-label">Merchant</label>
+        <div id="merchantControls" class="col-sm-10">
+        <select id="merchant" name="merchant" class="form-control" ng-model="merchantSelection" ng-options="m.text for m in merchantSelectionList"  >
+            <option value="">Choose a Merchant</option>
+        </select>
         </div>
     </div>
 

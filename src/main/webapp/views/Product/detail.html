@@ -7,6 +7,15 @@
         <strong>Error!</strong> Something broke. Retry, or cancel and start afresh.
     </div>
     
+    <div class="form-group" ng-class="{'has-error': ProductForm.merchant.$invalid}">
+        <label for="merchant" class="col-sm-2 control-label">Merchant</label>
+        <div id="merchantControls" class="col-sm-10">
+        <select id="merchant" name="merchant" class="form-control" ng-model="merchantSelection" ng-options="m.text for m in merchantSelectionList"  >
+            <option value="">Choose a Merchant</option>
+        </select>
+        </div>
+    </div>
+
     <div class="form-group" ng-class="{'has-error': ProductForm.productName.$invalid}">
         <label for="productName" class="col-sm-2 control-label">Product Name</label>
         <div id="productNameControls" class="col-sm-10">
@@ -79,15 +88,6 @@
         </div>
     </div>
 
-    <div class="form-group" ng-class="{'has-error': ProductForm.merchantId.$invalid}">
-        <label for="merchantId" class="col-sm-2 control-label">Merchant Id</label>
-        <div id="merchantIdControls" class="col-sm-10">
-            <input id="merchantId" name="merchantId" type="text" required ng-maxlength="45" class="form-control" ng-model="product.merchantId" placeholder="Enter the Product Merchant Id"></input>
-            <span class="help-block error" ng-show="ProductForm.merchantId.$error.required">required</span> 
-            <span class="help-block error" ng-show="ProductForm.merchantId.$error.maxlength">maximum length is 45</span>
-        </div>
-    </div>
-
     <div class="form-group" ng-class="{'has-error': ProductForm.productStock.$invalid}">
         <label for="productStock" class="col-sm-2 control-label">Product Stock</label>
         <div id="productStockControls" class="col-sm-10">
@@ -143,6 +143,51 @@
             <datetime id="lastUpdateTs" name="lastUpdateTs" ng-model="product.lastUpdateTs" placeholder="Enter the Product Last Update Ts"></datetime>
             <span class="help-block error" ng-show="ProductForm.lastUpdateTs.$error.maxlength">maximum length is 19</span>
             <span class="help-block error" ng-show="ProductForm.lastUpdateTs.$error.datetimeFormat">does not match format "yyyy-MM-dd hh:mm:ss" (e.g. 2013-12-01 22:00:00)</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': ProductForm.productOptions.$invalid}">
+        <label for="productOptions" class="col-sm-2 control-label">Product Options</label>
+        <div id="productOptionsControls" class="col-sm-10">
+            <select id="productOptions" name="productOptions" multiple class="form-control" ng-model="productOptionsSelection" ng-options="p.text for p in productOptionsSelectionList">
+                <option value="">Choose a Product Options</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': ProductForm.productReviews.$invalid}">
+        <label for="productReviews" class="col-sm-2 control-label">Product Reviews</label>
+        <div id="productReviewsControls" class="col-sm-10">
+            <select id="productReviews" name="productReviews" multiple class="form-control" ng-model="productReviewsSelection" ng-options="p.text for p in productReviewsSelectionList">
+                <option value="">Choose a Product Reviews</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': ProductForm.productCategories.$invalid}">
+        <label for="productCategories" class="col-sm-2 control-label">Product Categories</label>
+        <div id="productCategoriesControls" class="col-sm-10">
+            <select id="productCategories" name="productCategories" multiple class="form-control" ng-model="productCategoriesSelection" ng-options="p.text for p in productCategoriesSelectionList">
+                <option value="">Choose a Product Categories</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': ProductForm.orderDetailses.$invalid}">
+        <label for="orderDetailses" class="col-sm-2 control-label">Order Detailses</label>
+        <div id="orderDetailsesControls" class="col-sm-10">
+            <select id="orderDetailses" name="orderDetailses" multiple class="form-control" ng-model="orderDetailsesSelection" ng-options="o.text for o in orderDetailsesSelectionList">
+                <option value="">Choose a Order Detailses</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': ProductForm.offers.$invalid}">
+        <label for="offers" class="col-sm-2 control-label">Offers</label>
+        <div id="offersControls" class="col-sm-10">
+            <select id="offers" name="offers" multiple class="form-control" ng-model="offersSelection" ng-options="o.text for o in offersSelectionList">
+                <option value="">Choose a Offers</option>
+            </select>
         </div>
     </div>
 

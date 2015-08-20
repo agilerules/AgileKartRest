@@ -7,12 +7,12 @@
         <strong>Error!</strong> Something broke. Retry, or cancel and start afresh.
     </div>
     
-    <div class="form-group" ng-class="{'has-error': TaxRuleForm.taxId.$invalid}">
-        <label for="taxId" class="col-sm-2 control-label">Tax Id</label>
-        <div id="taxIdControls" class="col-sm-10">
-            <input id="taxId" name="taxId" type="text" required ng-maxlength="45" class="form-control" ng-model="taxRule.taxId" placeholder="Enter the TaxRule Tax Id"></input>
-            <span class="help-block error" ng-show="TaxRuleForm.taxId.$error.required">required</span> 
-            <span class="help-block error" ng-show="TaxRuleForm.taxId.$error.maxlength">maximum length is 45</span>
+    <div class="form-group" ng-class="{'has-error': TaxRuleForm.tax.$invalid}">
+        <label for="tax" class="col-sm-2 control-label">Tax</label>
+        <div id="taxControls" class="col-sm-10">
+        <select id="tax" name="tax" class="form-control" ng-model="taxSelection" ng-options="t.text for t in taxSelectionList"  >
+            <option value="">Choose a Tax</option>
+        </select>
         </div>
     </div>
 
@@ -54,6 +54,15 @@
             <datetime id="lastUpdateTs" name="lastUpdateTs" ng-model="taxRule.lastUpdateTs" placeholder="Enter the TaxRule Last Update Ts"></datetime>
             <span class="help-block error" ng-show="TaxRuleForm.lastUpdateTs.$error.maxlength">maximum length is 19</span>
             <span class="help-block error" ng-show="TaxRuleForm.lastUpdateTs.$error.datetimeFormat">does not match format "yyyy-MM-dd hh:mm:ss" (e.g. 2013-12-01 22:00:00)</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': TaxRuleForm.taxRuleMerchants.$invalid}">
+        <label for="taxRuleMerchants" class="col-sm-2 control-label">Tax Rule Merchants</label>
+        <div id="taxRuleMerchantsControls" class="col-sm-10">
+            <select id="taxRuleMerchants" name="taxRuleMerchants" multiple class="form-control" ng-model="taxRuleMerchantsSelection" ng-options="t.text for t in taxRuleMerchantsSelectionList">
+                <option value="">Choose a Tax Rule Merchants</option>
+            </select>
         </div>
     </div>
 

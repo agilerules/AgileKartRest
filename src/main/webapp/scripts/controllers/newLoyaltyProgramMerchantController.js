@@ -1,8 +1,23 @@
 
-angular.module('agilekartV2').controller('NewLoyaltyProgramMerchantController', function ($scope, $location, locationParser, LoyaltyProgramMerchantResource ) {
+angular.module('agileKartRest').controller('NewLoyaltyProgramMerchantController', function ($scope, $location, locationParser, LoyaltyProgramMerchantResource , MerchantResource) {
     $scope.disabled = false;
     $scope.$location = $location;
     $scope.loyaltyProgramMerchant = $scope.loyaltyProgramMerchant || {};
+    
+    $scope.merchantList = MerchantResource.queryAll(function(items){
+        $scope.merchantSelectionList = $.map(items, function(item) {
+            return ( {
+                value : item.merchantId,
+                text : item.merchantId
+            });
+        });
+    });
+    $scope.$watch("merchantSelection", function(selection) {
+        if ( typeof selection != 'undefined') {
+            $scope.loyaltyProgramMerchant.merchant = {};
+            $scope.loyaltyProgramMerchant.merchant.merchantId = selection.value;
+        }
+    });
     
 
     $scope.save = function() {

@@ -1,6 +1,6 @@
 
 
-angular.module('agilekartV2').controller('SearchPaymentGatewayController', function($scope, $http, PaymentGatewayResource ) {
+angular.module('agileKartRest').controller('SearchPaymentGatewayController', function($scope, $http, PaymentGatewayResource , MerchantPaymentGatewayResource, OrdersResource) {
 
     $scope.search={};
     $scope.currentPage = 0;

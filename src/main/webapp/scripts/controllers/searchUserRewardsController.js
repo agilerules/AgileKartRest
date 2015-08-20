@@ -1,6 +1,6 @@
 
 
-angular.module('agilekartV2').controller('SearchUserRewardsController', function($scope, $http, UserRewardsResource ) {
+angular.module('agileKartRest').controller('SearchUserRewardsController', function($scope, $http, UserRewardsResource , LoyaltyProgramTierResource, OrdersResource, UsersResource) {
 
     $scope.search={};
     $scope.currentPage = 0;
@@ -17,6 +17,9 @@ angular.module('agilekartV2').controller('SearchUserRewardsController', function
         }
         return max;
     };
+    $scope.loyaltyProgramTierList = LoyaltyProgramTierResource.queryAll();
+    $scope.ordersList = OrdersResource.queryAll();
+    $scope.usersList = UsersResource.queryAll();
 
     $scope.performSearch = function() {
         $scope.searchResults = UserRewardsResource.queryAll(function(){

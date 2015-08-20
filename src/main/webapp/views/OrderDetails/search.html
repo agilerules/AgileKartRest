@@ -12,16 +12,20 @@
     <form id="OrderDetailsSearch" class="form-horizontal">
         
     <div class="form-group">
-        <label for="orderId" class="col-sm-2 control-label">Order Id</label>
+        <label for="orders" class="col-sm-2 control-label">Orders</label>
         <div class="col-sm-10">
-            <input id="orderId" name="orderId" class="form-control" type="text" ng-model="search.orderId" placeholder="Enter the OrderDetails Order Id"></input>
+            <select id="orders" name="orders" class="form-control" ng-model="search.orders" ng-options="o as o.orderId for o in ordersList">
+                <option value="">Choose a Orders</option>
+            </select>
         </div>
     </div>
 
     <div class="form-group">
-        <label for="productId" class="col-sm-2 control-label">Product Id</label>
+        <label for="product" class="col-sm-2 control-label">Product</label>
         <div class="col-sm-10">
-            <input id="productId" name="productId" class="form-control" type="text" ng-model="search.productId" placeholder="Enter the OrderDetails Product Id"></input>
+            <select id="product" name="product" class="form-control" ng-model="search.product" ng-options="p as p.productId for p in productList">
+                <option value="">Choose a Product</option>
+            </select>
         </div>
     </div>
 
@@ -67,8 +71,8 @@
         <table class="table table-responsive table-bordered table-striped clearfix">
             <thead>
                 <tr>
-                    <th>Order Id</th>
-                    <th>Product Id</th>
+                    <th>Orders</th>
+                    <th>Product</th>
                     <th>Detail Name</th>
                     <th>Detail Price</th>
                     <th>Detail Quantity</th>
@@ -78,8 +82,8 @@
             </thead>
             <tbody id="search-results-body">
                 <tr ng-repeat="result in searchResults | searchFilter:searchResults | startFrom:currentPage*pageSize | limitTo:pageSize">
-                    <td><a href="#/OrderDetails/edit/{{result.detailId}}">{{result.orderId}}</a></td>
-                    <td><a href="#/OrderDetails/edit/{{result.detailId}}">{{result.productId}}</a></td>
+                        <td><a href="#/OrderDetails/edit/{{result.detailId}}">{{result.orders.orderId}}</a></td>
+                        <td><a href="#/OrderDetails/edit/{{result.detailId}}">{{result.product.productId}}</a></td>
                     <td><a href="#/OrderDetails/edit/{{result.detailId}}">{{result.detailName}}</a></td>
                     <td><a href="#/OrderDetails/edit/{{result.detailId}}">{{result.detailPrice}}</a></td>
                     <td><a href="#/OrderDetails/edit/{{result.detailId}}">{{result.detailQuantity}}</a></td>

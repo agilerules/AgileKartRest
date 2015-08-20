@@ -7,12 +7,21 @@
         <strong>Error!</strong> Something broke. Retry, or cancel and start afresh.
     </div>
     
-    <div class="form-group" ng-class="{'has-error': UserFavouritesForm.userId.$invalid}">
-        <label for="userId" class="col-sm-2 control-label">User Id</label>
-        <div id="userIdControls" class="col-sm-10">
-            <input id="userId" name="userId" type="text" required ng-maxlength="45" class="form-control" ng-model="userFavourites.userId" placeholder="Enter the UserFavourites User Id"></input>
-            <span class="help-block error" ng-show="UserFavouritesForm.userId.$error.required">required</span> 
-            <span class="help-block error" ng-show="UserFavouritesForm.userId.$error.maxlength">maximum length is 45</span>
+    <div class="form-group" ng-class="{'has-error': UserFavouritesForm.merchant.$invalid}">
+        <label for="merchant" class="col-sm-2 control-label">Merchant</label>
+        <div id="merchantControls" class="col-sm-10">
+        <select id="merchant" name="merchant" class="form-control" ng-model="merchantSelection" ng-options="m.text for m in merchantSelectionList"  >
+            <option value="">Choose a Merchant</option>
+        </select>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': UserFavouritesForm.users.$invalid}">
+        <label for="users" class="col-sm-2 control-label">Users</label>
+        <div id="usersControls" class="col-sm-10">
+        <select id="users" name="users" class="form-control" ng-model="usersSelection" ng-options="u.text for u in usersSelectionList"  >
+            <option value="">Choose a Users</option>
+        </select>
         </div>
     </div>
 
@@ -22,14 +31,6 @@
             <input id="favouriteId" name="favouriteId" type="text" required ng-maxlength="45" class="form-control" ng-model="userFavourites.favouriteId" placeholder="Enter the UserFavourites Favourite Id"></input>
             <span class="help-block error" ng-show="UserFavouritesForm.favouriteId.$error.required">required</span> 
             <span class="help-block error" ng-show="UserFavouritesForm.favouriteId.$error.maxlength">maximum length is 45</span>
-        </div>
-    </div>
-
-    <div class="form-group" ng-class="{'has-error': UserFavouritesForm.merchantId.$invalid}">
-        <label for="merchantId" class="col-sm-2 control-label">Merchant Id</label>
-        <div id="merchantIdControls" class="col-sm-10">
-            <input id="merchantId" name="merchantId" type="text" ng-maxlength="45" class="form-control" ng-model="userFavourites.merchantId" placeholder="Enter the UserFavourites Merchant Id"></input>
-            <span class="help-block error" ng-show="UserFavouritesForm.merchantId.$error.maxlength">maximum length is 45</span>
         </div>
     </div>
 

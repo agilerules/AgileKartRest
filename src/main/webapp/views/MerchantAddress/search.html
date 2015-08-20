@@ -12,6 +12,15 @@
     <form id="MerchantAddressSearch" class="form-horizontal">
         
     <div class="form-group">
+        <label for="merchant" class="col-sm-2 control-label">Merchant</label>
+        <div class="col-sm-10">
+            <select id="merchant" name="merchant" class="form-control" ng-model="search.merchant" ng-options="m as m.merchantId for m in merchantList">
+                <option value="">Choose a Merchant</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
         <label for="merchantAddress" class="col-sm-2 control-label">Merchant Address</label>
         <div class="col-sm-10">
             <input id="merchantAddress" name="merchantAddress" class="form-control" type="text" ng-model="search.merchantAddress" placeholder="Enter the MerchantAddress Merchant Address"></input>
@@ -89,13 +98,6 @@
     </div>
 
     <div class="form-group">
-        <label for="merchantId" class="col-sm-2 control-label">Merchant Id</label>
-        <div class="col-sm-10">
-            <input id="merchantId" name="merchantId" class="form-control" type="text" ng-model="search.merchantId" placeholder="Enter the MerchantAddress Merchant Id"></input>
-        </div>
-    </div>
-
-    <div class="form-group">
         <label for="lastUpdateUserId" class="col-sm-2 control-label">Last Update User Id</label>
         <div class="col-sm-10">
             <input id="lastUpdateUserId" name="lastUpdateUserId" class="form-control" type="text" ng-model="search.lastUpdateUserId" placeholder="Enter the MerchantAddress Last Update User Id"></input>
@@ -116,6 +118,7 @@
         <table class="table table-responsive table-bordered table-striped clearfix">
             <thead>
                 <tr>
+                    <th>Merchant</th>
                     <th>Merchant Address</th>
                     <th>Merchant Address 2</th>
                     <th>Merchant City</th>
@@ -127,13 +130,13 @@
                     <th>Merchant State</th>
                     <th>Address Type Name</th>
                     <th>Merchant Zip</th>
-                    <th>Merchant Id</th>
                     <th>Last Update User Id</th>
                     <th>Last Update Ts</th>
                 </tr>
             </thead>
             <tbody id="search-results-body">
                 <tr ng-repeat="result in searchResults | searchFilter:searchResults | startFrom:currentPage*pageSize | limitTo:pageSize">
+                        <td><a href="#/MerchantAddresses/edit/{{result.merchantAddressId}}">{{result.merchant.merchantId}}</a></td>
                     <td><a href="#/MerchantAddresses/edit/{{result.merchantAddressId}}">{{result.merchantAddress}}</a></td>
                     <td><a href="#/MerchantAddresses/edit/{{result.merchantAddressId}}">{{result.merchantAddress2}}</a></td>
                     <td><a href="#/MerchantAddresses/edit/{{result.merchantAddressId}}">{{result.merchantCity}}</a></td>
@@ -145,7 +148,6 @@
                     <td><a href="#/MerchantAddresses/edit/{{result.merchantAddressId}}">{{result.merchantState}}</a></td>
                     <td><a href="#/MerchantAddresses/edit/{{result.merchantAddressId}}">{{result.addressTypeName}}</a></td>
                     <td><a href="#/MerchantAddresses/edit/{{result.merchantAddressId}}">{{result.merchantZip}}</a></td>
-                    <td><a href="#/MerchantAddresses/edit/{{result.merchantAddressId}}">{{result.merchantId}}</a></td>
                     <td><a href="#/MerchantAddresses/edit/{{result.merchantAddressId}}">{{result.lastUpdateUserId}}</a></td>
                     <td><a href="#/MerchantAddresses/edit/{{result.merchantAddressId}}">{{result.lastUpdateTs| date:'yyyy-MM-dd HH:mm:ss Z'}}</a></td>
                 </tr>

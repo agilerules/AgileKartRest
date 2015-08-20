@@ -1,8 +1,27 @@
 
-angular.module('agilekartV2').controller('NewEventController', function ($scope, $location, locationParser, EventResource ) {
+angular.module('agileKartRest').controller('NewEventController', function ($scope, $location, locationParser, EventResource , LoyaltyEventDetailsResource) {
     $scope.disabled = false;
     $scope.$location = $location;
     $scope.event = $scope.event || {};
+    
+    $scope.loyaltyEventDetailsesList = LoyaltyEventDetailsResource.queryAll(function(items){
+        $scope.loyaltyEventDetailsesSelectionList = $.map(items, function(item) {
+            return ( {
+                value : item.loyaltyEventDetailsId,
+                text : item.loyaltyEventDetailsId
+            });
+        });
+    });
+    $scope.$watch("loyaltyEventDetailsesSelection", function(selection) {
+        if (typeof selection != 'undefined') {
+            $scope.event.loyaltyEventDetailses = [];
+            $.each(selection, function(idx,selectedItem) {
+                var collectionItem = {};
+                collectionItem.loyaltyEventDetailsId = selectedItem.value;
+                $scope.event.loyaltyEventDetailses.push(collectionItem);
+            });
+        }
+    });
     
 
     $scope.save = function() {

@@ -1,8 +1,23 @@
 
-angular.module('agilekartV2').controller('NewUserAddressController', function ($scope, $location, locationParser, UserAddressResource ) {
+angular.module('agileKartRest').controller('NewUserAddressController', function ($scope, $location, locationParser, UserAddressResource , UsersResource) {
     $scope.disabled = false;
     $scope.$location = $location;
     $scope.userAddress = $scope.userAddress || {};
+    
+    $scope.usersList = UsersResource.queryAll(function(items){
+        $scope.usersSelectionList = $.map(items, function(item) {
+            return ( {
+                value : item.userId,
+                text : item.userId
+            });
+        });
+    });
+    $scope.$watch("usersSelection", function(selection) {
+        if ( typeof selection != 'undefined') {
+            $scope.userAddress.users = {};
+            $scope.userAddress.users.userId = selection.value;
+        }
+    });
     
 
     $scope.save = function() {

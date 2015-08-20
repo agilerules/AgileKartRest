@@ -1,6 +1,6 @@
 
 
-angular.module('agilekartV2').controller('SearchLoyaltyProgramMerchantController', function($scope, $http, LoyaltyProgramMerchantResource ) {
+angular.module('agileKartRest').controller('SearchLoyaltyProgramMerchantController', function($scope, $http, LoyaltyProgramMerchantResource , MerchantResource) {
 
     $scope.search={};
     $scope.currentPage = 0;
@@ -17,6 +17,7 @@ angular.module('agilekartV2').controller('SearchLoyaltyProgramMerchantController
         }
         return max;
     };
+    $scope.merchantList = MerchantResource.queryAll();
 
     $scope.performSearch = function() {
         $scope.searchResults = LoyaltyProgramMerchantResource.queryAll(function(){

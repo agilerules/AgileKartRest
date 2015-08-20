@@ -12,16 +12,20 @@
     <form id="TaxRuleMerchantSearch" class="form-horizontal">
         
     <div class="form-group">
-        <label for="taxRuleId" class="col-sm-2 control-label">Tax Rule Id</label>
+        <label for="merchant" class="col-sm-2 control-label">Merchant</label>
         <div class="col-sm-10">
-            <input id="taxRuleId" name="taxRuleId" class="form-control" type="text" ng-model="search.taxRuleId" placeholder="Enter the TaxRuleMerchant Tax Rule Id"></input>
+            <select id="merchant" name="merchant" class="form-control" ng-model="search.merchant" ng-options="m as m.merchantId for m in merchantList">
+                <option value="">Choose a Merchant</option>
+            </select>
         </div>
     </div>
 
     <div class="form-group">
-        <label for="merchantId" class="col-sm-2 control-label">Merchant Id</label>
+        <label for="taxRule" class="col-sm-2 control-label">Tax Rule</label>
         <div class="col-sm-10">
-            <input id="merchantId" name="merchantId" class="form-control" type="text" ng-model="search.merchantId" placeholder="Enter the TaxRuleMerchant Merchant Id"></input>
+            <select id="taxRule" name="taxRule" class="form-control" ng-model="search.taxRule" ng-options="t as t.taxRuleId for t in taxRuleList">
+                <option value="">Choose a Tax Rule</option>
+            </select>
         </div>
     </div>
 
@@ -46,16 +50,16 @@
         <table class="table table-responsive table-bordered table-striped clearfix">
             <thead>
                 <tr>
-                    <th>Tax Rule Id</th>
-                    <th>Merchant Id</th>
+                    <th>Merchant</th>
+                    <th>Tax Rule</th>
                     <th>Last Update User Id</th>
                     <th>Last Update Ts</th>
                 </tr>
             </thead>
             <tbody id="search-results-body">
                 <tr ng-repeat="result in searchResults | searchFilter:searchResults | startFrom:currentPage*pageSize | limitTo:pageSize">
-                    <td><a href="#/TaxRuleMerchants/edit/{{result.taxRuleMerchantId}}">{{result.taxRuleId}}</a></td>
-                    <td><a href="#/TaxRuleMerchants/edit/{{result.taxRuleMerchantId}}">{{result.merchantId}}</a></td>
+                        <td><a href="#/TaxRuleMerchants/edit/{{result.taxRuleMerchantId}}">{{result.merchant.merchantId}}</a></td>
+                        <td><a href="#/TaxRuleMerchants/edit/{{result.taxRuleMerchantId}}">{{result.taxRule.taxRuleId}}</a></td>
                     <td><a href="#/TaxRuleMerchants/edit/{{result.taxRuleMerchantId}}">{{result.lastUpdateUserId}}</a></td>
                     <td><a href="#/TaxRuleMerchants/edit/{{result.taxRuleMerchantId}}">{{result.lastUpdateTs| date:'yyyy-MM-dd HH:mm:ss Z'}}</a></td>
                 </tr>

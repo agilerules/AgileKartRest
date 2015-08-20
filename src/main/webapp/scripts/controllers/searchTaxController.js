@@ -1,6 +1,6 @@
 
 
-angular.module('agilekartV2').controller('SearchTaxController', function($scope, $http, TaxResource ) {
+angular.module('agileKartRest').controller('SearchTaxController', function($scope, $http, TaxResource , TaxRuleResource) {
 
     $scope.search={};
     $scope.currentPage = 0;

@@ -1,6 +1,6 @@
 
 
-angular.module('agilekartV2').controller('EditMerchantReviewController', function($scope, $routeParams, $location, MerchantReviewResource ) {
+angular.module('agileKartRest').controller('EditMerchantReviewController', function($scope, $routeParams, $location, MerchantReviewResource , MerchantResource, UsersResource) {
     var self = this;
     $scope.disabled = false;
     $scope.$location = $location;
@@ -9,6 +9,40 @@ angular.module('agilekartV2').controller('EditMerchantReviewController', functio
         var successCallback = function(data){
             self.original = data;
             $scope.merchantReview = new MerchantReviewResource(self.original);
+            MerchantResource.queryAll(function(items) {
+                $scope.merchantSelectionList = $.map(items, function(item) {
+                    var wrappedObject = {
+                        merchantId : item.merchantId
+                    };
+                    var labelObject = {
+                        value : item.merchantId,
+                        text : item.merchantId
+                    };
+                    if($scope.merchantReview.merchant && item.merchantId == $scope.merchantReview.merchant.merchantId) {
+                        $scope.merchantSelection = labelObject;
+                        $scope.merchantReview.merchant = wrappedObject;
+                        self.original.merchant = $scope.merchantReview.merchant;
+                    }
+                    return labelObject;
+                });
+            });
+            UsersResource.queryAll(function(items) {
+                $scope.usersSelectionList = $.map(items, function(item) {
+                    var wrappedObject = {
+                        userId : item.userId
+                    };
+                    var labelObject = {
+                        value : item.userId,
+                        text : item.userId
+                    };
+                    if($scope.merchantReview.users && item.userId == $scope.merchantReview.users.userId) {
+                        $scope.usersSelection = labelObject;
+                        $scope.merchantReview.users = wrappedObject;
+                        self.original.users = $scope.merchantReview.users;
+                    }
+                    return labelObject;
+                });
+            });
         };
         var errorCallback = function() {
             $location.path("/MerchantReviews");
@@ -46,6 +80,18 @@ angular.module('agilekartV2').controller('EditMerchantReviewController', functio
         $scope.merchantReview.$remove(successCallback, errorCallback);
     };
     
+    $scope.$watch("merchantSelection", function(selection) {
+        if (typeof selection != 'undefined') {
+            $scope.merchantReview.merchant = {};
+            $scope.merchantReview.merchant.merchantId = selection.value;
+        }
+    });
+    $scope.$watch("usersSelection", function(selection) {
+        if (typeof selection != 'undefined') {
+            $scope.merchantReview.users = {};
+            $scope.merchantReview.users.userId = selection.value;
+        }
+    });
     
     $scope.get();
 });

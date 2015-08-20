@@ -40,6 +40,24 @@
         </div>
     </div>
 
+    <div class="form-group" ng-class="{'has-error': PaymentGatewayForm.merchantPaymentGateways.$invalid}">
+        <label for="merchantPaymentGateways" class="col-sm-2 control-label">Merchant Payment Gateways</label>
+        <div id="merchantPaymentGatewaysControls" class="col-sm-10">
+            <select id="merchantPaymentGateways" name="merchantPaymentGateways" multiple class="form-control" ng-model="merchantPaymentGatewaysSelection" ng-options="m.text for m in merchantPaymentGatewaysSelectionList">
+                <option value="">Choose a Merchant Payment Gateways</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': PaymentGatewayForm.orderses.$invalid}">
+        <label for="orderses" class="col-sm-2 control-label">Orderses</label>
+        <div id="ordersesControls" class="col-sm-10">
+            <select id="orderses" name="orderses" multiple class="form-control" ng-model="ordersesSelection" ng-options="o.text for o in ordersesSelectionList">
+                <option value="">Choose a Orderses</option>
+            </select>
+        </div>
+    </div>
+
 
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">

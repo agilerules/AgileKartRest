@@ -12,6 +12,24 @@
     <form id="OfferSearch" class="form-horizontal">
         
     <div class="form-group">
+        <label for="merchant" class="col-sm-2 control-label">Merchant</label>
+        <div class="col-sm-10">
+            <select id="merchant" name="merchant" class="form-control" ng-model="search.merchant" ng-options="m as m.merchantId for m in merchantList">
+                <option value="">Choose a Merchant</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="product" class="col-sm-2 control-label">Product</label>
+        <div class="col-sm-10">
+            <select id="product" name="product" class="form-control" ng-model="search.product" ng-options="p as p.productId for p in productList">
+                <option value="">Choose a Product</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
         <label for="offerName" class="col-sm-2 control-label">Offer Name</label>
         <div class="col-sm-10">
             <input id="offerName" name="offerName" class="form-control" type="text" ng-model="search.offerName" placeholder="Enter the Offer Offer Name"></input>
@@ -26,20 +44,6 @@
     </div>
 
 
-
-    <div class="form-group">
-        <label for="merchantId" class="col-sm-2 control-label">Merchant Id</label>
-        <div class="col-sm-10">
-            <input id="merchantId" name="merchantId" class="form-control" type="text" ng-model="search.merchantId" placeholder="Enter the Offer Merchant Id"></input>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="productId" class="col-sm-2 control-label">Product Id</label>
-        <div class="col-sm-10">
-            <input id="productId" name="productId" class="form-control" type="text" ng-model="search.productId" placeholder="Enter the Offer Product Id"></input>
-        </div>
-    </div>
 
     <div class="form-group">
         <label for="offerMaxCount" class="col-sm-2 control-label">Offer Max Count</label>
@@ -69,12 +73,12 @@
         <table class="table table-responsive table-bordered table-striped clearfix">
             <thead>
                 <tr>
+                    <th>Merchant</th>
+                    <th>Product</th>
                     <th>Offer Name</th>
                     <th>Offer Discount Pct</th>
                     <th>Offer Start Date</th>
                     <th>Offer End Date</th>
-                    <th>Merchant Id</th>
-                    <th>Product Id</th>
                     <th>Offer Max Count</th>
                     <th>Last Update User Id</th>
                     <th>Last Update Ts</th>
@@ -82,12 +86,12 @@
             </thead>
             <tbody id="search-results-body">
                 <tr ng-repeat="result in searchResults | searchFilter:searchResults | startFrom:currentPage*pageSize | limitTo:pageSize">
+                        <td><a href="#/Offers/edit/{{result.offerId}}">{{result.merchant.merchantId}}</a></td>
+                        <td><a href="#/Offers/edit/{{result.offerId}}">{{result.product.productId}}</a></td>
                     <td><a href="#/Offers/edit/{{result.offerId}}">{{result.offerName}}</a></td>
                     <td><a href="#/Offers/edit/{{result.offerId}}">{{result.offerDiscountPct}}</a></td>
                     <td><a href="#/Offers/edit/{{result.offerId}}">{{result.offerStartDate| date:'mediumDate'}}</a></td>
                     <td><a href="#/Offers/edit/{{result.offerId}}">{{result.offerEndDate| date:'mediumDate'}}</a></td>
-                    <td><a href="#/Offers/edit/{{result.offerId}}">{{result.merchantId}}</a></td>
-                    <td><a href="#/Offers/edit/{{result.offerId}}">{{result.productId}}</a></td>
                     <td><a href="#/Offers/edit/{{result.offerId}}">{{result.offerMaxCount}}</a></td>
                     <td><a href="#/Offers/edit/{{result.offerId}}">{{result.lastUpdateUserId}}</a></td>
                     <td><a href="#/Offers/edit/{{result.offerId}}">{{result.lastUpdateTs| date:'yyyy-MM-dd HH:mm:ss Z'}}</a></td>
