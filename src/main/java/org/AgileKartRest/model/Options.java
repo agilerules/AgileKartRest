@@ -73,7 +73,7 @@ private String optionId;
       this.optionId = optionId;
    }
 
-   @ManyToOne(fetch = FetchType.LAZY)
+   @ManyToOne(fetch = FetchType.EAGER)
    @JoinColumn(name = "option_group_id", nullable = false)
    public OptionGroups getOptionGroups()
    {
@@ -119,7 +119,7 @@ private String optionId;
       this.lastUpdateTs = lastUpdateTs;
    }
 
-   @OneToMany(fetch = FetchType.LAZY, mappedBy = "options")
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "options")
    public Set<ProductOption> getProductOptions()
    {
       return this.productOptions;

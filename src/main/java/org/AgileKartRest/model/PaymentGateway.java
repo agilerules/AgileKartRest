@@ -114,7 +114,7 @@ private String paymentGatewayId;
       this.lastUpdateTs = lastUpdateTs;
    }
 
-   @OneToMany(fetch = FetchType.LAZY, mappedBy = "paymentGateway")
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "paymentGateway")
    public Set<MerchantPaymentGateway> getMerchantPaymentGateways()
    {
       return this.merchantPaymentGateways;
@@ -125,7 +125,7 @@ private String paymentGatewayId;
       this.merchantPaymentGateways = merchantPaymentGateways;
    }
 
-   @OneToMany(fetch = FetchType.LAZY, mappedBy = "paymentGateway")
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "paymentGateway")
    public Set<Orders> getOrderses()
    {
       return this.orderses;

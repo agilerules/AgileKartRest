@@ -62,7 +62,7 @@ private String productCategoryId;
       this.productCategoryId = productCategoryId;
    }
 
-   @ManyToOne(fetch = FetchType.LAZY)
+   @ManyToOne(fetch = FetchType.EAGER)
    @JoinColumn(name = "category_id", nullable = false)
    public Category getCategory()
    {
@@ -74,7 +74,7 @@ private String productCategoryId;
       this.category = category;
    }
 
-   @ManyToOne(fetch = FetchType.LAZY)
+   @ManyToOne(fetch = FetchType.EAGER)
    @JoinColumn(name = "product_id", nullable = false)
    public Product getProduct()
    {

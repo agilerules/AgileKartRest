@@ -62,7 +62,7 @@ private String merchantPaymentGatewayId;
       this.merchantPaymentGatewayId = merchantPaymentGatewayId;
    }
 
-   @ManyToOne(fetch = FetchType.LAZY)
+   @ManyToOne(fetch = FetchType.EAGER)
    @JoinColumn(name = "merchant_id", nullable = false)
    public Merchant getMerchant()
    {
@@ -74,7 +74,7 @@ private String merchantPaymentGatewayId;
       this.merchant = merchant;
    }
 
-   @ManyToOne(fetch = FetchType.LAZY)
+   @ManyToOne(fetch = FetchType.EAGER)
    @JoinColumn(name = "payment_gateway_id", nullable = false)
    public PaymentGateway getPaymentGateway()
    {

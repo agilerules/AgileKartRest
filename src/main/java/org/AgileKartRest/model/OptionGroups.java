@@ -120,7 +120,7 @@ private String optionGroupId;
       this.lastUpdateTs = lastUpdateTs;
    }
 
-   @OneToMany(fetch = FetchType.LAZY, mappedBy = "optionGroups")
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "optionGroups")
    public Set<Options> getOptionses()
    {
       return this.optionses;
@@ -131,7 +131,7 @@ private String optionGroupId;
       this.optionses = optionses;
    }
 
-   @OneToMany(fetch = FetchType.LAZY, mappedBy = "optionGroups")
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "optionGroups")
    public Set<CategoryOptions> getCategoryOptionses()
    {
       return this.categoryOptionses;
@@ -142,7 +142,7 @@ private String optionGroupId;
       this.categoryOptionses = categoryOptionses;
    }
 
-   @OneToMany(fetch = FetchType.LAZY, mappedBy = "optionGroups")
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "optionGroups")
    public Set<ProductOption> getProductOptions()
    {
       return this.productOptions;

@@ -81,7 +81,7 @@ private String merchantAddressId;
       this.merchantAddressId = merchantAddressId;
    }
 
-   @ManyToOne(fetch = FetchType.LAZY)
+   @ManyToOne(fetch = FetchType.EAGER)
    @JoinColumn(name = "merchant_id", nullable = false)
    public Merchant getMerchant()
    {

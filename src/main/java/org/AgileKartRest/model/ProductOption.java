@@ -65,7 +65,7 @@ private String productOptionId;
       this.productOptionId = productOptionId;
    }
 
-   @ManyToOne(fetch = FetchType.LAZY)
+   @ManyToOne(fetch = FetchType.EAGER)
    @JoinColumn(name = "option_group_id", nullable = false)
    public OptionGroups getOptionGroups()
    {
@@ -77,7 +77,7 @@ private String productOptionId;
       this.optionGroups = optionGroups;
    }
 
-   @ManyToOne(fetch = FetchType.LAZY)
+   @ManyToOne(fetch = FetchType.EAGER)
    @JoinColumn(name = "option_id", nullable = false)
    public Options getOptions()
    {
@@ -89,7 +89,7 @@ private String productOptionId;
       this.options = options;
    }
 
-   @ManyToOne(fetch = FetchType.LAZY)
+   @ManyToOne(fetch = FetchType.EAGER)
    @JoinColumn(name = "product_id", nullable = false)
    public Product getProduct()
    {

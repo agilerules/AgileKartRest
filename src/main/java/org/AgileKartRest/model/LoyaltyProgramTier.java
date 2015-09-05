@@ -128,7 +128,7 @@ private String tierId;
       this.lastUpdateTs = lastUpdateTs;
    }
 
-   @OneToMany(fetch = FetchType.LAZY, mappedBy = "loyaltyProgramTier")
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "loyaltyProgramTier")
    public Set<UserRewards> getUserRewardses()
    {
       return this.userRewardses;
@@ -139,7 +139,7 @@ private String tierId;
       this.userRewardses = userRewardses;
    }
 
-   @OneToMany(fetch = FetchType.LAZY, mappedBy = "loyaltyProgramTier")
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "loyaltyProgramTier")
    public Set<LoyaltyEventDetails> getLoyaltyEventDetailses()
    {
       return this.loyaltyEventDetailses;

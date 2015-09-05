@@ -66,7 +66,7 @@ private String orderStatusId;
       this.orderStatusId = orderStatusId;
    }
 
-   @ManyToOne(fetch = FetchType.LAZY)
+   @ManyToOne(fetch = FetchType.EAGER)
    @JoinColumn(name = "order_status_desc_id", nullable = false)
    public OrderStatusDesc getOrderStatusDesc()
    {
@@ -78,7 +78,7 @@ private String orderStatusId;
       this.orderStatusDesc = orderStatusDesc;
    }
 
-   @ManyToOne(fetch = FetchType.LAZY)
+   @ManyToOne(fetch = FetchType.EAGER)
    @JoinColumn(name = "order_id", nullable = false)
    public Orders getOrders()
    {

@@ -81,7 +81,7 @@ private String addressId;
       this.addressId = addressId;
    }
 
-   @ManyToOne(fetch = FetchType.LAZY)
+   @ManyToOne(fetch = FetchType.EAGER)
    @JoinColumn(name = "user_id", nullable = false)
    public Users getUsers()
    {

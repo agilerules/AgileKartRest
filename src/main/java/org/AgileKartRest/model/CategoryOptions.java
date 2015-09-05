@@ -60,7 +60,7 @@ private String categoryOptionsId;
       this.categoryOptionsId = categoryOptionsId;
    }
 
-   @ManyToOne(fetch = FetchType.LAZY)
+   @ManyToOne(fetch = FetchType.EAGER)
    @JoinColumn(name = "category_id")
    public Category getCategory()
    {
@@ -72,7 +72,7 @@ private String categoryOptionsId;
       this.category = category;
    }
 
-   @ManyToOne(fetch = FetchType.LAZY)
+   @ManyToOne(fetch = FetchType.EAGER)
    @JoinColumn(name = "option_group_id")
    public OptionGroups getOptionGroups()
    {

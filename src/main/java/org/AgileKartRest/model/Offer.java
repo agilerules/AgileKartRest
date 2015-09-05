@@ -75,7 +75,7 @@ private String offerId;
       this.offerId = offerId;
    }
 
-   @ManyToOne(fetch = FetchType.LAZY)
+   @ManyToOne(fetch = FetchType.EAGER)
    @JoinColumn(name = "merchant_id")
    public Merchant getMerchant()
    {
@@ -87,7 +87,7 @@ private String offerId;
       this.merchant = merchant;
    }
 
-   @ManyToOne(fetch = FetchType.LAZY)
+   @ManyToOne(fetch = FetchType.EAGER)
    @JoinColumn(name = "product_id")
    public Product getProduct()
    {

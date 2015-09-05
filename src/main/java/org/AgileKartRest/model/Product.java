@@ -110,7 +110,7 @@ private String productId;
       this.productId = productId;
    }
 
-   @ManyToOne(fetch = FetchType.LAZY)
+   @ManyToOne(fetch = FetchType.EAGER)
    @JoinColumn(name = "merchant_id", nullable = false)
    public Merchant getMerchant()
    {
@@ -210,7 +210,7 @@ private String productId;
       this.productImage = productImage;
    }
 
-   @Column(name = "product_ stock", precision = 12, scale = 0)
+   @Column(name = "product_stock", precision = 12, scale = 0)
    public Float getProductStock()
    {
       return this.productStock;
@@ -288,7 +288,7 @@ private String productId;
       this.lastUpdateTs = lastUpdateTs;
    }
 
-   @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "product")
    public Set<ProductOption> getProductOptions()
    {
       return this.productOptions;
@@ -299,7 +299,7 @@ private String productId;
       this.productOptions = productOptions;
    }
 
-   @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "product")
    public Set<ProductReview> getProductReviews()
    {
       return this.productReviews;
@@ -310,7 +310,7 @@ private String productId;
       this.productReviews = productReviews;
    }
 
-   @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "product")
    public Set<ProductCategory> getProductCategories()
    {
       return this.productCategories;
@@ -321,7 +321,7 @@ private String productId;
       this.productCategories = productCategories;
    }
 
-   @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "product")
    public Set<OrderDetails> getOrderDetailses()
    {
       return this.orderDetailses;
@@ -332,7 +332,7 @@ private String productId;
       this.orderDetailses = orderDetailses;
    }
 
-   @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "product")
    public Set<Offer> getOffers()
    {
       return this.offers;

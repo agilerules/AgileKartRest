@@ -75,7 +75,7 @@ private String loyaltyProgramMerchantId;
       this.loyaltyProgramMerchantId = loyaltyProgramMerchantId;
    }
 
-   @ManyToOne(fetch = FetchType.LAZY)
+   @ManyToOne(fetch = FetchType.EAGER)
    @JoinColumn(name = "merchant_id", nullable = false)
    public Merchant getMerchant()
    {

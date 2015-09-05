@@ -79,7 +79,7 @@ private String rewardId;
       this.rewardId = rewardId;
    }
 
-   @ManyToOne(fetch = FetchType.LAZY)
+   @ManyToOne(fetch = FetchType.EAGER)
    @JoinColumn(name = "tier_id", nullable = false)
    public LoyaltyProgramTier getLoyaltyProgramTier()
    {
@@ -91,7 +91,7 @@ private String rewardId;
       this.loyaltyProgramTier = loyaltyProgramTier;
    }
 
-   @ManyToOne(fetch = FetchType.LAZY)
+   @ManyToOne(fetch = FetchType.EAGER)
    @JoinColumn(name = "order_id", nullable = false)
    public Orders getOrders()
    {
@@ -103,7 +103,7 @@ private String rewardId;
       this.orders = orders;
    }
 
-   @ManyToOne(fetch = FetchType.LAZY)
+   @ManyToOne(fetch = FetchType.EAGER)
    @JoinColumn(name = "user_id", nullable = false)
    public Users getUsers()
    {

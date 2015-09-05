@@ -74,7 +74,7 @@ private String taxRuleId;
       this.taxRuleId = taxRuleId;
    }
 
-   @ManyToOne(fetch = FetchType.LAZY)
+   @ManyToOne(fetch = FetchType.EAGER)
    @JoinColumn(name = "tax_id", nullable = false)
    public Tax getTax()
    {
@@ -142,7 +142,7 @@ private String taxRuleId;
       this.lastUpdateTs = lastUpdateTs;
    }
 
-   @OneToMany(fetch = FetchType.LAZY, mappedBy = "taxRule")
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "taxRule")
    public Set<TaxRuleMerchant> getTaxRuleMerchants()
    {
       return this.taxRuleMerchants;

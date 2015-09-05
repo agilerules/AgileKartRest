@@ -105,7 +105,7 @@ private String featureId;
       this.lastUpdateTs = lastUpdateTs;
    }
 
-   @OneToMany(fetch = FetchType.LAZY, mappedBy = "features")
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "features")
    public Set<FeatureOptions> getFeatureOptionses()
    {
       return this.featureOptionses;
@@ -116,7 +116,7 @@ private String featureId;
       this.featureOptionses = featureOptionses;
    }
 
-   @OneToMany(fetch = FetchType.LAZY, mappedBy = "features")
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "features")
    public Set<MerchantFeatures> getMerchantFeatureses()
    {
       return this.merchantFeatureses;

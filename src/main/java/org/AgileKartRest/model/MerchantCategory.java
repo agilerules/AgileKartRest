@@ -62,7 +62,7 @@ private String merchantCategoryId;
       this.merchantCategoryId = merchantCategoryId;
    }
 
-   @ManyToOne(fetch = FetchType.LAZY)
+   @ManyToOne(fetch = FetchType.EAGER)
    @JoinColumn(name = "category_id", nullable = false)
    public Category getCategory()
    {
@@ -74,7 +74,7 @@ private String merchantCategoryId;
       this.category = category;
    }
 
-   @ManyToOne(fetch = FetchType.LAZY)
+   @ManyToOne(fetch = FetchType.EAGER)
    @JoinColumn(name = "merchant_id", nullable = false)
    public Merchant getMerchant()
    {

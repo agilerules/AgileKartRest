@@ -112,7 +112,7 @@ private String taxId;
       this.lastUpdateTs = lastUpdateTs;
    }
 
-   @OneToMany(fetch = FetchType.LAZY, mappedBy = "tax")
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "tax")
    public Set<TaxRule> getTaxRules()
    {
       return this.taxRules;

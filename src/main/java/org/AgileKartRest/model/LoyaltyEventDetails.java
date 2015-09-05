@@ -64,7 +64,7 @@ private String loyaltyEventDetailsId;
       this.loyaltyEventDetailsId = loyaltyEventDetailsId;
    }
 
-   @ManyToOne(fetch = FetchType.LAZY)
+   @ManyToOne(fetch = FetchType.EAGER)
    @JoinColumn(name = "event_id", nullable = false)
    public Event getEvent()
    {
@@ -76,7 +76,7 @@ private String loyaltyEventDetailsId;
       this.event = event;
    }
 
-   @ManyToOne(fetch = FetchType.LAZY)
+   @ManyToOne(fetch = FetchType.EAGER)
    @JoinColumn(name = "tier_id", nullable = false)
    public LoyaltyProgramTier getLoyaltyProgramTier()
    {

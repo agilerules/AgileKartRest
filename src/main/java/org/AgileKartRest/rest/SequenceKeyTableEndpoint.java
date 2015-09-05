@@ -20,6 +20,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriBuilder;
+
 import org.AgileKartRest.model.SequenceKeyTable;
 
 /**
@@ -56,9 +57,9 @@ public class SequenceKeyTableEndpoint
    @GET
    @Path("/{id}")
    @Produces("application/json")
-   public Response findById(@PathParam("id") int id)
+   public Response findById(@PathParam("id") String id)
    {
-      TypedQuery<SequenceKeyTable> findByIdQuery = em.createQuery("SELECT DISTINCT s FROM SequenceKeyTable s WHERE s.tableId = :entityId ORDER BY s.tableId", SequenceKeyTable.class);
+      TypedQuery<SequenceKeyTable> findByIdQuery = em.createQuery("SELECT DISTINCT s FROM SequenceKeyTable s WHERE s.keyPrefix = :entityId ORDER BY s.tableId", SequenceKeyTable.class);
       findByIdQuery.setParameter("entityId", id);
       SequenceKeyTable entity;
       try

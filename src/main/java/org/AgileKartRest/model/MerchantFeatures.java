@@ -65,7 +65,7 @@ private String merchantFeaturesId;
       this.merchantFeaturesId = merchantFeaturesId;
    }
 
-   @ManyToOne(fetch = FetchType.LAZY)
+   @ManyToOne(fetch = FetchType.EAGER)
    @JoinColumn(name = "feature_options_id", nullable = false)
    public FeatureOptions getFeatureOptions()
    {
@@ -77,7 +77,7 @@ private String merchantFeaturesId;
       this.featureOptions = featureOptions;
    }
 
-   @ManyToOne(fetch = FetchType.LAZY)
+   @ManyToOne(fetch = FetchType.EAGER)
    @JoinColumn(name = "feature_id", nullable = false)
    public Features getFeatures()
    {
@@ -89,7 +89,7 @@ private String merchantFeaturesId;
       this.features = features;
    }
 
-   @ManyToOne(fetch = FetchType.LAZY)
+   @ManyToOne(fetch = FetchType.EAGER)
    @JoinColumn(name = "merchant_id", nullable = false)
    public Merchant getMerchant()
    {

@@ -71,7 +71,7 @@ private String detailId;
       this.detailId = detailId;
    }
 
-   @ManyToOne(fetch = FetchType.LAZY)
+   @ManyToOne(fetch = FetchType.EAGER)
    @JoinColumn(name = "order_id", nullable = false)
    public Orders getOrders()
    {
@@ -83,7 +83,7 @@ private String detailId;
       this.orders = orders;
    }
 
-   @ManyToOne(fetch = FetchType.LAZY)
+   @ManyToOne(fetch = FetchType.EAGER)
    @JoinColumn(name = "product_id", nullable = false)
    public Product getProduct()
    {

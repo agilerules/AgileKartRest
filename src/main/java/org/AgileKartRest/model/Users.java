@@ -214,7 +214,7 @@ private String userId;
       this.lastUpdateTs = lastUpdateTs;
    }
 
-   @OneToMany(fetch = FetchType.LAZY, mappedBy = "users")
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "users")
    public Set<Orders> getOrderses()
    {
       return this.orderses;
@@ -225,7 +225,7 @@ private String userId;
       this.orderses = orderses;
    }
 
-   @OneToMany(fetch = FetchType.LAZY, mappedBy = "users")
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "users")
    public Set<ProductReview> getProductReviews()
    {
       return this.productReviews;
@@ -236,7 +236,7 @@ private String userId;
       this.productReviews = productReviews;
    }
 
-   @OneToMany(fetch = FetchType.LAZY, mappedBy = "users")
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "users")
    public Set<UserRewards> getUserRewardses()
    {
       return this.userRewardses;
@@ -247,7 +247,7 @@ private String userId;
       this.userRewardses = userRewardses;
    }
 
-   @OneToMany(fetch = FetchType.LAZY, mappedBy = "users")
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "users")
    public Set<UserAddress> getUserAddresses()
    {
       return this.userAddresses;
@@ -258,7 +258,7 @@ private String userId;
       this.userAddresses = userAddresses;
    }
 
-   @OneToMany(fetch = FetchType.LAZY, mappedBy = "users")
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "users")
    public Set<UserFavourites> getUserFavouriteses()
    {
       return this.userFavouriteses;
@@ -269,7 +269,7 @@ private String userId;
       this.userFavouriteses = userFavouriteses;
    }
 
-   @OneToMany(fetch = FetchType.LAZY, mappedBy = "users")
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "users")
    public Set<MerchantReview> getMerchantReviews()
    {
       return this.merchantReviews;

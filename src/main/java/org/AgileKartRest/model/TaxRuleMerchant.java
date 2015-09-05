@@ -62,7 +62,7 @@ private String taxRuleMerchantId;
       this.taxRuleMerchantId = taxRuleMerchantId;
    }
 
-   @ManyToOne(fetch = FetchType.LAZY)
+   @ManyToOne(fetch = FetchType.EAGER)
    @JoinColumn(name = "merchant_id", nullable = false)
    public Merchant getMerchant()
    {
@@ -74,7 +74,7 @@ private String taxRuleMerchantId;
       this.merchant = merchant;
    }
 
-   @ManyToOne(fetch = FetchType.LAZY)
+   @ManyToOne(fetch = FetchType.EAGER)
    @JoinColumn(name = "tax_rule_id", nullable = false)
    public TaxRule getTaxRule()
    {

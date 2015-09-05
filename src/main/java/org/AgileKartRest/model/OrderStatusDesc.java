@@ -103,7 +103,7 @@ private String orderStatusDescId;
       this.lastUpdateTs = lastUpdateTs;
    }
 
-   @OneToMany(fetch = FetchType.LAZY, mappedBy = "orderStatusDesc")
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "orderStatusDesc")
    public Set<OrderStatus> getOrderStatuses()
    {
       return this.orderStatuses;

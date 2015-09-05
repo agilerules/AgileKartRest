@@ -70,7 +70,7 @@ private String featureOptionsId;
       this.featureOptionsId = featureOptionsId;
    }
 
-   @ManyToOne(fetch = FetchType.LAZY)
+   @ManyToOne(fetch = FetchType.EAGER)
    @JoinColumn(name = "feature_id", nullable = false)
    public Features getFeatures()
    {
@@ -116,7 +116,7 @@ private String featureOptionsId;
       this.lastUpdateTs = lastUpdateTs;
    }
 
-   @OneToMany(fetch = FetchType.LAZY, mappedBy = "featureOptions")
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "featureOptions")
    public Set<MerchantFeatures> getMerchantFeatureses()
    {
       return this.merchantFeatureses;

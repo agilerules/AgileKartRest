@@ -104,7 +104,7 @@ private String categoryId;
       this.lastUpdateTs = lastUpdateTs;
    }
 
-   @OneToMany(fetch = FetchType.LAZY, mappedBy = "category")
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "category")
    public Set<ProductCategory> getProductCategories()
    {
       return this.productCategories;
@@ -115,7 +115,7 @@ private String categoryId;
       this.productCategories = productCategories;
    }
 
-   @OneToMany(fetch = FetchType.LAZY, mappedBy = "category")
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "category")
    public Set<MerchantCategory> getMerchantCategories()
    {
       return this.merchantCategories;
@@ -126,7 +126,7 @@ private String categoryId;
       this.merchantCategories = merchantCategories;
    }
 
-   @OneToMany(fetch = FetchType.LAZY, mappedBy = "category")
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "category")
    public Set<CategoryOptions> getCategoryOptionses()
    {
       return this.categoryOptionses;

@@ -160,7 +160,7 @@ private String orderId;
       this.orderId = orderId;
    }
 
-   @ManyToOne(fetch = FetchType.LAZY)
+   @ManyToOne(fetch = FetchType.EAGER)
    @JoinColumn(name = "payment_gateway_id")
    public PaymentGateway getPaymentGateway()
    {
@@ -172,7 +172,7 @@ private String orderId;
       this.paymentGateway = paymentGateway;
    }
 
-   @ManyToOne(fetch = FetchType.LAZY)
+   @ManyToOne(fetch = FetchType.EAGER)
    @JoinColumn(name = "user_id", nullable = false)
    public Users getUsers()
    {
@@ -540,7 +540,7 @@ private String orderId;
       this.lastUpdateTs = lastUpdateTs;
    }
 
-   @OneToMany(fetch = FetchType.LAZY, mappedBy = "orders")
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "orders")
    public Set<OrderStatus> getOrderStatuses()
    {
       return this.orderStatuses;
@@ -551,7 +551,7 @@ private String orderId;
       this.orderStatuses = orderStatuses;
    }
 
-   @OneToMany(fetch = FetchType.LAZY, mappedBy = "orders")
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "orders")
    public Set<OrderDetails> getOrderDetailses()
    {
       return this.orderDetailses;
@@ -562,7 +562,7 @@ private String orderId;
       this.orderDetailses = orderDetailses;
    }
 
-   @OneToMany(fetch = FetchType.LAZY, mappedBy = "orders")
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "orders")
    public Set<UserRewards> getUserRewardses()
    {
       return this.userRewardses;

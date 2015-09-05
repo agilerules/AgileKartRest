@@ -26,7 +26,7 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 @Table(name = "merchant"
       , catalog = "agilekartv2"
       , uniqueConstraints = @UniqueConstraint(columnNames = "merchant_name"))
-@JsonIgnoreProperties({ "merchantFeatureses","merchantReviews","merchantCategories",
+@JsonIgnoreProperties({ "merchantFeatureses","offers","merchantReviews","merchantCategories",
 	"merchantAddresses","merchantPaymentGateways","loyaltyProgramMerchants","taxRuleMerchants",
 	"userFavouriteses","products"})
 @XmlRootElement
@@ -36,7 +36,6 @@ public class Merchant implements java.io.Serializable
 	private String merchantId;
    private String merchantName;
    private String merchantEmail;
-   private String merchantPassword;
    private String merchantPhoneNo;
    private Boolean merchantEmailVerified;
    private String merchantVerificationCode;
@@ -60,20 +59,18 @@ public class Merchant implements java.io.Serializable
    {
    }
 
-   public Merchant(String merchantId, String merchantName, String merchantEmail, String merchantPassword)
+   public Merchant(String merchantId, String merchantName, String merchantEmail)
    {
       this.merchantId = merchantId;
       this.merchantName = merchantName;
       this.merchantEmail = merchantEmail;
-      this.merchantPassword = merchantPassword;
    }
 
-   public Merchant(String merchantId, String merchantName, String merchantEmail, String merchantPassword, String merchantPhoneNo, Boolean merchantEmailVerified, String merchantVerificationCode, Integer minOrder, Integer deliveryTime, Integer merchantRating, String lastUpdateUserId, Date lastUpdateTs, Set<MerchantFeatures> merchantFeatureses, Set<Offer> offers, Set<MerchantReview> merchantReviews, Set<MerchantCategory> merchantCategories, Set<MerchantAddress> merchantAddresses, Set<MerchantPaymentGateway> merchantPaymentGateways, Set<LoyaltyProgramMerchant> loyaltyProgramMerchants, Set<TaxRuleMerchant> taxRuleMerchants, Set<UserFavourites> userFavouriteses, Set<Product> products)
+   public Merchant(String merchantId, String merchantName, String merchantEmail,  String merchantPhoneNo, Boolean merchantEmailVerified, String merchantVerificationCode, Integer minOrder, Integer deliveryTime, Integer merchantRating, String lastUpdateUserId, Date lastUpdateTs, Set<MerchantFeatures> merchantFeatureses, Set<Offer> offers, Set<MerchantReview> merchantReviews, Set<MerchantCategory> merchantCategories, Set<MerchantAddress> merchantAddresses, Set<MerchantPaymentGateway> merchantPaymentGateways, Set<LoyaltyProgramMerchant> loyaltyProgramMerchants, Set<TaxRuleMerchant> taxRuleMerchants, Set<UserFavourites> userFavouriteses, Set<Product> products)
    {
       this.merchantId = merchantId;
       this.merchantName = merchantName;
       this.merchantEmail = merchantEmail;
-      this.merchantPassword = merchantPassword;
       this.merchantPhoneNo = merchantPhoneNo;
       this.merchantEmailVerified = merchantEmailVerified;
       this.merchantVerificationCode = merchantVerificationCode;
@@ -126,17 +123,6 @@ public class Merchant implements java.io.Serializable
    public void setMerchantEmail(String merchantEmail)
    {
       this.merchantEmail = merchantEmail;
-   }
-
-   @Column(name = "merchant_password", nullable = false, length = 45)
-   public String getMerchantPassword()
-   {
-      return this.merchantPassword;
-   }
-
-   public void setMerchantPassword(String merchantPassword)
-   {
-      this.merchantPassword = merchantPassword;
    }
 
    @Column(name = "merchant_phone_no", length = 15)
@@ -228,7 +214,7 @@ public class Merchant implements java.io.Serializable
       this.lastUpdateTs = lastUpdateTs;
    }
 
-   @OneToMany(fetch = FetchType.LAZY, mappedBy = "merchant")
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "merchant")
    public Set<MerchantFeatures> getMerchantFeatureses()
    {
       return this.merchantFeatureses;
@@ -239,7 +225,7 @@ public class Merchant implements java.io.Serializable
       this.merchantFeatureses = merchantFeatureses;
    }
 
-   @OneToMany(fetch = FetchType.LAZY, mappedBy = "merchant")
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "merchant")
    public Set<Offer> getOffers()
    {
       return this.offers;
@@ -250,7 +236,7 @@ public class Merchant implements java.io.Serializable
       this.offers = offers;
    }
 
-   @OneToMany(fetch = FetchType.LAZY, mappedBy = "merchant")
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "merchant")
    public Set<MerchantReview> getMerchantReviews()
    {
       return this.merchantReviews;
@@ -261,7 +247,7 @@ public class Merchant implements java.io.Serializable
       this.merchantReviews = merchantReviews;
    }
 
-   @OneToMany(fetch = FetchType.LAZY, mappedBy = "merchant")
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "merchant")
    public Set<MerchantCategory> getMerchantCategories()
    {
       return this.merchantCategories;
@@ -272,7 +258,7 @@ public class Merchant implements java.io.Serializable
       this.merchantCategories = merchantCategories;
    }
 
-   @OneToMany(fetch = FetchType.LAZY, mappedBy = "merchant")
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "merchant")
    public Set<MerchantAddress> getMerchantAddresses()
    {
       return this.merchantAddresses;
@@ -283,7 +269,7 @@ public class Merchant implements java.io.Serializable
       this.merchantAddresses = merchantAddresses;
    }
 
-   @OneToMany(fetch = FetchType.LAZY, mappedBy = "merchant")
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "merchant")
    public Set<MerchantPaymentGateway> getMerchantPaymentGateways()
    {
       return this.merchantPaymentGateways;
@@ -294,7 +280,7 @@ public class Merchant implements java.io.Serializable
       this.merchantPaymentGateways = merchantPaymentGateways;
    }
 
-   @OneToMany(fetch = FetchType.LAZY, mappedBy = "merchant")
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "merchant")
    public Set<LoyaltyProgramMerchant> getLoyaltyProgramMerchants()
    {
       return this.loyaltyProgramMerchants;
@@ -305,7 +291,7 @@ public class Merchant implements java.io.Serializable
       this.loyaltyProgramMerchants = loyaltyProgramMerchants;
    }
 
-   @OneToMany(fetch = FetchType.LAZY, mappedBy = "merchant")
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "merchant")
    public Set<TaxRuleMerchant> getTaxRuleMerchants()
    {
       return this.taxRuleMerchants;
@@ -316,7 +302,7 @@ public class Merchant implements java.io.Serializable
       this.taxRuleMerchants = taxRuleMerchants;
    }
 
-   @OneToMany(fetch = FetchType.LAZY, mappedBy = "merchant")
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "merchant")
    public Set<UserFavourites> getUserFavouriteses()
    {
       return this.userFavouriteses;
@@ -327,7 +313,7 @@ public class Merchant implements java.io.Serializable
       this.userFavouriteses = userFavouriteses;
    }
 
-   @OneToMany(fetch = FetchType.LAZY, mappedBy = "merchant")
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "merchant")
    public Set<Product> getProducts()
    {
       return this.products;
